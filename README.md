@@ -13,6 +13,13 @@
 - Authentification Sosialite [ ]
 - Chatbot [ ] (?)
 
+## Step by step
+
+- Convert excel + Bulks file excel
+  - Install `maatwebsite/excel`
+  - memasukan file kedalam `config/app.php` sesuai dengan kebutuhan dan menjalankan `php artisan vendor:publish` [ [Refrensi](https://docs.laravel-excel.com/3.0/getting-started/installation.html#installation-2) ]
+
 # Package Use
 
 - [composer require maatwebsite/excel](https://docs.laravel-excel.com/3.0/getting-started/installation.html)
+
