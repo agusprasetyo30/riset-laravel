@@ -15,7 +15,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+})->name('welcome');
+
+Route::group(['prefix' => 'bulk-excel', 'as' => 'excel.'], function () {
+    // Bulk Excel 
+    Route::get('/', 'BulkExcelController@index')->name('index');
 });
+
+
 
 Auth::routes();
 

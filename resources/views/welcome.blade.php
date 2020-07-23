@@ -7,7 +7,7 @@
         <title>Laravel</title>
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        {{-- <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet"> --}}
 
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
@@ -37,9 +37,16 @@
             }
 
             .links a { 
-                font-size: 15px;
-                padding: 0px 20px;
-                color: black;
+                font-size: 13px;
+                padding: 10px 20px;
+                color: grey;
+                text-decoration: none;
+            }
+
+            .links a:hover { 
+                background: darkslategray;
+                transition: 0.3s;
+                color: white;
             }
         </style>
     </head>
@@ -62,16 +69,18 @@
         <div class="flex-center position-ref full-height">
             <div class="container">
                 <h1 class="text-center">Riset Laravel</h1>
+                <div class="text-center">
+                    <a href="#" class="btn btn-success ">Manajemen Dummy Todo</a>
+                </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="{{ route('excel.index') }}">Convert excel + Bulks file excel</a>
+                    <a href="#">API Laravel</a>
+                    <a href="#">Socket laravel</a>
+                    <a href="#">Barcode/qrcode</a>
+                    <a href="#">Authentification Sosialite</a>
+                    <a href="#">Chatbot (?)</a>
+                    <a href="#">Docker (?)</a>
                 </div>
             </div>
         </div>
