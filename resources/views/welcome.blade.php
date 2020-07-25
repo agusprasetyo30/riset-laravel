@@ -70,7 +70,7 @@
             <div class="container">
                 <h1 class="text-center">Riset Laravel</h1>
                 <div class="text-center">
-                    <a href="#" class="btn btn-success ">Manajemen Dummy Todo</a>
+                    <a href="{{ route('dummy.index') }}" class="btn btn-success ">Manajemen Dummy Todo</a>
                 </div>
 
                 <div class="links">

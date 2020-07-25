@@ -17,8 +17,17 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
+// Dummy Todo
+Route::group(['prefix' => 'dummy-todo', 'as' => 'dummy.'], function () {
+    Route::get('/', 'TodoController@index')->name('index');
+    Route::get('/delete', 'TodoController@destroy')->name('delete');
+
+    Route::post('/', 'TodoController@store')->name('store');
+    Route::put('/{id}/update', 'TodoController@update')->name('update');
+});
+
+// Bulk Excel
 Route::group(['prefix' => 'bulk-excel', 'as' => 'excel.'], function () {
-    // Bulk Excel 
     Route::get('/', 'BulkExcelController@index')->name('index');
 });
 

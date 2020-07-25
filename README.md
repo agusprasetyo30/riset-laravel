@@ -23,4 +23,4 @@
 # Package Use
 
 - [composer require maatwebsite/excel](https://docs.laravel-excel.com/3.0/getting-started/installation.html)
-
+- [Laravel Excel](https://docs.laravel-excel.com/3.0/getting-started/installation.html#installation-2)
