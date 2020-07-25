@@ -29,6 +29,10 @@ Route::group(['prefix' => 'dummy-todo', 'as' => 'dummy.'], function () {
 // Bulk Excel
 Route::group(['prefix' => 'bulk-excel', 'as' => 'excel.'], function () {
     Route::get('/', 'BulkExcelController@index')->name('index');
+    
+    Route::get('/print-collection', 'BulkExcelController@printExcelCollection')->name('print.collection');
+    Route::get('/print-query', 'BulkExcelController@printExcelQuery')->name('print.query');
+    Route::get('/print-view', 'BulkExcelController@printExcelView')->name('print.view');
 });
 
 

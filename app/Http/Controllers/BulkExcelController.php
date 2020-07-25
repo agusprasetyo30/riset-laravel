@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\TodoReportCollection;
+use App\Exports\TodoReportQuery;
+use App\Exports\TodoReportView;
 use App\Todo;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class BulkExcelController extends Controller
 {
@@ -14,72 +18,41 @@ class BulkExcelController extends Controller
      */
     public function index()
     {
-        return view('bulk-excel.index');
+        $todo_data = Todo::all();
+
+        return view('bulk-excel.index', compact('todo_data'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * fungsi controller untuk mendownload file excel dengan menggunakan COLLECTION
      *
-     * @return \Illuminate\Http\Response
+     * @return void
      */
-    public function create()
+    public function printExcelCollection()
     {
-        //
+        return Excel::download(new TodoReportCollection, 'todos.xlsx');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * fungsi controller untuk mendownload file excel dengan menggunakan QUERY
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return void
      */
-    public function store(Request $request)
+    public function printExcelQuery()
     {
-        //
+        // filter data yang di print hanya yang berstatus SHOW
+        return Excel::download(new TodoReportQuery('SHOW'), 'todos.xlsx');
     }
 
     /**
-     * Display the specified resource.
+     * fungsi controller untuk mendownload file excel dengan menggunakan VIEW tabel pada halaman
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return void
      */
-    public function show($id)
+    public function printExcelView()
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        // filter data yang di print hanya yang berstatus SHOW
+        // tidak menggunakan Excel, karena pada TodoReportView sudah menggunakan Exportable
+        return (new TodoReportView)->download('todos.xlsx');
     }
 }

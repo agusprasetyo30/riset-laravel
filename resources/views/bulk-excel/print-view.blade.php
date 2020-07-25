@@ -1,17 +1,8 @@
 @extends('layouts.template')
 
-@section('title', 'Bulk Excel')
+@section('title', 'Bulk Excel View')
 
 @section('content')
-   <a href="{{ route('welcome') }}">< Back</a>
-
-   <h1 class="text-center">Dummy data</h1>
-   
-   <div class="float-right mt-2 mb-2">
-      <a href="{{ route('excel.print.collection') }}" class="btn btn-primary" title="Untuk laporan dengan ukuran standart/tidak terlalu banyak">Print [Collection]</a>
-      <a href="{{ route('excel.print.query') }}" class="btn btn-primary" title="Untuk laporan dengan ukuran banyak/bigdata">Print [Query]</a>
-      <a href="{{ route('excel.print.view') }}" class="btn btn-primary" title="Untuk laporan dengan tampilan tabel pada view">Print [Table]</a>
-   </div>
    <table class="table table-bordered table-hover mt-2">
       <thead>
          <tr class="text-center">
