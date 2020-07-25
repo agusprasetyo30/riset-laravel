@@ -20,11 +20,15 @@ class TodoController extends Controller
                 break;
 
             case 'edit':
-                return view('dummy-todo.edit');
+                $todo_edit = Todo::findOrFail($request->get('id'));
+
+                return view('dummy-todo.edit', compact('todo_edit'));
                 break;
 
             case null:
-                return view('dummy-todo.index');
+                $todo_data = Todo::all();
+
+                return view('dummy-todo.index', compact('todo_data'));
                 break;
             
             default:
@@ -41,7 +45,9 @@ class TodoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Todo::create($request->only('todo'));
+        
+        return redirect()->route('dummy.index');
     }
 
     /**
@@ -53,7 +59,12 @@ class TodoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Todo::where('id', '=', $id)->update([
+            'todo' => $request->get('todo'),
+            'status' => $request->get('status')
+        ]);
+        
+        return redirect()->route('dummy.index');
     }
 
     /**
@@ -62,8 +73,12 @@ class TodoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy()
+    public function destroy(Request $request)
     {
-        //
+        $todo_data = Todo::findOrFail($request->get('id'));
+
+        $todo_data->delete();
+
+        return redirect()->route('dummy.index');
     }
 }

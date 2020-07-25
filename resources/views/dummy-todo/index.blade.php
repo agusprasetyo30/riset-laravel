@@ -21,25 +21,30 @@
             </tr>
          </thead>
          <tbody>
-            <tr>
-               <td>1.</td>
-               <td>
-                  <p>
-                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, aspernatur?</td>
-                  </p>
-               <td class="text-center">
-                  <label class="badge badge-success">SHOW</label>
-               </td>
-               <td class="text-center">
-                  <label class="badge badge-success">18-8-2020</label>
-               </td>
-               <td class="text-center">
-                  <div class="btn-group-sm">
-                     <a href="{{ route('dummy.index', ['type' => 'edit', 'id' => 1]) }}" class="btn btn-primary">Edit</a>
-                     <a href="{{ route('dummy.delete', ['id' => 1]) }}" class="btn btn-danger">Hapus</a>
-                  </div>
-               </td>
-            </tr>
+            @foreach ($todo_data as $no => $todo)
+               <tr>
+                  <td>{{ ++$no }}. </td>
+                  <td>
+                     <p>
+                        {{ $todo->todo }}
+                     </p>
+                  </td>
+                  <td class="text-center">
+                     <label class="badge {{ $todo->status == 'SHOW' ? 'badge-success' : 'badge-danger' }}">{{ $todo->status }}</label>
+                  </td>
+                  <td class="text-center">
+                     <label class="badge badge-success">
+                        {{ date('d-M-Y H:i:s', strtotime($todo->created_at)) }}
+                     </label>
+                  </td>
+                  <td class="text-center">
+                     <div class="btn-group-sm">
+                        <a href="{{ route('dummy.index', ['type' => 'edit', 'id' => $todo->id]) }}" class="btn btn-primary">Edit</a>
+                        <a href="{{ route('dummy.delete', ['id' => $todo->id]) }}" class="btn btn-danger">Hapus</a>
+                     </div>
+                  </td>
+               </tr>
+            @endforeach
          </tbody>
       </table>
    </div>

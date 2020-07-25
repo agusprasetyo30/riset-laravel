@@ -16,7 +16,7 @@ class CreateTodosTable extends Migration
         Schema::create('todos', function (Blueprint $table) {
             $table->id();
             $table->text('todo');
-            $table->enum('status', ["SHOW" ,"HIDE"]);
+            $table->enum('status', ["SHOW" ,"HIDE"])->default('SHOW');
             $table->timestamps();
         });
     }
