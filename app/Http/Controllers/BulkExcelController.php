@@ -82,7 +82,7 @@ class BulkExcelController extends Controller
     {
         // dd($request->all());
         $this->validate($request, [
-            'file' => 'required|mimes:xlsx,xls',
+            'file' => 'required|mimes:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,xls',
         ]);
 
         if ($request->hasFile('file')) {
