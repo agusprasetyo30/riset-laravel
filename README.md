@@ -39,6 +39,12 @@
   - Mengatur controller untuk memanggil fungsi didalam `Imports` untuk mengatur import excel [ dapat dilihat pada : `BulkExcelController@importFileExcel`]
   - Mengatur `route` dan `view` untuk import
 
+# Refrensi
+  - Laravel API
+    - [https://github.com/andrecastelo/example-api](https://github.com/andrecastelo/example-api]
+    - [https://www.toptal.com/laravel/restful-laravel-api-tutorial](https://www.toptal.com/laravel/restful-laravel-api-tutorial)
+  
 # Package Use
 
 - [Laravel Excel](https://docs.laravel-excel.com/3.0/getting-started/installation.html#installation-2)
+- 
