@@ -29,7 +29,7 @@ class TodoApiController extends Controller
     {
         $todo = Todo::create($request->only(['todo', 'status']));
 
-        return $todo;
+        return response()->json($todo, 201);
     }
 
     /**
@@ -38,10 +38,8 @@ class TodoApiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Todo $todo)
     {
-        $todo = Todo::find($id);
-
         return $todo;
     }
 
@@ -52,13 +50,11 @@ class TodoApiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Todo $todo)
     {
-        $todo = Todo::findOrFail($id);
-
         $todo->update($request->only(['todo', 'status']));
 
-        return $todo;
+        return response()->json($todo, 200);
     }
 
     /**
@@ -67,11 +63,10 @@ class TodoApiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Todo $todo)
     {
-        $todo = Todo::findOrFail($id);
         $todo->delete();
 
-        return 204;
+        return response()->json(null, 204);
     }
 }
