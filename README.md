@@ -16,6 +16,7 @@
 ## Step by step
 
 - Convert excel + Bulks file excel
+  __EXPORT__
   - Install `maatwebsite/excel`
   - membuat folder `Exports` untuk menampung file untuk kebutuhan Export excel dan memasukan file kedalam `config/app.php` sesuai dengan kebutuhan dan menjalankan `php artisan vendor:publish` [ [Refrensi](https://docs.laravel-excel.com/3.0/getting-started/installation.html#installation-2) ]
   - Terdapat 3 metode export excel yaitu : 
@@ -24,6 +25,9 @@
     - View : Export data excel menggunakan VIEW tabel pada halaman
   - Mengatur route untuk memanggil controller tersebut
   - Mengatur controller dengan memanggil fungsi/class yang sudah dibuat pada `app/Exports`
+
+  __IMPORT__
+  - 
 
 # Package Use
 

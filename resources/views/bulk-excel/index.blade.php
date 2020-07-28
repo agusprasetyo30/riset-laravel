@@ -7,6 +7,10 @@
 
    <h1 class="text-center">Dummy data</h1>
    
+   <div class="float-left mt-2 mb-2">
+      <a href="{{ route('excel.print.import-page') }}" class="btn btn-dark" title="Halaman import">Import</a>
+   </div>
+
    <div class="float-right mt-2 mb-2">
       <a href="{{ route('excel.print.collection') }}" class="btn btn-primary" title="Untuk laporan dengan ukuran standart/tidak terlalu banyak">Print [Collection]</a>
       <a href="{{ route('excel.print.query') }}" class="btn btn-primary" title="Untuk laporan dengan ukuran banyak/bigdata">Print [Query]</a>

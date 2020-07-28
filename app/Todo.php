@@ -11,4 +11,6 @@ class Todo extends Model
     protected $fillable = [
         'todo', 'status',
     ];
+
+    protected $guarded = [];
 }
