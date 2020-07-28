@@ -11,6 +11,11 @@ class TodoReportView implements FromView
 {
    use Exportable;
 
+   /**
+    * Adalah fungsi untuk menentukan tampilan/tabel apa yang akan diexport
+    *
+    * @return View
+    */
    public function view() : View
    {
       return view('bulk-excel.print-view', [
