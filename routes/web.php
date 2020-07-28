@@ -18,7 +18,7 @@ Route::get('/', function () {
 })->name('welcome');
 
 // Dummy Todo
-Route::group(['prefix' => 'dummy-todo', 'as' => 'dummy.'], function () {
+Route::group(['prefix' => 'dummy_todo', 'as' => 'dummy.'], function () {
     Route::get('/', 'TodoController@index')->name('index');
     Route::get('/delete', 'TodoController@destroy')->name('delete');
 
@@ -27,13 +27,13 @@ Route::group(['prefix' => 'dummy-todo', 'as' => 'dummy.'], function () {
 });
 
 // Bulk Excel
-Route::group(['prefix' => 'bulk-excel', 'as' => 'excel.'], function () {
+Route::group(['prefix' => 'bulk_excel', 'as' => 'excel.'], function () {
     Route::get('/', 'BulkExcelController@index')->name('index');
     
     // Export
-    Route::get('/print-collection', 'BulkExcelController@printExcelCollection')->name('print.collection');
-    Route::get('/print-query', 'BulkExcelController@printExcelQuery')->name('print.query');
-    Route::get('/print-view', 'BulkExcelController@printExcelView')->name('print.view');
+    Route::get('/print_collection', 'BulkExcelController@printExcelCollection')->name('print.collection');
+    Route::get('/print_query', 'BulkExcelController@printExcelQuery')->name('print.query');
+    Route::get('/print_view', 'BulkExcelController@printExcelView')->name('print.view');
 
     // Import
     Route::get('/import', 'BulkExcelController@importPage')->name('print.import-page');
