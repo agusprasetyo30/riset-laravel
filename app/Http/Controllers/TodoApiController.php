@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Todo;
 use Illuminate\Http\Request;
 
 class TodoApiController extends Controller
@@ -13,17 +14,9 @@ class TodoApiController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $todo = Todo::all();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return $todo;
     }
 
     /**
@@ -34,7 +27,9 @@ class TodoApiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $todo = Todo::create($request->only(['todo', 'status']));
+
+        return $todo;
     }
 
     /**
@@ -45,18 +40,9 @@ class TodoApiController extends Controller
      */
     public function show($id)
     {
-        //
-    }
+        $todo = Todo::find($id);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        return $todo;
     }
 
     /**
@@ -68,7 +54,11 @@ class TodoApiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $todo = Todo::findOrFail($id);
+
+        $todo->update($request->only(['todo', 'status']));
+
+        return $todo;
     }
 
     /**
@@ -79,6 +69,9 @@ class TodoApiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $todo = Todo::findOrFail($id);
+        $todo->delete();
+
+        return 204;
     }
 }
