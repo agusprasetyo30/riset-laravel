@@ -47,4 +47,4 @@
 # Package Use
 
 - [Laravel Excel](https://docs.laravel-excel.com/3.0/getting-started/installation.html#installation-2)
-- 
+- [Laravel IDE Helper](https://github.com/barryvdh/laravel-ide-helper) - Package ini untuk menyediakan pelengkapan/autocomplete data otomatis yang akurat. Pembuatan dilakukan berdasarkan file-file di proyek Anda, sehingga mereka selalu up-to-date.

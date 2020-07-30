@@ -75,7 +75,7 @@
 
                 <div class="links">
                     <a href="{{ route('excel.index') }}">Convert excel + Bulks file excel</a>
-                    <a href="#">API Laravel</a>
+                    <a href="#">API Laravel + Passport Authentification OAuth</a>
                     <a href="#">Socket laravel</a>
                     <a href="#">Barcode/qrcode</a>
                     <a href="#">Authentification Sosialite</a>
