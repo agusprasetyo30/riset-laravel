@@ -42,7 +42,6 @@ Route::group(['prefix' => 'bulk_excel', 'as' => 'excel.'], function () {
 });
 
 
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -18,8 +18,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('todos_api', 'TodoApiController@index');
-Route::get('todos_api/{todo}', 'TodoApiController@show');
-Route::post('todos_api', 'TodoApiController@store');
-Route::put('todos_api/{todo}', 'TodoApiController@update');
-Route::delete('todos_api/{todo}', 'TodoApiController@delete');
+Route::get('todos', 'TodoApiController@index');
+Route::get('todos/{todo}', 'TodoApiController@show');
+Route::post('todos', 'TodoApiController@store');
+Route::put('todos/{todo}', 'TodoApiController@update');
+Route::delete('todos/{todo}', 'TodoApiController@delete');
+
+Route::post('register', 'Auth\RegisterController@register');
+Route::post('login', 'Auth\LoginController@login');
+Route::post('logout', 'Auth\LoginController@logout');
