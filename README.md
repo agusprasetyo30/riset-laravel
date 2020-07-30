@@ -41,10 +41,12 @@
 
 # Refrensi
   - Laravel API
-    - [https://github.com/andrecastelo/example-api](https://github.com/andrecastelo/example-api]
-    - [https://www.toptal.com/laravel/restful-laravel-api-tutorial](https://www.toptal.com/laravel/restful-laravel-api-tutorial)
+    - [https://github.com/andrecastelo/example-api](https://github.com/andrecastelo/example-api) - API
+    - [https://www.toptal.com/laravel/restful-laravel-api-tutorial](https://www.toptal.com/laravel/restful-laravel-api-tutorial) - API
+    - [https://medium.com/modulr/create-api-authentication-with-passport-of-laravel-5-6-1dc2d400a7f](https://medium.com/modulr/create-api-authentication-with-passport-of-laravel-5-6-1dc2d400a7f) - Laravel Passport
   
 # Package Use
 
-- [Laravel Excel](https://docs.laravel-excel.com/3.0/getting-started/installation.html#installation-2)
+- [Laravel Excel](https://docs.laravel-excel.com/3.0/getting-started/installation.html#installation-2) - Untuk import dan export excel
 - [Laravel IDE Helper](https://github.com/barryvdh/laravel-ide-helper) - Package ini untuk menyediakan pelengkapan/autocomplete data otomatis yang akurat. Pembuatan dilakukan berdasarkan file-file di proyek Anda, sehingga mereka selalu up-to-date.
+- [Laravel Passport](https://github.com/laravel/passport) - Untuk Otorisasi authentifikasi API
