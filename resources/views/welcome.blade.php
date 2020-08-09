@@ -36,14 +36,13 @@
                 text-align: center;
             }
 
-            .links a { 
+            .links{ 
                 font-size: 13px;
-                padding: 10px 20px;
                 color: grey;
                 text-decoration: none;
             }
 
-            .links a:hover { 
+            .links:hover { 
                 background: darkslategray;
                 transition: 0.3s;
                 color: white;
@@ -73,14 +72,14 @@
                     <a href="{{ route('dummy.index') }}" class="btn btn-success ">Manajemen Dummy Todo</a>
                 </div>
 
-                <div class="links">
-                    <a href="{{ route('excel.index') }}">Convert excel + Bulks file excel</a>
-                    <a href="#">API Laravel + Passport Authentification OAuth</a>
-                    <a href="#">Socket laravel</a>
-                    <a href="#">Barcode/qrcode</a>
-                    <a href="#">Authentification Sosialite</a>
-                    <a href="#">Chatbot (?)</a>
-                    <a href="#">Docker (?)</a>
+                <div class="text-center">
+                    <a class="btn links" href="{{ route('excel.index') }}">Convert excel + Bulks file excel</a>
+                    <a class="btn links" href="{{ route('data-api.index') }}">API Laravel Auth (Rest API tapi tidak menggunakan <b>Passport ataupun Sanctum</b>)</a>
+                    <a class="btn links" href="#">Socket laravel</a>
+                    <a class="btn links" href="#">Barcode/qrcode</a>
+                    <a class="btn links" href="#">Authentification Sosialite</a>
+                    <a class="btn links" href="#">Chatbot (?)</a>
+                    <a class="btn links" href="#">Docker (?)</a>
                 </div>
             </div>
         </div>

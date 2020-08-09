@@ -41,6 +41,9 @@ Route::group(['prefix' => 'bulk_excel', 'as' => 'excel.'], function () {
 
 });
 
+Route::group(['prefix' => 'data-api', 'as' => 'data-api.'], function () {
+    Route::get('/', 'TodoApiController@indexPage')->name('index');
+});
 
 Auth::routes();
 

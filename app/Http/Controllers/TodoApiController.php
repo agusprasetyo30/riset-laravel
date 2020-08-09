@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class TodoApiController extends Controller
 {
+    public function indexPage()
+    {
+        return view('api-test.index');
+    }
+
     /**
      * Display a listing of the resource.
      *
