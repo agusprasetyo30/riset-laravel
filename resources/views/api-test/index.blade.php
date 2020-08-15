@@ -77,8 +77,9 @@
    <img src="{{ asset('img/api-data/header postman.png') }}" width="100%">
 
    <p>
-      3. 
+      3. Ketika sudah maka akses route yang terdapat data, pada contoh ini saya mengakses route <b>localhost::8000/api/todos</b>
    </p>
+   <img src="{{ asset('img/api-data/get request.png') }}" width="100%">
 
 
    <pre>

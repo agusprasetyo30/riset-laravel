@@ -11,7 +11,7 @@
 ## List Riset
 
 - Convert excel + Bulks file excel [X]
-- API Laravel [ ]
+- API Laravel Auth (Rest API tapi tidak menggunakan <b>Passport ataupun Sanctum</b>) [ X ]
 - Socket laravel [ ]
 - Barcode/qrcode [ ]
 - Authentification Sosialite [ ]
@@ -38,6 +38,18 @@
   - membuat folder `Imports` untuk menampung file untuk kebutuhan `Import excel` dan menambahkan file class kedalam folder tersebut sesuai kebutuhan
   - Mengatur controller untuk memanggil fungsi didalam `Imports` untuk mengatur import excel [ dapat dilihat pada : `BulkExcelController@importFileExcel`]
   - Mengatur `route` dan `view` untuk import
+
+
+- API Laravel Auth (Rest API tapi tidak menggunakan <b>Passport ataupun Sanctum</b>)
+  - Jika ingin login, maka mengakses route API login pada body request tersebut
+    <img src="./body postman.png" width="100%">
+  
+  - Setelah selesai, maka mengambil data <b>TOKEN</b> pada tabel <b>users</b>, deengan memasukan <b>authorization Bearer <`TOKEN`></b>. Jangan lupa arahkan ke route yang merupakan <b>Middleware</b> / ['middleware' => 'auth:api']
+    <img src="./header postman.png" width="100%">
+
+  - Ketika sudah maka akses route yang terdapat data, pada contoh ini saya mengakses route <b>localhost::8000/api/todos</b>
+    <img src="./get request.png" width="100%">
+
 
 # Refrensi
   - Laravel API
