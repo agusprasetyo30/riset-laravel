@@ -52,6 +52,12 @@
 
 
 # Refrensi
+  - Import & Export Excel
+    - Import
+      - [https://daengweb.id/membuat-laporan-laravel-excel-30](https://daengweb.id/membuat-laporan-laravel-excel-30)
+    - Export
+      - [https://daengweb.id/membuat-fitur-bulk-import-laravel-excel-31](https://daengweb.id/membuat-fitur-bulk-import-laravel-excel-31)
+
   - Laravel API
     - [https://github.com/andrecastelo/example-api](https://github.com/andrecastelo/example-api) - API
     - [https://www.toptal.com/laravel/restful-laravel-api-tutorial](https://www.toptal.com/laravel/restful-laravel-api-tutorial) - API
