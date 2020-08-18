@@ -45,6 +45,14 @@ Route::group(['prefix' => 'data-api', 'as' => 'data-api.'], function () {
     Route::get('/', 'TodoApiController@indexPage')->name('index');
 });
 
+
+Route::group(['prefix' => 'barcode-qr', 'as' => 'barcode-qr.'], function () {
+    
+    Route::get('/', 'BarcodeQrController@index')->name('index');
+
+});
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
