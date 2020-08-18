@@ -15,10 +15,13 @@
                @method('put')
                <div class="card-body">
                   <div class="form-group">
+                     <label>ID Todo String Generate</label>
+                     <input type="text" name="id_generate" class="form-control" value="{{ $todo_edit->todo_id_string }}" readonly>
+                  </div>
+                  <div class="form-group">
                      <label for="todo">Todo</label>
                      <textarea name="todo" id="todo" rows="3" class="form-control">{{ $todo_edit->todo }}</textarea>
                   </div>
-
                   <div class="form-group">
                      <label for="status">Status</label>
                      <select name="status" id="status" class="form-control">

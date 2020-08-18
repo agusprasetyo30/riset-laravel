@@ -17,7 +17,7 @@
          </tr>
       </thead>
       <tbody>
-         @foreach ($todo_data as $no => $todo)
+         @foreach ($todo_data as $no => $todo)""
                <tr>
                   <td>{{ ++$no }}. </td>
                   <td>

@@ -13,6 +13,10 @@
             <form action="{{ route('dummy.store') }}" method="post">
                @csrf
                <div class="card-body">
+                  <div class="form-group">
+                     <label>ID Todo String</label>
+                     <input type="text" name="todo_id_string" class="form-control" value="{{ $id_generate }}" readonly>
+                  </div>
                   <label for="todo">Todo</label>
                   <textarea name="todo" id="todo" rows="3" class="form-control"></textarea>
                   

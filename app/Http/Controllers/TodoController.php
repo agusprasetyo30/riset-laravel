@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Todo;
 use Illuminate\Http\Request;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 
 class TodoController extends Controller
 {
@@ -16,7 +17,17 @@ class TodoController extends Controller
     {
         switch ($request->get('type')) {
             case 'add':
-                return view('dummy-todo.add');
+                $config = [
+                    'table' => 'todos',
+                    'field' => 'todo_id_string',
+                    'length' => 6,
+                    'prefix' => 'ID-'
+                ];
+                
+                // now use it
+                $id_generate = IdGenerator::generate($config);
+
+                return view('dummy-todo.add', compact('id_generate'));
                 break;
 
             case 'edit':
@@ -45,7 +56,8 @@ class TodoController extends Controller
      */
     public function store(Request $request)
     {
-        Todo::create($request->only('todo'));
+        // 'todo', 'todo_id_string' : sesuai dengan Model TODO yang fillable
+        Todo::create($request->only(['todo', 'todo_id_string']));
         
         return redirect()->route('dummy.index');
     }
@@ -60,8 +72,8 @@ class TodoController extends Controller
     public function update(Request $request, $id)
     {
         Todo::where('id', '=', $id)->update([
-            'todo' => $request->get('todo'),
-            'status' => $request->get('status')
+            'todo'          => $request->get('todo'),
+            'status'        => $request->get('status'),
         ]);
         
         return redirect()->route('dummy.index');

@@ -14,6 +14,7 @@
          <thead>
             <tr class="text-center">
                <th width="10px">#</th>
+               <th>ID Todo String</th>
                <th>Todo</th>
                <th width="150px">Status</th>
                <th width="150px">Tanggal Buat</th>
@@ -24,6 +25,9 @@
             @foreach ($todo_data as $no => $todo)
                <tr>
                   <td>{{ ++$no }}. </td>
+                  <td>
+                     {{ $todo->todo_id_string }}
+                  </td>
                   <td>
                      <p>
                         {{ $todo->todo }}
