@@ -35,7 +35,7 @@
                      </p>
                   </td>
                   <td class="text-center">
-                     <button class="btn btn-primary" onclick="event.preventDefault(); showBarcode('{{ $todo->todo_id_string }}');" id="show-barcode">Show Barcode</button>
+                     <a class="btn btn-primary cursor-pointer" id="">Show Barcode</a>
                      {{-- {!! DNS1D::getBarcodeHTML( $todo->todo_id_string , "C128", 3, 70, 'black', true) !!} --}}
                   </td>
                   <td class="text-center">
@@ -58,12 +58,17 @@
 
 @push('js')
    <script>
+      $('#show-barcode').click(function() {
+         console.log("HALOOO");
+      });
+
       // Menampilkan modal untuk menambahkan stock
       function showBarcode(todo_id_string)
       {
          $(document).ready(function() {
                $('.modal-header #modalHeading').html("Tambah stok barang")
-               $("#coba").html(`{!! DNS1D::getBarcodeHTML("`+ todo_id_string + `" , "C128", 1.7, 70, "black", true) !!}`);
+
+               $('#coba').html('{{ DNS1D::getBarcodeHTML("ssscs" , "C128",2.5 , 55, "black", true) }}')
                
                $('#barcodeModal').modal('show')
          });
