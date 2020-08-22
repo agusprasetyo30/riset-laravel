@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Haruncpi\LaravelIdGenerator\IdGenerator;
 
 use App\Todo;
 use DNS1D;
@@ -11,13 +10,24 @@ use DNS2D;
 
 class BarcodeQrController extends Controller
 {
+    /**
+     * Untuk menampilkan halaman daftar data todo
+     *
+     * @return void
+     */
     public function index()
     {
         $todo_data = Todo::all();
-        $mencoba = "agus p";
-        return view('barcode-qrcode.index', compact('todo_data', 'mencoba'));
+        return view('barcode-qrcode.index', compact('todo_data'));
     }
 
+    /**
+     * Fungsi untuk menampikan diagram barcode dan qrcode menggunakan AJAX
+     *
+     * @param [type] $id
+     * @param Request $request
+     * @return void
+     */
     public function getTodoByID($id, Request $request)
     {
         $data = Todo::where("id", $id)
@@ -36,13 +46,5 @@ class BarcodeQrController extends Controller
                 
                 break;
         }
-
-        
-
-        // return response()->json([
-        //     'error' => false,
-        //     'data'  => $data,
-
-        // ], 200);
     }
 }
