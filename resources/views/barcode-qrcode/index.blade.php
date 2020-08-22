@@ -3,8 +3,7 @@
 @section('title', 'Barcode & QRCode')
 
 @section('include-modal')
-   @include('modals.barcode')
-   @include('modals.qrcode')
+   @include('modals.diagram')
 @endsection
 
 @section('content')
@@ -64,11 +63,9 @@
                type: 'get',
                url: "/barcode-qr/todo-barcode/" + id + "?type=barcode",
                success: function(data){
-                  // console.log(data);
-                  $('.modal-header #modalHeading').html("Tambah stok barang")
-                  $('#coba').html(data)
-                  $('#barcodeModal').modal('show')
-                  
+                  $('.modal-header #modalHeading').html("Barcode")
+                  $('#diagram').html(data)
+                  $('#diagramModal').modal('show')
                },
                error: function(data) {
                   console.log(data);
@@ -77,7 +74,7 @@
          });
       };
 
-      /
+      // menampilkan qrcode ke modal
       function showQRCode(id)
       {
          $(document).ready(function () {
@@ -85,9 +82,9 @@
                type: 'get',
                url: "/barcode-qr/todo-barcode/" + id + "?type=qrcode",
                success: function(data){
-                  $('.modal-header #modalHeading').html("Tambah stok barang")
-                  $('#coba').html(data)
-                  $('#barcodeModal').modal('show')
+                  $('.modal-header #modalHeading').html("QRCode")
+                  $('#diagram').html(data)
+                  $('#diagramModal').modal('show')
                   
                },
                error: function(data) {

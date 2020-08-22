@@ -25,13 +25,13 @@ class BarcodeQrController extends Controller
 
         switch ($request->get('type')) {
             case 'barcode':
-                $barcode = DNS1D::getBarcodeHTML( $data->todo_id_string, "C128", 4.7, 100, 'black', true);
+                $barcode = DNS1D::getBarcodeHTML( $data->todo_id_string, "C128", 4, 100, 'black', true);
                 return $barcode;
                 
                 break;
 
             case 'qrcode':
-                $qrcode = DNS2D::getBarcodeHTML( $data->todo_id_string, "QRCODE", 4, 4);
+                $qrcode = DNS2D::getBarcodeHTML( $data->todo_id_string, "QRCODE", 7, 7);
                 return $qrcode;
                 
                 break;
