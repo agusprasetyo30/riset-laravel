@@ -49,6 +49,8 @@ Route::group(['prefix' => 'data-api', 'as' => 'data-api.'], function () {
 Route::group(['prefix' => 'barcode-qr', 'as' => 'barcode-qr.'], function () {
     
     Route::get('/', 'BarcodeQrController@index')->name('index');
+    Route::get('/todo-barcode/{id}', 'BarcodeQrController@getTodoByID')->name('barcode-id');
+
 
 });
 

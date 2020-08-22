@@ -8,8 +8,7 @@
             </button>
          </div>
          <div class="modal-body">
-            <div id="coba">
-               
+            <div id="coba" style="text-align: center">
             </div>
          </div>
       </div>
