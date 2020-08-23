@@ -55,7 +55,7 @@
 
 @push('js')
    <script>
-      // Menampilkan modal untuk menambahkan stock
+      // Menampilkan data barcode
       function showBarcode(id)
       {
          $(document).ready(function () {
