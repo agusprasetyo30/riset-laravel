@@ -73,3 +73,4 @@
 - [Laravel Passport](https://github.com/laravel/passport) - Untuk Otorisasi authentifikasi API
 - [Laravel Custom ID Generator](https://laravelarticle.com/laravel-custom-id-generator) - Digunakan untuk mengenerate ID Increment secara costum
 - [Laravel Barcode](https://github.com/milon/barcode) - Digunakan untuk package barcode untuk laravel
+- [Captcha For Laravel](https://github.com/mewebstudio/captcha) - Digunakan untuk menambahkan captcha pada laravel
