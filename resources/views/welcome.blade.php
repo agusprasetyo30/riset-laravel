@@ -70,6 +70,7 @@
                 <h1 class="text-center">Riset Laravel</h1>
                 <div class="text-center">
                     <a href="{{ route('dummy.index') }}" class="btn btn-success ">Manajemen Dummy Todo</a>
+                    <a href="{{ route('test.index') }}" class="btn btn-primary" title="Dalam hal ini membuat Manajemen Mahasiswa & Mata Kuliah. dan menambahkan mahasiswa yang mengambil mata kuliah">Riset Test PT. MMF</a>
                 </div>
 
                 <div class="text-center">

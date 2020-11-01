@@ -17,8 +17,41 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
+// Test MMF
+Route::group(['prefix' => 'test', 'as' => 'test.'], function () {
+    
+    // Dashboard
+    Route::get('/', function () {
+        return view('mmf.index');
+    })->name('index');
+
+    // Mata Kuliah
+    Route::group(['prefix' => 'mata-kuliah', 'as' => 'matakuliah.'], function () {
+        Route::get('/', 'MatakuliahController@index')->name('index');
+        Route::get('/add', 'MatakuliahController@create')->name('create');
+        Route::post('/add', 'MatakuliahController@store')->name('store');
+        Route::get('/{id}/edit', 'MatakuliahController@edit')->name('edit');
+        Route::put('/{id}/edit', 'MatakuliahController@update')->name('update');
+        Route::get('/{id}/delete', 'MatakuliahController@destroy')->name('destroy');
+    });
+
+    // Mahasiswa
+    Route::group(['prefix' => 'mahasiswa', 'as' => 'mahasiswa.'], function () {
+        Route::get('/', 'MahasiswaController@index')->name('index');
+        Route::get('/add', 'MahasiswaController@create')->name('create');
+        Route::post('/add', 'MahasiswaController@store')->name('store');
+        Route::get('/{id}/edit', 'MahasiswaController@edit')->name('edit');
+        Route::put('/{id}/edit', 'MahasiswaController@update')->name('update');
+
+        Route::get('/{id}/ambil-matkul', 'MahasiswaController@ambilMataKuliah')->name('ambil-matkul');
+        Route::get('/{id}/ambil-matkul/{matkul}/process', 'MahasiswaController@prosesPenambahanMatkul')->name('ambil-matkul.process');
+
+        
+    });
+});
+
 // Dummy Todo
-Route::group(['prefix' => 'dummy_todo', 'as' => 'dummy.'], function () {
+Route::group(['prefix' => 'dummy-todo', 'as' => 'dummy.'], function () {
     Route::get('/', 'TodoController@index')->name('index');
     Route::get('/delete', 'TodoController@destroy')->name('delete');
 
@@ -27,7 +60,7 @@ Route::group(['prefix' => 'dummy_todo', 'as' => 'dummy.'], function () {
 });
 
 // Bulk Excel
-Route::group(['prefix' => 'bulk_excel', 'as' => 'excel.'], function () {
+Route::group(['prefix' => 'bulk-excel', 'as' => 'excel.'], function () {
     Route::get('/', 'BulkExcelController@index')->name('index');
     
     // Export
