@@ -14842,6 +14842,26 @@
      
 }
 
+    namespace Webpatser\Uuid { 
+            /**
+     * Class Uuid
+     *
+     * @package Webpatser\Uuid
+     * @property string $bytes
+     * @property string $hex
+     * @property string $node
+     * @property string $string
+     * @property string $time
+     * @property string $urn
+     * @property string $variant
+     * @property string $version
+     */ 
+        class Uuid {
+         
+    }
+     
+}
+
 
 namespace  { 
             class App extends \Illuminate\Support\Facades\App {}
@@ -17822,6 +17842,7 @@ namespace  {
             class Captcha extends \Mews\Captcha\Facades\Captcha {}
             class DNS1D extends \Milon\Barcode\Facades\DNS1DFacade {}
             class DNS2D extends \Milon\Barcode\Facades\DNS2DFacade {}
+            class Uuid extends \Webpatser\Uuid\Uuid {}
      
 }
 

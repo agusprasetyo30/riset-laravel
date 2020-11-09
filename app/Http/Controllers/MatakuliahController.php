@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mata_kuliah;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use Webpatser\Uuid\Uuid;
 
 class MatakuliahController extends Controller
 {
@@ -40,8 +41,12 @@ class MatakuliahController extends Controller
     {
         $mata_kuliah = new Mata_kuliah;
 
+        // Generate UUID
+        $uuid = (string)Uuid::generate();
+
         $mata_kuliah->nama = $request->get('nama');
         $mata_kuliah->status = $request->get('status');
+        $mata_kuliah->uuid = $uuid;
 
         $mata_kuliah->save();
 
@@ -54,10 +59,10 @@ class MatakuliahController extends Controller
      *
      * @return void
      */
-    public function edit($id)
+    public function edit($uuid)
     {
         try {
-            $mata_kuliah = Mata_kuliah::findOrFail($id);
+            $mata_kuliah = Mata_kuliah::where('uuid', $uuid)->first();
 
             return view('mmf.mata-kuliah.edit', compact('mata_kuliah'));
         
@@ -74,13 +79,13 @@ class MatakuliahController extends Controller
      *
      * @return void
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $uuid)
     {
-        $mata_kuliah = Mata_kuliah::findOrFail($id);
+        $mata_kuliah = Mata_kuliah::where('uuid', $uuid)->first();
 
         $mata_kuliah->nama = $request->get('nama');
         $mata_kuliah->status = $request->get('status');
-
+        
         $mata_kuliah->save();
 
         return redirect()
@@ -93,10 +98,10 @@ class MatakuliahController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($uuid)
     {
         try {
-            $mata_kuliah = Mata_kuliah::findOrFail($id);
+            $mata_kuliah = Mata_kuliah::where('uuid', $uuid)->first();
 
             $mata_kuliah->delete();
 

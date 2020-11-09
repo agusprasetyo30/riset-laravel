@@ -30,8 +30,8 @@
                   @endif
                </td>
                <td>
-                  <a href="{{ route('test.matakuliah.edit', $item->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                  <a href="{{ route('test.matakuliah.destroy', $item->id) }}" class="btn btn-danger btn-sm">Hapus</a>
+                  <a href="{{ route('test.matakuliah.edit', $item->uuid) }}" class="btn btn-warning btn-sm">Edit</a>
+                  <a href="{{ route('test.matakuliah.destroy', $item->uuid) }}" class="btn btn-danger btn-sm">Hapus</a>
                </td>
          </tr>
          @endforeach

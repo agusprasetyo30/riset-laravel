@@ -7,7 +7,7 @@
 
    <div class="row justify-content-center">
       <div class="col-md-6">
-         <form action="{{ route('test.matakuliah.update', $mata_kuliah->id) }}" method="post">
+         <form action="{{ route('test.matakuliah.update', $mata_kuliah->uuid) }}" method="post">
             @csrf
             @method('put')
             <div class="card">

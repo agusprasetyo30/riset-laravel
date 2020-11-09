@@ -17,18 +17,27 @@
                <th>#</th>
                <th>Nama Mahasiswa</th>
                <th>Alamat</th>
-               <th>Mata Kuliah Diambil</th>
+               <th width="300px">Mata Kuliah Diambil</th>
             </tr>
          </thead>
          <tbody>
-            <tr>
-               <td>1.</td>
-               <td>Melkan</td>
-               <td>Ds. Sumurgung</td>
-               <td>
-                  <span class="badge badge-success">asa</span>
-               </td>
-            </tr>
+            @foreach ($mahasiswa as $index => $item)
+               <tr>
+                  <td>{{ ++$index }}. </td>
+                  <td>{{ $item->nama }}</td>
+                  <td>{{ $item->alamat }}</td>
+                  <td>
+                     @if ($item->mata_kuliah->count() == 0)
+                        <span class="badge badge-danger">Belum input mata kuliah</span>
+                        
+                     @else
+                        @foreach ($item->mata_kuliah as $mata_kuliah)
+                           <span class="badge badge-success">{{ $mata_kuliah->nama }}</span>
+                        @endforeach
+                     @endif
+                  </td>
+               </tr>
+            @endforeach
          </tbody>
       </table>
    </div>

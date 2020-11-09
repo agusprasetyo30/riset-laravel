@@ -1,5 +1,6 @@
 <?php
 
+use App\Mahasiswa;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,7 +23,9 @@ Route::group(['prefix' => 'test', 'as' => 'test.'], function () {
     
     // Dashboard
     Route::get('/', function () {
-        return view('mmf.index');
+        $mahasiswa = Mahasiswa::all();
+
+        return view('mmf.index', compact('mahasiswa'));
     })->name('index');
 
     // Mata Kuliah
@@ -30,9 +33,9 @@ Route::group(['prefix' => 'test', 'as' => 'test.'], function () {
         Route::get('/', 'MatakuliahController@index')->name('index');
         Route::get('/add', 'MatakuliahController@create')->name('create');
         Route::post('/add', 'MatakuliahController@store')->name('store');
-        Route::get('/{id}/edit', 'MatakuliahController@edit')->name('edit');
-        Route::put('/{id}/edit', 'MatakuliahController@update')->name('update');
-        Route::get('/{id}/delete', 'MatakuliahController@destroy')->name('destroy');
+        Route::get('/{uuid}/edit', 'MatakuliahController@edit')->name('edit');
+        Route::put('/{uuid}/edit', 'MatakuliahController@update')->name('update');
+        Route::get('/{uuid}/delete', 'MatakuliahController@destroy')->name('destroy');
     });
 
     // Mahasiswa
