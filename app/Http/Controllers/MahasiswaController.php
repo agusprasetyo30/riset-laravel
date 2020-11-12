@@ -6,6 +6,7 @@ use App\Mahasiswa;
 use App\Mata_kuliah;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use Webpatser\Uuid\Uuid;
 
 class MahasiswaController extends Controller
 {
@@ -17,6 +18,7 @@ class MahasiswaController extends Controller
     public function index()
     {
         $mahasiswa = Mahasiswa::all();
+
         return view('mmf.mahasiswa.index', compact('mahasiswa'));
     }
 

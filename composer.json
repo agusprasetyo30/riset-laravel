@@ -20,7 +20,9 @@
         "maatwebsite/excel": "^3.1",
         "mews/captcha": "^3.1",
         "milon/barcode": "^7.0",
-        "webpatser/laravel-uuid": "^3.0"
+        "webpatser/laravel-uuid": "^3.0",
+        "yajra/laravel-datatables": "^1.5",
+        "yajra/laravel-datatables-oracle": "~9.0"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.7",

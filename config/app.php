@@ -181,6 +181,9 @@ return [
 
         // Capcha
         Mews\Captcha\CaptchaServiceProvider::class,
+
+        // Datatable
+        Yajra\DataTables\DataTablesServiceProvider::class,
     ],
 
     /*
