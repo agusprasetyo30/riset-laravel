@@ -29,25 +29,28 @@ Route::group(['prefix' => 'test', 'as' => 'test.'], function () {
     })->name('index');
 
     // Mata Kuliah
-    Route::group(['prefix' => 'mata-kuliah', 'as' => 'matakuliah.'], function () {
-        Route::get('/', 'MatakuliahController@index')->name('index');
-        Route::get('/add', 'MatakuliahController@create')->name('create');
-        Route::post('/add', 'MatakuliahController@store')->name('store');
-        Route::get('/{uuid}/edit', 'MatakuliahController@edit')->name('edit');
-        Route::put('/{uuid}/edit', 'MatakuliahController@update')->name('update');
-        Route::get('/{uuid}/delete', 'MatakuliahController@destroy')->name('destroy');
-    });
-
-    // Mahasiswa
-    // Route::get('/', 'MahasiswaController@index')->name('index');
-    // Route::get('/add', 'MahasiswaController@create')->name('create');
-    // Route::post('/add', 'MahasiswaController@store')->name('store');
-    // Route::get('/{uuid}/edit', 'MahasiswaController@edit')->name('edit');
-    // Route::put('/{uuid}/edit', 'MahasiswaController@update')->name('update');
+    // Route::group([ 'as' => 'matakuliah.'], function () {
+        Route::resource("mata-kuliah", "MatakuliahController", [
+            "parameters" => ["mata-kuliah" => "mata_kuliah"],
+        ])->names([
+            "index"     => "matakuliah.index",
+            "create"    => "matakuliah.create",
+            "store"     => "matakuliah.store",
+            "edit"      => "matakuliah.edit",
+            "update"    => "matakuliah.update",
+            "destroy"   => "matakuliah.destroy",
+        ])->except('show');
+    //     Route::get('/', 'MatakuliahController@index')->name('index');
+    //     Route::get('/add', 'MatakuliahController@create')->name('create');
+    //     Route::post('/add', 'MatakuliahController@store')->name('store');
+    //     Route::get('/{uuid}/edit', 'MatakuliahController@edit')->name('edit');
+    //     Route::put('/{uuid}/edit', 'MatakuliahController@update')->name('update');
+    //     Route::get('/{uuid}/delete', 'MatakuliahController@destroy')->name('destroy');
+    // });
     
-    Route::resource('mahasiswa', "MahasiswaController", [
-        "parameters" => ["mahasiswa" => "mahasiswa:uuid"]
-    ]);
+
+    // Mahasiswa    
+    Route::resource('mahasiswa', "MahasiswaController");
 
     Route::group(['prefix' => 'mahasiswa', 'as' => 'mahasiswa.'], function () {
         Route::get('/{uuid}/ambil-matkul', 'MahasiswaController@ambilMataKuliah')->name('ambil-matkul');

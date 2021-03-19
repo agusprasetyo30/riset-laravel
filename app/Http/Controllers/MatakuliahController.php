@@ -59,11 +59,9 @@ class MatakuliahController extends Controller
      *
      * @return void
      */
-    public function edit($uuid)
+    public function edit(Mata_kuliah $mata_kuliah)
     {
         try {
-            $mata_kuliah = Mata_kuliah::where('uuid', $uuid)->first();
-
             return view('mmf.mata-kuliah.edit', compact('mata_kuliah'));
         
         } catch (ModelNotFoundException $m) {
@@ -79,10 +77,8 @@ class MatakuliahController extends Controller
      *
      * @return void
      */
-    public function update(Request $request, $uuid)
+    public function update(Request $request, Mata_kuliah $mata_kuliah)
     {
-        $mata_kuliah = Mata_kuliah::where('uuid', $uuid)->first();
-
         $mata_kuliah->nama = $request->get('nama');
         $mata_kuliah->status = $request->get('status');
         
@@ -98,11 +94,9 @@ class MatakuliahController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($uuid)
+    public function destroy(Mata_kuliah $mata_kuliah)
     {
         try {
-            $mata_kuliah = Mata_kuliah::where('uuid', $uuid)->first();
-
             $mata_kuliah->delete();
 
             return redirect()

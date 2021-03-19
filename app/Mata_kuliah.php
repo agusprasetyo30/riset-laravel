@@ -14,4 +14,9 @@ class Mata_kuliah extends Model
         return $this->belongsToMany('App\Mahasiswa', 'mahasiswa_mata_kuliah', 
             'mata_kuliah_id', 'mahasiswa_id');
     }
+
+    public function getRouteKeyName()
+    {
+        return 'uuid';
+    }
 }

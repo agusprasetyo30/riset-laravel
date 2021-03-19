@@ -17,24 +17,17 @@
                <th>#</th>
                <th>Nama Mahasiswa</th>
                <th>Alamat</th>
-               <th width="300px">Mata Kuliah Diambil</th>
+               <th width="300px">Jumlah yang Mata Kuliah Diambil</th>
             </tr>
          </thead>
          <tbody>
             @foreach ($mahasiswa as $index => $item)
                <tr>
                   <td>{{ ++$index }}. </td>
-                  <td>{{ $item->nama }}</td>
+                  <td><a href="{{ route('test.mahasiswa.show', $item->uuid) }}">{{ $item->nama }}</a></td>
                   <td>{{ $item->alamat }}</td>
-                  <td>
-                     @if ($item->mata_kuliah->count() == 0)
-                        <span class="badge badge-danger">Belum input mata kuliah</span>
-                        
-                     @else
-                        @foreach ($item->mata_kuliah as $mata_kuliah)
-                           <span class="badge badge-success">{{ $mata_kuliah->nama }}</span>
-                        @endforeach
-                     @endif
+                  <td align="center">
+                     <b>{{ $item->mata_kuliah->count() }}</b>
                   </td>
                </tr>
             @endforeach
