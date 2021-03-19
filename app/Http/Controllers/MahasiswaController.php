@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MahasiswaRequest;
 use App\Mahasiswa;
 use App\Mata_kuliah;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -15,7 +16,7 @@ class MahasiswaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $mahasiswa = Mahasiswa::all();
 
@@ -38,7 +39,7 @@ class MahasiswaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MahasiswaRequest $request)
     {
         // Generate UUID
         $uuid = (string)Uuid::generate();
@@ -53,8 +54,10 @@ class MahasiswaController extends Controller
 
         $mahasiswa->save();
 
-        return redirect()
-            ->route('test.mahasiswa.index');
+        return response()->json($mahasiswa, 200);
+
+        // return redirect()
+        //     ->route('test.mahasiswa.index');
     }
 
     /**

@@ -4,16 +4,15 @@
 
 @section('content')
    <h2 class="text-center m-3">Tambah Mahasiswa</h2>
-
    <div class="row justify-content-center">
       <div class="col-md-6">
-         <form action="{{ route('test.mahasiswa.store') }}" method="post">
-            @csrf
+         <form name="mahasiswaForm" id="mahasiswaForm">
             <div class="card">
                <div class="card-body">
                   <div class="form-group">
                      <label for="nama">Nama Mahasiswa</label>
                      <input type="text" name="nama" id="nama" class="form-control" placeholder="Masukan Nama Mahasiswa">
+                     <small class="text-danger" id="nama-error"></small>
                   </div>
 
                   <div class="form-group">
@@ -32,10 +31,12 @@
                   <div class="form-group">
                      <label for="alamat">Alamat</label>
                      <textarea name="alamat" id="alamat" cols="30" rows="2" class="form-control"></textarea>
+                     <small class="text-danger" id="alamat-error"></small>
                   </div>
                   
                   <div class="form-group">
-                     <input type="submit" value="Simpan" class="btn btn-success">
+                     <input type="button" value="Simpan" class="btn btn-success simpan">
+                     <a href="{{ route('test.mahasiswa.index') }}" class="btn btn-primary">Kembali</a>
                   </div>
                </div>
             </div>
@@ -43,3 +44,7 @@
       </div>
    </div>
 @endsection
+
+@push('js')
+   <script src="{{ asset('js/frontend/mahasiswa/create.js') }}"></script>
+@endpush

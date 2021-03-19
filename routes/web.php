@@ -40,14 +40,6 @@ Route::group(['prefix' => 'test', 'as' => 'test.'], function () {
             "update"    => "matakuliah.update",
             "destroy"   => "matakuliah.destroy",
         ])->except('show');
-    //     Route::get('/', 'MatakuliahController@index')->name('index');
-    //     Route::get('/add', 'MatakuliahController@create')->name('create');
-    //     Route::post('/add', 'MatakuliahController@store')->name('store');
-    //     Route::get('/{uuid}/edit', 'MatakuliahController@edit')->name('edit');
-    //     Route::put('/{uuid}/edit', 'MatakuliahController@update')->name('update');
-    //     Route::get('/{uuid}/delete', 'MatakuliahController@destroy')->name('destroy');
-    // });
-    
 
     // Mahasiswa    
     Route::resource('mahasiswa', "MahasiswaController");

@@ -8,6 +8,14 @@ class Mahasiswa extends Model
 {
     protected $table = 'mahasiswa';
 
+    protected $fillable = [
+        "uuid",
+        "nama",
+        "kelas",
+        "jk",
+        "alamat"
+    ];  
+
     public function mata_kuliah()
     {
         return $this->belongsToMany('App\Mata_kuliah', 'mahasiswa_mata_kuliah', 
