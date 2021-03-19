@@ -39,17 +39,19 @@ Route::group(['prefix' => 'test', 'as' => 'test.'], function () {
     });
 
     // Mahasiswa
+    // Route::get('/', 'MahasiswaController@index')->name('index');
+    // Route::get('/add', 'MahasiswaController@create')->name('create');
+    // Route::post('/add', 'MahasiswaController@store')->name('store');
+    // Route::get('/{uuid}/edit', 'MahasiswaController@edit')->name('edit');
+    // Route::put('/{uuid}/edit', 'MahasiswaController@update')->name('update');
+    
+    Route::resource('mahasiswa', "MahasiswaController", [
+        "parameters" => ["mahasiswa" => "mahasiswa:uuid"]
+    ]);
+
     Route::group(['prefix' => 'mahasiswa', 'as' => 'mahasiswa.'], function () {
-        Route::get('/', 'MahasiswaController@index')->name('index');
-        Route::get('/add', 'MahasiswaController@create')->name('create');
-        Route::post('/add', 'MahasiswaController@store')->name('store');
-        Route::get('/{id}/edit', 'MahasiswaController@edit')->name('edit');
-        Route::put('/{id}/edit', 'MahasiswaController@update')->name('update');
-
-        Route::get('/{id}/ambil-matkul', 'MahasiswaController@ambilMataKuliah')->name('ambil-matkul');
+        Route::get('/{uuid}/ambil-matkul', 'MahasiswaController@ambilMataKuliah')->name('ambil-matkul');
         Route::get('/{id}/ambil-matkul/{matkul}/process', 'MahasiswaController@prosesPenambahanMatkul')->name('ambil-matkul.process');
-
-        
     });
 });
 

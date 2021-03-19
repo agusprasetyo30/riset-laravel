@@ -14175,7 +14175,7 @@
          * @param array $headers
          * @throws \PhpOffice\PhpSpreadsheet\Exception
          * @throws \PhpOffice\PhpSpreadsheet\Writer\Exception
-         * @return \Maatwebsite\Excel\BinaryFileResponse 
+         * @return \Symfony\Component\HttpFoundation\BinaryFileResponse 
          * @static 
          */ 
         public static function download($export, $fileName, $writerType = null, $headers = [])
@@ -14209,7 +14209,7 @@
          * @param string|null $disk
          * @param string $writerType
          * @param mixed $diskOptions
-         * @return \Maatwebsite\Excel\PendingDispatch 
+         * @return \Illuminate\Foundation\Bus\PendingDispatch 
          * @static 
          */ 
         public static function queue($export, $filePath, $disk = null, $writerType = null, $diskOptions = [])
@@ -14234,10 +14234,10 @@
          * 
          *
          * @param object $import
-         * @param string|\Maatwebsite\Excel\UploadedFile $filePath
+         * @param string|\Symfony\Component\HttpFoundation\File\UploadedFile $filePath
          * @param string|null $disk
          * @param string|null $readerType
-         * @return \Maatwebsite\Excel\Reader|\Maatwebsite\Excel\PendingDispatch 
+         * @return \Maatwebsite\Excel\Reader|\Illuminate\Foundation\Bus\PendingDispatch 
          * @static 
          */ 
         public static function import($import, $filePath, $disk = null, $readerType = null)
@@ -14249,7 +14249,7 @@
          * 
          *
          * @param object $import
-         * @param string|\Maatwebsite\Excel\UploadedFile $filePath
+         * @param string|\Symfony\Component\HttpFoundation\File\UploadedFile $filePath
          * @param string|null $disk
          * @param string|null $readerType
          * @return array 
@@ -14264,7 +14264,7 @@
          * 
          *
          * @param object $import
-         * @param string|\Maatwebsite\Excel\UploadedFile $filePath
+         * @param string|\Symfony\Component\HttpFoundation\File\UploadedFile $filePath
          * @param string|null $disk
          * @param string|null $readerType
          * @return \Maatwebsite\Excel\Collection 
@@ -14279,10 +14279,10 @@
          * 
          *
          * @param \Maatwebsite\Excel\ShouldQueue $import
-         * @param string|\Maatwebsite\Excel\UploadedFile $filePath
+         * @param string|\Symfony\Component\HttpFoundation\File\UploadedFile $filePath
          * @param string|null $disk
          * @param string $readerType
-         * @return \Maatwebsite\Excel\PendingDispatch 
+         * @return \Illuminate\Foundation\Bus\PendingDispatch 
          * @static 
          */ 
         public static function queueImport($import, $filePath, $disk = null, $readerType = null)

@@ -13,7 +13,7 @@
                <div class="card-body">
                   <div class="form-group">
                      <label for="nama">Nama Mahasiswa</label>
-                     <input type="text" name="nama" id="nama" class="form-control" placeholder="Masukan Nama Mata Kuliah">
+                     <input type="text" name="nama" id="nama" class="form-control" placeholder="Masukan Nama Mahasiswa">
                   </div>
 
                   <div class="form-group">

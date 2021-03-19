@@ -7,7 +7,7 @@
 
    <div class="row justify-content-center">
       <div class="col-md-6">
-         <form action="{{ route('test.mahasiswa.update', $mahasiswa->id) }}" method="post">
+         <form action="{{ route('test.mahasiswa.update', $mahasiswa->uuid) }}" method="post">
             @csrf
             @method('put')
             <div class="card">
@@ -37,6 +37,7 @@
                   
                   <div class="form-group">
                      <input type="submit" value="Simpan" class="btn btn-success">
+                     <a href="{{ route('test.mahasiswa.index') }}" class="btn btn-primary">Kembali</a>
                   </div>
                </div>
             </div>

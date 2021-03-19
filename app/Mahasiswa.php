@@ -13,4 +13,14 @@ class Mahasiswa extends Model
         return $this->belongsToMany('App\Mata_kuliah', 'mahasiswa_mata_kuliah', 
             'mahasiswa_id', 'mata_kuliah_id');
     }
+
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'uuid';
+    }
 }

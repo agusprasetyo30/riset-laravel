@@ -40,12 +40,16 @@ class MahasiswaController extends Controller
      */
     public function store(Request $request)
     {
-        $mahasiswa = new Mahasiswa();
+        // Generate UUID
+        $uuid = (string)Uuid::generate();
 
+        $mahasiswa = new Mahasiswa();
+        
         $mahasiswa->nama = $request->get('nama');
         $mahasiswa->kelas = $request->get('kelas');
         $mahasiswa->jk = $request->get('jk');
         $mahasiswa->alamat = $request->get('alamat');
+        $mahasiswa->uuid = $uuid;
 
         $mahasiswa->save();
 
@@ -59,9 +63,10 @@ class MahasiswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Mahasiswa $mahasiswa)
     {
-        
+
+        return view('mmf.mahasiswa.show', compact('mahasiswa'));
     }
 
     /**
@@ -70,10 +75,9 @@ class MahasiswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Mahasiswa $mahasiswa)
     {
         try {
-            $mahasiswa = Mahasiswa::findOrFail($id);
             return view('mmf.mahasiswa.edit', compact('mahasiswa'));
 
         } catch (ModelNotFoundException $m) {
@@ -88,12 +92,9 @@ class MahasiswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Mahasiswa $mahasiswa)
     {
         try {
-
-            $mahasiswa = Mahasiswa::findOrFail($id);
-
             $mahasiswa->nama = $request->get('nama');
             $mahasiswa->kelas = $request->get('kelas');
             $mahasiswa->jk = $request->get('jk');
@@ -115,11 +116,11 @@ class MahasiswaController extends Controller
      * @param [type] $id
      * @return void
      */
-    public function ambilMataKuliah($id)
+    public function ambilMataKuliah($uuid)
     {
         try {
             // Untuk load mahasiswa sesuai ID
-            $mahasiswa = Mahasiswa::findOrFail($id);
+            $mahasiswa = Mahasiswa::where("uuid", "=", $uuid)->firstOrFail();
 
             // Untuk load mata kuliah
             $mata_kuliah = Mata_kuliah::where("status", "ACTIVE")->get();
@@ -161,8 +162,10 @@ class MahasiswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Mahasiswa $mahasiswa)
     {
-        //
+        $mahasiswa->delete();
+
+        return redirect()->back();
     }
 }

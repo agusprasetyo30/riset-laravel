@@ -15,7 +15,6 @@
             <th>Kelas</th>
             <th>JK</th>
             <th>Alamat</th>
-            <th width="250px">Mata Kuliah Diambil</th>
             <th>Aksi</th>
          </tr>
       </thead>
@@ -23,25 +22,21 @@
          @foreach ($mahasiswa as $index => $item)
             <tr>
                <td>{{ ++$index }}. </td>
-               <td>{{ $item->nama }}</td>
+               <td>
+                  <a href="{{ route('test.mahasiswa.show', $item->uuid) }}">{{ $item->nama }}</a>
+               </td>
                <td>{{ $item->kelas }}</td>
                <td>{{ $item->jk }}</td>
                <td>{{ $item->alamat }}</td>
-               <td> 
-                  @if ($item->mata_kuliah->count() == 0)
-                     <span class="badge badge-danger">Belum input mata kuliah</span>
-                     
-                  @else
-                     @foreach ($item->mata_kuliah as $mata_kuliah)
-                        <span class="badge badge-success">{{ $mata_kuliah->nama }}</span>
-                     
-                     @endforeach
-                  @endif
-               </td>
                <td>
-                  <a href="{{ route('test.mahasiswa.ambil-matkul', $item->id) }}" class="btn btn-success btn-sm">Ambil Matkul</a>
-                  <a href="{{ route('test.mahasiswa.edit', $item->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                  <a href="{{ route('test.matakuliah.destroy', $item->id) }}" class="btn btn-danger btn-sm">Hapus</a>
+                  <a href="{{ route('test.mahasiswa.ambil-matkul', $item->uuid) }}" class="btn btn-success btn-sm">Ambil Matkul</a>
+                  <a href="{{ route('test.mahasiswa.edit', $item->uuid) }}" class="btn btn-warning btn-sm">Edit</a>
+                  <a href="#" onclick="document.getElementById('destroy{{$index}}').submit();" class="btn btn-danger btn-sm">Hapus</a>
+                  
+                  <form action="{{ route('test.mahasiswa.destroy', $item->uuid) }}" method="post" id="destroy{{$index}}">
+                     @csrf
+                     @method('delete')
+                  </form>
                </td>
          </tr>
          @endforeach
