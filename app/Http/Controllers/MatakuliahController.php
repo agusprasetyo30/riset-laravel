@@ -84,7 +84,7 @@ class MatakuliahController extends Controller
         $mata_kuliah->nama = $request->get('nama');
         $mata_kuliah->status = $request->get('status');
         
-        // $mata_kuliah->save();
+        $mata_kuliah->save();
 
         return response()->json($mata_kuliah, 200);
         // return redirect()

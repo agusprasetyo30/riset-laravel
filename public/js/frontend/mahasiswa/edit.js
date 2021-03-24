@@ -32,7 +32,7 @@ let Project = {
                   
                } else {
                   alert("Edit berhasil");
-                  console.log(data);
+                  // console.log(data);
 
                   if (data.uuid) {
                      window.location.href = '/test/mahasiswa';
