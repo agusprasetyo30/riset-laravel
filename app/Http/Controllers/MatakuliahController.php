@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MataKuliahRequest;
 use App\Mata_kuliah;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
@@ -37,7 +38,7 @@ class MatakuliahController extends Controller
      *
      * @return void
      */
-    public function store(Request $request)
+    public function store(MataKuliahRequest $request)
     {
         $mata_kuliah = new Mata_kuliah;
 
@@ -48,10 +49,11 @@ class MatakuliahController extends Controller
         $mata_kuliah->status = $request->get('status');
         $mata_kuliah->uuid = $uuid;
 
-        $mata_kuliah->save();
+        // $mata_kuliah->save();
 
-        return redirect()
-            ->route('test.matakuliah.index');
+        return response()->json($mata_kuliah, 200);
+        // return redirect()
+        //     ->route('test.matakuliah.index');
     }
 
     /**
@@ -77,15 +79,16 @@ class MatakuliahController extends Controller
      *
      * @return void
      */
-    public function update(Request $request, Mata_kuliah $mata_kuliah)
+    public function update(MataKuliahRequest $request, Mata_kuliah $mata_kuliah)
     {
         $mata_kuliah->nama = $request->get('nama');
         $mata_kuliah->status = $request->get('status');
         
-        $mata_kuliah->save();
+        // $mata_kuliah->save();
 
-        return redirect()
-            ->route('test.matakuliah.index');
+        return response()->json($mata_kuliah, 200);
+        // return redirect()
+        //     ->route('test.matakuliah.index');
     }
 
     /**

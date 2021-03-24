@@ -41,7 +41,6 @@ let Project = {
                   
                   } else {
                      // alert("Tambah mahasiswa berhasil");
-
                      // console.log(data);
                      
                      if (data.uuid) {

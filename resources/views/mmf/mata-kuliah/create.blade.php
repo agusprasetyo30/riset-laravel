@@ -7,25 +7,26 @@
 
    <div class="row justify-content-center">
       <div class="col-md-6">
-         <form action="{{ route('test.matakuliah.store') }}" method="post">
-            @csrf
+         <form name="matakuliahForm" id="matakuliahForm">
             <div class="card">
                <div class="card-body">
                   <div class="form-group">
                      <label for="nama">Nama Mata Kuliah</label>
                      <input type="text" name="nama" id="nama" class="form-control" placeholder="Masukan Nama Mata Kuliah">
+                     <small id="nama-error" class="text-danger"></small>
                   </div>
                   
                   <div class="form-group">
-                     <label for="nama">Status</label>
-                     <select name="status" id="nama" class="form-control">
+                     <label for="status">Status</label>
+                     <select name="status" id="status" class="form-control">
                         <option value="ACTIVE">ACTIVE</option>
                         <option value="INACTIVE">INACTIVE</option>
                      </select>
                   </div>
                   
                   <div class="form-group">
-                     <input type="submit" value="Simpan" class="btn btn-success">
+                     <button type="button" class="btn btn-success simpan">Simpan</button>
+                     <a href="{{ url()->previous() }}" class="btn btn-primary">Kembali</a>
                   </div>
                </div>
             </div>
@@ -33,3 +34,7 @@
       </div>
    </div>
 @endsection
+
+@push('js')
+   <script src="{{ asset('js/frontend/mata-kuliah/create.js') }}"></script>
+@endpush
