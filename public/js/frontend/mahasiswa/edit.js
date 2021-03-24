@@ -2,11 +2,10 @@ let Project = {
    init: function () {
       $('.simpan').on('click', function (event) {
       
-         // Get all data from input
-         
+         // Get all data from inpu
          let mahasiswa_uuid = $('input[name=mahasiswa_uuid]').val();
          let nama = $('input[name=nama]').val();
-         let kelas = $('input[name=kelas]').val();
+         let kelas = $('#kelas').val();
          let jk = $('#jk').val();
          let alamat = $('#alamat').val();
 
@@ -25,10 +24,12 @@ let Project = {
             },
             success: function (data) {
                if (data.errors) {
-                  $.each(data.errors, function (key, value) {
-                     alert(key + " " + value);
-                  });
-               
+                  if (data.errors.nama) {
+                     $('#nama-error').html(data.errors.nama[0]);
+                  } else {
+                     $('#nama-error').html('');
+                  }
+                  
                } else {
                   alert("Edit berhasil");
                   console.log(data);

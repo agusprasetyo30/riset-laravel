@@ -1,6 +1,6 @@
 @extends('layouts.template')
 
-@section('title', 'Tambah Mata Kuliah')
+@section('title', 'Edit Mahasiswa')
 
 @section('content')
    <h2 class="text-center m-3">Edit Mahasiswa</h2>
@@ -13,11 +13,19 @@
                   <div class="form-group">
                      <label for="nama">Nama Mahasiswa</label>
                      <input type="text" name="nama" id="nama" class="form-control" placeholder="Masukan Nama Mata Kuliah" value="{{ $mahasiswa->nama }}">
+                     <small class="text-danger" id="nama-error"></small>
                   </div>
 
                   <div class="form-group">
                      <label for="kelas">Kelas</label>
-                     <input type="text" name="kelas" id="kelas" class="form-control" placeholder="Masukan Kelas" value="{{ $mahasiswa->kelas }}">
+                     <select name="kelas" id="kelas" class="form-control">
+                        <option value="MI-3A" {{ $mahasiswa->kelas == "MI-3A" ? ' selected' : ''}} >MI-3A</option>
+                        <option value="MI-3B" {{ $mahasiswa->kelas == "MI-3B" ? ' selected' : ''}} >MI-3B</option>
+                        <option value="MI-3C" {{ $mahasiswa->kelas == "MI-3C" ? ' selected' : ''}} >MI-3C</option>
+                        <option value="MI-3D" {{ $mahasiswa->kelas == "MI-3D" ? ' selected' : ''}} >MI-3D</option>
+                        <option value="MI-3E" {{ $mahasiswa->kelas == "MI-3E" ? ' selected' : ''}} >MI-3E</option>
+                        <option value="MI-3F" {{ $mahasiswa->kelas == "MI-3F" ? ' selected' : ''}} >MI-3F</option>
+                     </select>
                   </div>
                   
                   <div class="form-group">

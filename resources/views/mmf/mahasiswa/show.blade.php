@@ -12,7 +12,7 @@
 @endpush
 
 @section('content')
-   <h2 class="text-center m-3">Edit Mahasiswa</h2>
+   <h2 class="text-center m-3">Tampil Mahasiswa</h2>
 
    <div class="row justify-content-center">
       <div class="col-md-6">
@@ -55,7 +55,7 @@
                </div>
                
                <div class="form-group">
-                  <a href="{{ route('test.mahasiswa.index') }}" class="btn btn-primary">Kembali</a>
+                  <a href="{{ url()->previous() }}" class="btn btn-primary">Kembali</a>
                </div>
             </div>
          </div>

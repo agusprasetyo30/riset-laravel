@@ -17,7 +17,14 @@
 
                   <div class="form-group">
                      <label for="kelas">Kelas</label>
-                     <input type="text" name="kelas" id="kelas" class="form-control" placeholder="Masukan Kelas">
+                     <select name="kelas" id="kelas" class="form-control">
+                        <option value="MI-3A">MI-3A</option>
+                        <option value="MI-3B">MI-3B</option>
+                        <option value="MI-3C">MI-3C</option>
+                        <option value="MI-3D">MI-3D</option>
+                        <option value="MI-3E">MI-3E</option>
+                        <option value="MI-3F">MI-3F</option>
+                     </select>
                   </div>
                   
                   <div class="form-group">
