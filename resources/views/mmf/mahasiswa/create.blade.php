@@ -1,6 +1,6 @@
 @extends('layouts.template')
 
-@section('title', 'Tambah Mata Kuliah')
+@section('title', 'Tambah Mahasiswa')
 
 @section('content')
    <h2 class="text-center m-3">Tambah Mahasiswa</h2>

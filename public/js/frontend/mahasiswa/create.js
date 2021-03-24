@@ -40,12 +40,13 @@ let Project = {
                      }
                   
                   } else {
-                     alert("Tambah mahasiswa berhasil");
+                     // alert("Tambah mahasiswa berhasil");
 
+                     // console.log(data);
+                     
                      if (data.uuid) {
                         window.location.href = '/test/mahasiswa';
                      }
-                     // console.log(data);
                   }
 
                },

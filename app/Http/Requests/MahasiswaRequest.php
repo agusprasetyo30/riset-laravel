@@ -26,8 +26,7 @@ class MahasiswaRequest extends FormRequest
     public function messages()
     {
         return [
-            'nama.max' => "Maksimal 5 bro namanya",
-            'alamat.max' => "Maksimal 5 bro alamatnya",
+            'nama.max' => "Maksimal 50 bro untuk jumlah namanya",
         ];
     }
 
@@ -55,14 +54,12 @@ class MahasiswaRequest extends FormRequest
     public function withValidator($validator)
     {
         $validator->after(function ($validator) {
-            
-                $this->merge([
-                    'input1' => "Saya input satu",
-                    'input2' => "Saya input dua",
-                    'input3' => "Saya input tiga",
-                    'input4' => "Saya input empat",
-                ]);
-
+                // $this->merge([
+                //     'input1' => "Saya input satu",
+                //     'input2' => "Saya input dua",
+                //     'input3' => "Saya input tiga",
+                //     'input4' => "Saya input empat",
+                // ]);
             // digabung
         });
     }

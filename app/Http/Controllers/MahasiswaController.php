@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\MahasiswaRequest;
 use App\Mahasiswa;
 use App\Mata_kuliah;
+use DataTables;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Webpatser\Uuid\Uuid;
@@ -45,6 +46,7 @@ class MahasiswaController extends Controller
         $uuid = (string)Uuid::generate();
 
         $mahasiswa = new Mahasiswa();
+        // $mahasiswa = $request->all(); // untuk mengambil semua request
         
         $mahasiswa->nama = $request->get('nama');
         $mahasiswa->kelas = $request->get('kelas');
@@ -95,7 +97,7 @@ class MahasiswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Mahasiswa $mahasiswa)
+    public function update(MahasiswaRequest $request, Mahasiswa $mahasiswa)
     {
         try {
             $mahasiswa->nama = $request->get('nama');
@@ -105,8 +107,9 @@ class MahasiswaController extends Controller
 
             $mahasiswa->save();
 
-            return redirect()
-                ->route('test.mahasiswa.index');
+            return response()->json($mahasiswa, 200);
+            // return redirect()
+            //     ->route('test.mahasiswa.index');
         
         } catch (ModelNotFoundException $m) {
             abort(404);

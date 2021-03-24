@@ -7,9 +7,7 @@
 
    <div class="row justify-content-center">
       <div class="col-md-6">
-         <form action="{{ route('test.mahasiswa.update', $mahasiswa->uuid) }}" method="post">
-            @csrf
-            @method('put')
+         <form name="mahasiswaFormEdit" id="mahasiswaFormEdit">
             <div class="card">
                <div class="card-body">
                   <div class="form-group">
@@ -35,8 +33,10 @@
                      <textarea name="alamat" id="alamat" cols="30" rows="2" class="form-control">{{ $mahasiswa->alamat }}</textarea>
                   </div>
                   
+                  <input type="hidden" name="mahasiswa_uuid" id="mahasiswa_uuid" value="{{ $mahasiswa->uuid }}">
+
                   <div class="form-group">
-                     <input type="submit" value="Simpan" class="btn btn-success">
+                     <button type="button" class="btn btn-success simpan">Simpan</button>
                      <a href="{{ route('test.mahasiswa.index') }}" class="btn btn-primary">Kembali</a>
                   </div>
                </div>
@@ -45,3 +45,7 @@
       </div>
    </div>
 @endsection
+
+@push('js')
+   <script src="{{ asset('js/frontend/mahasiswa/edit.js') }}"></script>
+@endpush
