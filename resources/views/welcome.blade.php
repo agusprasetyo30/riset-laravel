@@ -6,9 +6,6 @@
 
         <title>Laravel</title>
 
-        <!-- Fonts -->
-        {{-- <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet"> --}}
-
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
         <!-- Styles -->
@@ -67,20 +64,11 @@
         </nav>
         <div class="flex-center position-ref full-height">
             <div class="container">
+                <h1 class="text-center">Welcome to Halaman Utama</h1>
                 <h1 class="text-center">Riset Laravel</h1>
                 <div class="text-center">
-                    <a href="{{ route('dummy.index') }}" class="btn btn-success ">Manajemen Dummy Todo</a>
-                    <a href="{{ route('test.index') }}" class="btn btn-primary" title="Dalam hal ini membuat Manajemen Mahasiswa & Mata Kuliah. dan menambahkan mahasiswa yang mengambil mata kuliah">Riset Test PT. MMF</a>
-                </div>
-
-                <div class="text-center">
-                    <a class="btn links" href="{{ route('excel.index') }}">Convert excel + Bulks file excel</a>
-                    <a class="btn links" href="{{ route('data-api.index') }}">API Laravel Auth (Rest API tapi tidak menggunakan <b>Passport ataupun Sanctum</b>)</a>
-                    <a class="btn links" href="{{ route('barcode-qr.index') }}">Barcode/qrcode</a>
-                    <a class="btn links" href="#">Socket laravel</a>
-                    <a class="btn links" href="#">Authentification Sosialite</a>
-                    <a class="btn links" href="#">Chatbot (?)</a>
-                    <a class="btn links" href="#">Docker (?)</a>
+                    <a href="{{ route('riset-laravel') }}" class="btn btn-success" >Riset Laravel</a>
+                    <a href="{{ route('riset-memfis') }}" class="btn btn-primary" >Riset MeMFIS</a>
                 </div>
             </div>
         </div>

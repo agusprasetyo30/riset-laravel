@@ -14,9 +14,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Halaman Awal
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
+
+// Untuk halaman tombol Riset laravel
+Route::get('/riset-laravel', function() {
+    return view('riset-laravel');
+})->name('riset-laravel');
+
+// Untuk halaman tombol Riset Memfis
+Route::get('/riset-memfis', function() {
+    return view('riset-memfis');
+})->name('riset-memfis');
 
 // Test MMF
 Route::group(['prefix' => 'test', 'as' => 'test.'], function () {

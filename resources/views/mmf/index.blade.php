@@ -4,12 +4,14 @@
 
 @section('content')
    <div class="m-3">
-      <h2 class="text-center">Test PT. MMF</h2>
       <h4 class="text-center">Mahasiswa Mengambil Mata Kuliah</h4>
 
       <div class="mb-2">
          <a href="{{ route('test.mahasiswa.index') }}" class="btn btn-primary btn-sm">Mahasiswa</a>
          <a href="{{ route('test.matakuliah.index') }}" class="btn btn-primary btn-sm">Mata Kuliah</a>
+         <div class="float-right">
+            <a href="{{ url()->previous() }}">Back to menu</a>
+         </div>
       </div>
       <table class="table table-bordered table-hover table-striped">
          <thead>
