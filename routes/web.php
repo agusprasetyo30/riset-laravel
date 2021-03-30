@@ -29,7 +29,9 @@ Route::get('/riset-memfis', function() {
     return view('riset-memfis');
 })->name('riset-memfis');
 
-// Test MMF
+/**
+ * Riset Memfis
+ */
 Route::group(['prefix' => 'test', 'as' => 'test.'], function () {
     
     // Dashboard
@@ -60,6 +62,8 @@ Route::group(['prefix' => 'test', 'as' => 'test.'], function () {
         Route::get('/{id}/ambil-matkul/{matkul}/process', 'MahasiswaController@prosesPenambahanMatkul')->name('ambil-matkul.process');
     });
 });
+
+
 
 // Dummy Todo
 Route::group(['prefix' => 'dummy-todo', 'as' => 'dummy.'], function () {
