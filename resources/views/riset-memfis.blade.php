@@ -73,23 +73,23 @@
                <div class="row">
                   <label class="font-weight-bold">Riset Project Laravel</label>
                   <div class="col-md-12">
-                     <a class="btn links" href="#">Policy/Policies</a>
+                     <a class="btn links bg-dark" href="#">Policy/Policies</a>
                      <a class="btn links" href="{{ route('test.index') }}">Form Request + Fungsi</a>
-                     <a class="btn links" href="#">Polimorphisme</a>
+                     <a class="btn links bg-dark" href="#">Polimorphisme</a>
                   </div>
                </div>
                <div class="row mt-4">
                   <label class="font-weight-bold">Daftar Package/Library</label>
                   <div class="col-md-12">
-                     <a class="btn links" href="#">nwidart/laravel-modules</a>
-                     <a class="btn links" href="#">owen-it/laravel-auditing</a>
-                     <a class="btn links" href="#">spatie/laravel-sortable</a>
-                     <a class="btn links" href="#">spatie/laravel-activity-log</a>
-                     <a class="btn links" href="#">spatie/laravel-backup</a>
-                     <a class="btn links" href="#">spatie/laravel-query-builder</a>
-                     <a class="btn links" href="#">spatie/laravel-slugable</a>
-                     <a class="btn links" href="#">spatie/laravel-tags</a>
-                     <a class="btn links" href="#">yajra/laravel-datatables-oracle</a>
+                     <a class="btn links bg-dark" href="#">nwidart/laravel-modules</a>
+                     <a class="btn links bg-dark" href="#">owen-it/laravel-auditing</a>
+                     <a class="btn links bg-dark" href="#">spatie/laravel-sortable</a>
+                     <a class="btn links bg-dark" href="#">spatie/laravel-activity-log</a>
+                     <a class="btn links bg-dark" href="#">spatie/laravel-backup</a>
+                     <a class="btn links bg-dark" href="#">spatie/laravel-query-builder</a>
+                     <a class="btn links bg-dark" href="#">spatie/laravel-slugable</a>
+                     <a class="btn links bg-dark" href="#">spatie/laravel-tags</a>
+                     <a class="btn links" href="{{ route('test.datatables.mahasiswa') }}">yajra/laravel-datatables-oracle</a>
                   </div>
                </div>
             </div>

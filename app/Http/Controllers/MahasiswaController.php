@@ -13,7 +13,7 @@ use Webpatser\Uuid\Uuid;
 class MahasiswaController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the resource. 
      *
      * @return \Illuminate\Http\Response
      */
@@ -22,6 +22,16 @@ class MahasiswaController extends Controller
         $mahasiswa = Mahasiswa::all();
 
         return view('mmf.mahasiswa.index', compact('mahasiswa'));
+    }
+
+    /**
+     * Untuk menampilkan tabel datatable
+     *
+     * @return void
+     */
+    public function indexDatatable()
+    {
+        return view('mmf.riset.datatables.index');
     }
 
     /**

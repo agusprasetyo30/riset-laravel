@@ -1,0 +1,37 @@
+/* 
+   Pagination Datatables
+*/
+div.dataTables_wrapper div.dataTables_filter input {
+   margin-left: 0px;
+   display: block;
+   font-size: 12px;
+}
+
+.dataTables_filter {
+   font-size: 12px;
+}
+
+.dataTables_info {
+   font-size: 12px;
+   float: left;
+}
+
+.dataTables_length {
+   float: right;
+   font-size: 12px;
+}
+
+.dataTables_paginate {
+   float: left;
+   font-size: 12px;
+}
+
+.dataTables_info {
+   float: right;
+   margin: auto;
+   font-size: 12px;
+}
+
+.dataTables_info {
+   margin-top: -5px;
+}

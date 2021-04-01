@@ -29,6 +29,9 @@ Route::get('/riset-memfis', function() {
     return view('riset-memfis');
 })->name('riset-memfis');
 
+// Include datatables route
+require('datatables.php');
+
 /**
  * Riset Memfis
  */
@@ -61,9 +64,20 @@ Route::group(['prefix' => 'test', 'as' => 'test.'], function () {
         Route::get('/{uuid}/ambil-matkul', 'MahasiswaController@ambilMataKuliah')->name('ambil-matkul');
         Route::get('/{id}/ambil-matkul/{matkul}/process', 'MahasiswaController@prosesPenambahanMatkul')->name('ambil-matkul.process');
     });
+
+    // Riset yajra/laravel-datatable
+    Route::group(['prefix' => 'laravel-datatables', 'as' => 'datatables.'], function() {
+        Route::get('mahasiswa', 'MahasiswaController@indexDatatable')->name('mahasiswa');
+
+    });
+
 });
 
 
+
+/**
+ * Riset Laravel
+ */
 
 // Dummy Todo
 Route::group(['prefix' => 'dummy-todo', 'as' => 'dummy.'], function () {
