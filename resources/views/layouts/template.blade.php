@@ -27,6 +27,7 @@
    <script src="{{ asset('vendors/jquery/jquery.min.js') }}"></script>
    <script src="{{ asset('vendors/datatables/jquery.dataTables.min.js') }}"></script>
    <script src="{{ asset('vendors/datatables/dataTables.bootstrap4.min.js') }}"></script>
+   <script src="{{ asset('vendors/bootstrap/js/bootstrap.min.js') }}"></script>
    {{-- <script src="{{ asset('vendors/bootstrap/js/bootstrap.min.js') }}"></script>
    <script src="{{ asset('vendors/datatables/datatables.min.js') }}"></script> --}}
    

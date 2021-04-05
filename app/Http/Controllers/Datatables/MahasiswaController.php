@@ -16,10 +16,14 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        
+        $mahasiswas = Mahasiswa::all(); 
 
-        return DataTables::of(Mahasiswa::all())
-            ->toJson();
+        return DataTables::of($mahasiswas)
+            ->addColumn('action', function($mahasiswa) {
+                return '<button type="button" data-toggle="modal" data-target="#mahasiswa_modal" class="btn btn-sm btn-primary edit-mahasiswa" title="edit" ' .
+                'data-uuid=' . $mahasiswa->uuid . ' >Edit</button>';
+            })
+            ->make(true);
     }
 
     /**
