@@ -6,6 +6,7 @@ let project = {
          processing: true,
          serverSide: true,
          scrollX: true,
+         stateSave: true,
          lengthMenu: [[5, 10, 15, 20], [5, 10, 15, 20]],
          pageLength: 5,
          oLanguage: {
@@ -34,18 +35,14 @@ let project = {
       // Fungsi ini digunakan untuk mengubah tombol ke tampilan tambah
       let tambah = function () {
          $('#simpan').removeClass('edit-mahasiswa')
-         $('#simpan').removeClass('btn-warning')
          $('#simpan').addClass('add-mahasiswa')
-         $('#simpan').addClass('btn-success')
          $('#simpan').html('Simpan')
       }
 
       // Fungsi ini digunakan untuk mengubah tombol ke tampilan ediyt
       let edit = function () {
          $('#simpan').removeClass('add-mahasiswa')
-         $('#simpan').removeClass('btn-success')
          $('#simpan').addClass('edit-mahasiswa')
-         $('#simpan').addClass('btn-warning')
          $('#simpan').html('Update')
       }
 
@@ -57,11 +54,52 @@ let project = {
       // Keadaan ketika tombol edit ditekan
       $('#mahasiswa_table_wrapper').on('click', '.edit-mahasiswa', function() {
          edit();
+
+         let jkOptions = {
+            'Laki-laki': 'L',
+            'Perempuan': 'P',
+         };
+
+         let uuid = $(this).data('uuid');
+
+         $.ajax({
+            headers: {
+               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type  : 'GET',
+            url   : '/datatables/mahasiswa/' + uuid + '/edit',
+            success: (data) => {
+               document.getElementById('nama').value = data.nama;
+               document.getElementById('kelas').value = data.kelas;
+               document.getElementById('alamat').value = data.alamat;
+               document.getElementById('uuid').value = data.uuid;
+
+               $('select[name="jk"]').empty();
+
+               // untuk selected jenis kelamin edit
+               $.each(jkOptions, function (index, value) {
+                  if (data.jk == value) {
+                     $('select[name="jk"]').append(new Option(index, value, true, true));
+                     
+                  } else {
+                     $('select[name="jk"]').append(new Option(index, value));
+                  }
+               });
+
+               // console.log(data);
+            },
+            error: (jqXhr, json, errorThrown) => {
+               console.log(json);
+            }
+
+         });
       });
 
       // tombol close
       $('#mahasiswa_modal').on('click', '.clse, .close', function() {
          tambah();
+
+
       });
    }
 }

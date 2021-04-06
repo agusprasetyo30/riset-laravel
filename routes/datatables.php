@@ -8,7 +8,8 @@
 
       ], function () {
          
-         Route::get('/mahasiswa', 'MahasiswaController@index')->name('mahasiswa');
+         Route::get('/mahasiswa', 'MahasiswaController@index')->name('mahasiswa.index');
+         Route::get('/mahasiswa/{mahasiswa}/edit', 'MahasiswaController@edit')->name('mahasiswa.edit');
 
       });
 
