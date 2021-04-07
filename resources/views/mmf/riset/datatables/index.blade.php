@@ -17,7 +17,7 @@
    </div>
    <div class="row justify-content-center">
       <div class="col-md-10">
-         <table class="table table-bordered table-hover table-striped table-responsive table-checkable " id="mahasiswa_table" style="width: 100%;">
+         <table class="table table-bordered table-hover table-striped table-checkable " id="mahasiswa_table" style="width: 100%;">
             <thead class="text-center">
                <tr>
                   <th width=20%>Nama</th>

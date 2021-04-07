@@ -1,5 +1,6 @@
 <!-- Modal -->
-<div class="modal fade" id="mahasiswa_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="mahasiswa_modal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" 
+  aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -15,12 +16,15 @@
               </label>  
             Nama
             <input type="text" class="form-control" name="nama" id="nama">
+            <small id="nama-error" class="text-danger"></small>
           </div>
           <div class="form-group">
             <label for="kelas">
               Kelas
             </label>
             <input type="text" class="form-control" name="kelas" id="kelas">
+            <small id="kelas-error" class="text-danger"></small>
+
           </div>
           <div class="form-group">
             <label for="jk">
@@ -37,6 +41,7 @@
               Alamat
             </label>
             <textarea name="alamat" id="alamat" cols="30" rows="3" class="form-control"></textarea>
+            <small id="alamat-error" class="text-danger"></small>
           </div>
         </div>
         <div class="modal-footer">

@@ -39,9 +39,9 @@ class MahasiswaRequest extends FormRequest
     {
         return [
             'nama' => 'required|max:50',
-            'kelas' => 'required',
+            'kelas' => 'required|max:8',
             'jk' => 'required',
-            'alamat' => 'required',
+            'alamat' => 'required|max:150',
         ];
     }
 

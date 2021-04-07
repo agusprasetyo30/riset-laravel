@@ -64,7 +64,7 @@ class MahasiswaController extends Controller
         $mahasiswa->alamat = $request->get('alamat');
         $mahasiswa->uuid = $uuid;
 
-        $mahasiswa->save();
+        // $mahasiswa->save();
 
         return response()->json($mahasiswa, 200);
 

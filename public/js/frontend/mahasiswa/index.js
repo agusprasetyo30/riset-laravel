@@ -36,6 +36,8 @@ let project = {
       let tambah = function () {
          $('#simpan').removeClass('edit-mahasiswa')
          $('#simpan').addClass('add-mahasiswa')
+         $('#simpan').removeClass('update')
+         $('#simpan').addClass('add')
          $('#simpan').html('Simpan')
       }
 
@@ -43,12 +45,47 @@ let project = {
       let edit = function () {
          $('#simpan').removeClass('add-mahasiswa')
          $('#simpan').addClass('edit-mahasiswa')
+         $('#simpan').removeClass('add')
+         $('#simpan').addClass('update')
          $('#simpan').html('Update')
       }
 
       // KEadaan ketika tombol tambah mahasiswa ditekan
       $('#mahasiswa_table_wrapper').on('click', '.add-mahasiswa', function() {
          tambah();
+
+         $('.modal-footer').on('click', '.add', (event) => {
+            event.stopImmediatePropagation();
+
+            let mahasiswaFormCreate = $('#mahasiswaForm');
+            let formData = new FormData(mahasiswaFormCreate[0]);
+
+            $.ajax({
+               headers: {
+                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+               },
+               type        : 'POST',
+               url         : '/test/mahasiswa',
+               data        : formData,
+               cache       : false,
+               contentType : false,
+               processData : false,
+               success: function (data, statusCode, jqXhr) {
+                  if (data.errors) {
+                     if (data.errors.nama) {
+                        $('#nama-error').html(data.errors.nama[0]);
+                     }
+                     if (data.errors.kelas) {
+                        $('#nama-kelas').html(data.errors.kelas[0]);
+                     }
+                     if (data.errors.alamat) {
+                        $('#nama-alamat').html(data.errors.alamat[0]);
+                     }
+                  }
+               },
+               
+            });
+         });
       });
 
       // Keadaan ketika tombol edit ditekan
@@ -99,7 +136,10 @@ let project = {
       $('#mahasiswa_modal').on('click', '.clse, .close', function() {
          tambah();
 
+         $("#mahasiswaForm").trigger("reset");
 
+         //option kembali ke default
+         $('select[name="jk"] option[value=L]').prop('selected', 'selected');
       });
    }
 }
