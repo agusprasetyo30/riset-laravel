@@ -26,7 +26,8 @@ class MahasiswaRequest extends FormRequest
     public function messages()
     {
         return [
-            'nama.max' => "Maksimal 50 bro untuk jumlah namanya",
+            'nama.max' => 'Maksimal 50 bro untuk jumlah namanya',
+            'kelas.max'=> 'Maksimal 8 bro untuk jumlah kelasnya'
         ];
     }
 

@@ -57,14 +57,14 @@ class MahasiswaController extends Controller
 
         $mahasiswa = new Mahasiswa();
         // $mahasiswa = $request->all(); // untuk mengambil semua request
-        
+
         $mahasiswa->nama = $request->get('nama');
         $mahasiswa->kelas = $request->get('kelas');
         $mahasiswa->jk = $request->get('jk');
         $mahasiswa->alamat = $request->get('alamat');
         $mahasiswa->uuid = $uuid;
 
-        // $mahasiswa->save();
+        $mahasiswa->save();
 
         return response()->json($mahasiswa, 200);
 
@@ -94,7 +94,6 @@ class MahasiswaController extends Controller
     {
         try {
             return view('mmf.mahasiswa.edit', compact('mahasiswa'));
-
         } catch (ModelNotFoundException $m) {
             abort(404);
         }
@@ -120,7 +119,7 @@ class MahasiswaController extends Controller
             return response()->json($mahasiswa, 200);
             // return redirect()
             //     ->route('test.mahasiswa.index');
-        
+
         } catch (ModelNotFoundException $m) {
             abort(404);
         }
@@ -140,11 +139,10 @@ class MahasiswaController extends Controller
 
             // Untuk load mata kuliah
             $mata_kuliah = Mata_kuliah::where("status", "ACTIVE")->get();
-            
+
             // dd($mahasiswa->mata_kuliah[1]->pivot->mata_kuliah_id);
 
             return view('mmf.mahasiswa.ambil-matkul', compact('mahasiswa', 'mata_kuliah'));
-
         } catch (ModelNotFoundException $m) {
             abort(404);
         }
@@ -161,12 +159,10 @@ class MahasiswaController extends Controller
             $mahasiswa->mata_kuliah()->attach($matkul);
 
             return redirect()->back();
-        
         } else if (($type == 'delete')) {
             $mahasiswa->mata_kuliah()->detach($matkul);
 
             return redirect()->back();
-
         } else {
             abort(404);
         }

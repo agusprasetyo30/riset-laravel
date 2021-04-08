@@ -23,8 +23,8 @@
                   <th width=20%>Nama</th>
                   <th width=20%>Kelas</th>
                   <th width=10%>JK</th>
-                  <th width=40%>Alamat</th>
-                  <th width=10%>Action</th>
+                  <th width=35%>Alamat</th>
+                  <th width=15%>Action</th>
                </tr>
             </thead>
          </table>

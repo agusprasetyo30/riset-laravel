@@ -20,8 +20,12 @@ class MahasiswaController extends Controller
 
         return DataTables::of($mahasiswas)
             ->addColumn('action', function($mahasiswa) {
-                return '<button type="button" data-toggle="modal" data-target="#mahasiswa_modal" class="btn btn-sm btn-primary edit-mahasiswa" title="edit" ' .
-                'data-uuid=' . $mahasiswa->uuid . ' >Edit</button>';
+                return '
+                <div class="btn-group-sm">
+                    <button type="button" data-toggle="modal" data-target="#mahasiswa_modal" class="btn btn-primary btn-sm edit-mahasiswa" title="edit" ' .
+                    'data-uuid=' . $mahasiswa->uuid . ' >Edit</button>' .
+                    '<button type="button" class="btn btn-sm btn-danger " title="Hapus">Hapus</button>' .
+                '</div>';
             })
             ->make(true);
     }

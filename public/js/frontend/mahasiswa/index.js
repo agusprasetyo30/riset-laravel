@@ -39,6 +39,12 @@ let project = {
          $('#simpan').removeClass('update')
          $('#simpan').addClass('add')
          $('#simpan').html('Simpan')
+         $('#uuid').remove();
+         
+         $("#mahasiswaForm").trigger("reset");
+
+         //option kembali ke default
+         $('select[name="jk"] option[value=L]').prop('selected', 'selected');
       }
 
       // Fungsi ini digunakan untuk mengubah tombol ke tampilan ediyt
@@ -48,18 +54,21 @@ let project = {
          $('#simpan').removeClass('add')
          $('#simpan').addClass('update')
          $('#simpan').html('Update')
+         $('.modal-body').append('<input type="hidden" name="uuid" id="uuid">')
       }
 
       // KEadaan ketika tombol tambah mahasiswa ditekan
       $('#mahasiswa_table_wrapper').on('click', '.add-mahasiswa', function() {
          tambah();
+         event.preventDefault();
 
          $('.modal-footer').on('click', '.add', (event) => {
             event.stopImmediatePropagation();
-
+            event.preventDefault();
             let mahasiswaFormCreate = $('#mahasiswaForm');
             let formData = new FormData(mahasiswaFormCreate[0]);
 
+            // console.log(...formData);
             $.ajax({
                headers: {
                   'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
@@ -76,13 +85,27 @@ let project = {
                         $('#nama-error').html(data.errors.nama[0]);
                      }
                      if (data.errors.kelas) {
-                        $('#nama-kelas').html(data.errors.kelas[0]);
+                        $('#kelas-error').html(data.errors.kelas[0]);
                      }
                      if (data.errors.alamat) {
-                        $('#nama-alamat').html(data.errors.alamat[0]);
+                        $('#alamat-error').html(data.errors.alamat[0]);
+                     }
+                  
+                  } else {
+                     if (data.uuid) {
+
+                        $('#mahasiswa_modal').modal('hide');
+
+                        let table = $('#mahasiswa_table').DataTable();
+
+                        table.originalDataSet = [];
+                        table.ajax.reload(null, false);
                      }
                   }
                },
+               error: function (data, textStatus, jqXhr) {
+                  console.log(data);
+               }
                
             });
          });
