@@ -15,14 +15,14 @@
             <label for="nama">
               </label>  
             Nama
-            <input type="text" class="form-control" name="nama" id="nama">
+            <input type="text" class="form-control" name="nama" id="nama" value="">
             <small id="nama-error" class="text-danger"></small>
           </div>
           <div class="form-group">
             <label for="kelas">
               Kelas
             </label>
-            <input type="text" class="form-control" name="kelas" id="kelas">
+            <input type="text" class="form-control" name="kelas" id="kelas" value="">
             <small id="kelas-error" class="text-danger"></small>
 
           </div>

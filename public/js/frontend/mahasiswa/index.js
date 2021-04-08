@@ -57,14 +57,19 @@ let project = {
          $('.modal-body').append('<input type="hidden" name="uuid" id="uuid">')
       }
 
+      let del_error_text = () => {
+         $('#nama-error').html('');
+         $('#kelas-error').html('');
+         $('#alamat-error').html('');
+      }
+
       // KEadaan ketika tombol tambah mahasiswa ditekan
       $('#mahasiswa_table_wrapper').on('click', '.add-mahasiswa', function() {
          tambah();
          event.preventDefault();
 
+         // Untuk tombol simpan pada modal
          $('.modal-footer').on('click', '.add', (event) => {
-            event.stopImmediatePropagation();
-            event.preventDefault();
             let mahasiswaFormCreate = $('#mahasiswaForm');
             let formData = new FormData(mahasiswaFormCreate[0]);
 
@@ -93,7 +98,6 @@ let project = {
                   
                   } else {
                      if (data.uuid) {
-
                         $('#mahasiswa_modal').modal('hide');
 
                         let table = $('#mahasiswa_table').DataTable();
@@ -129,10 +133,10 @@ let project = {
             type  : 'GET',
             url   : '/datatables/mahasiswa/' + uuid + '/edit',
             success: (data) => {
+               document.getElementById('uuid').value = data.uuid;
                document.getElementById('nama').value = data.nama;
                document.getElementById('kelas').value = data.kelas;
                document.getElementById('alamat').value = data.alamat;
-               document.getElementById('uuid').value = data.uuid;
 
                $('select[name="jk"]').empty();
 
@@ -149,9 +153,83 @@ let project = {
                // console.log(data);
             },
             error: (jqXhr, json, errorThrown) => {
-               console.log(json);
+               let errors = jqXhr.responseJSON;
+               
+               if (errors.message) {
+                     toastr.error(errors.message, errors.exception, {
+                        closeButton: true,
+                        timeOut: 10000
+                     });
+            
+               } else {
+                     if(errors.error.message){
+                        let error = errors.error;
+                        toastr.error(error.message, error.title, {
+                           closeButton: true,
+                           timeOut: 10000
+                        });
+                     }else{
+                        $.each(errors.error, function(index, value) {
+                           toastr.error(value.message, value.title, {
+                                 closeButton: true,
+                                 timeOut: 10000
+                           });
+                        });
+                     }
+               }
             }
+         });
 
+         // Untuk tombol update pada modal
+         $('.modal-footer').on('click', '.update', (event) => {
+            let mahasiswaFormCreate = $('#mahasiswaForm');
+            let formData = new FormData(mahasiswaFormCreate[0]);
+
+            formData.append('_method', 'PUT');
+
+            let mahasiswaUUID = $('input[name=uuid]').val();
+
+            $.ajax({
+               headers: {
+                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+               },
+               type        : 'POST',
+               url         : '/test/mahasiswa/' + mahasiswaUUID,
+               data        : formData,
+               cache       : false,
+               contentType : false,
+               processData : false,
+               success: function (data) {
+                  if (data.errors) {
+                     if (data.errors.nama) {
+                        $('#nama-error').html(data.errors.nama[0]);
+                     }
+                     if (data.errors.kelas) {
+                        $('#kelas-error').html(data.errors.kelas[0]);
+                     }
+                     if (data.errors.alamat) {
+                        $('#alamat-error').html(data.errors.alamat[0]);
+                     }
+                  
+                  } else {
+                     del_error_text();
+                     tambah();
+
+                     $('#mahasiswa_modal').modal('hide');
+
+                     alert("Data berhasil dirubah")
+
+                     let table = $('#mahasiswa_table').DataTable();
+
+                     table.originalDataSet = [];
+                     table.ajax.reload(null, false)
+                  }
+               },
+               error: function (jqXhr, json, errorThrown) {
+                  
+               }
+
+            });
          });
       });
 
