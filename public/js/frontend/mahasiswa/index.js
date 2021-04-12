@@ -269,9 +269,11 @@ let project = {
          let mahasiswa_uuid = $(this).data('uuid');
 
          Swal.fire({
-            title: 'Apakah anda yakin ingin menghapus data ini ?',
+            title: 'Hapus data ini ?',
+            icon: 'question',
             showCancelButton: true,
             showConfirmButton: true,
+            confirmButtonText: 'Okay',
          }).then((result) => {
             if (result.isConfirmed) {
                $.ajax({

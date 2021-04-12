@@ -40,7 +40,6 @@ class MahasiswaController extends Controller
         return view('mmf.riset.datatables.index');
     }
 
-
     /**
      * Show the form for editing the specified resource.
      *
