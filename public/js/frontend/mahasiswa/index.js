@@ -14,7 +14,8 @@ let project = {
          },
          language: {
             search: "Search",
-            searchPlaceholder: "Nama mahasiswa"
+            searchPlaceholder: "Nama mahasiswa",
+            // processing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading bro...</span> ',
          },
          ajax: '/datatables/mahasiswa',
          columns: [
@@ -29,6 +30,13 @@ let project = {
       $('.dataTables_length').addClass('mr-2');
       $('.dataTables_length select').addClass('form-control');
       $('.dataTables_filter').addClass('text-left ');
+      $('.dataTables_filter input').unbind();
+      $('.dataTables_filter input').bind('keyup', function (e) {
+         if (e.keyCode == 13) {
+            let table = $('#mahasiswa_table').DataTable();
+            table.search(this.value).draw();
+         }
+      });
 
       $('.toolbar').html('<button type="button" id="add-mahasiswa" data-toggle="modal" data-target="#mahasiswa_modal" class="btn btn-sm btn-primary mt-4 float-right add-mahasiswa"> Tambah Mahasiswa</button >');
    
@@ -54,16 +62,32 @@ let project = {
          $('#simpan').removeClass('add')
          $('#simpan').addClass('update')
          $('#simpan').html('Update')
+
          $('.modal-body').append('<input type="hidden" name="uuid" id="uuid">')
       }
 
+      // Menghapus isi inputan 
       let del_error_text = () => {
          $('#nama-error').html('');
          $('#kelas-error').html('');
          $('#alamat-error').html('');
       }
 
-      // KEadaan ketika tombol tambah mahasiswa ditekan
+      // Untuk menampilkan dan konfigurasi toast, nantinya ini akan dipisah menjadi file js sendiri
+      let toast = Swal.mixin({
+         toast       : true,
+         icon        : 'success',
+         position    : 'top-end',
+         timer       : 3000,
+         showConfirmButton : false,
+         timerProgressBar  : true,
+         didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+         }
+      })
+
+      // Keadaan ketika tombol tambah mahasiswa ditekan
       $('#mahasiswa_table_wrapper').on('click', '.add-mahasiswa', function() {
          tambah();
          event.preventDefault();
@@ -97,6 +121,10 @@ let project = {
                      }
                   
                   } else {
+                     toast.fire({
+                        title: 'Tambah mahasiswa berhasil'
+                     });
+
                      if (data.uuid) {
                         $('#mahasiswa_modal').modal('hide');
 
@@ -153,30 +181,30 @@ let project = {
                // console.log(data);
             },
             error: (jqXhr, json, errorThrown) => {
-               let errors = jqXhr.responseJSON;
+               // let errors = jqXhr.responseJSON;
                
-               if (errors.message) {
-                     toastr.error(errors.message, errors.exception, {
-                        closeButton: true,
-                        timeOut: 10000
-                     });
+               // if (errors.message) {
+               //       toastr.error(errors.message, errors.exception, {
+               //          closeButton: true,
+               //          timeOut: 10000
+               //       });
             
-               } else {
-                     if(errors.error.message){
-                        let error = errors.error;
-                        toastr.error(error.message, error.title, {
-                           closeButton: true,
-                           timeOut: 10000
-                        });
-                     }else{
-                        $.each(errors.error, function(index, value) {
-                           toastr.error(value.message, value.title, {
-                                 closeButton: true,
-                                 timeOut: 10000
-                           });
-                        });
-                     }
-               }
+               // } else {
+               //       if(errors.error.message){
+               //          let error = errors.error;
+               //          toastr.error(error.message, error.title, {
+               //             closeButton: true,
+               //             timeOut: 10000
+               //          });
+               //       }else{
+               //          $.each(errors.error, function(index, value) {
+               //             toastr.error(value.message, value.title, {
+               //                   closeButton: true,
+               //                   timeOut: 10000
+               //             });
+               //          });
+               //       }
+               // }
             }
          });
 
@@ -215,9 +243,11 @@ let project = {
                      del_error_text();
                      tambah();
 
+                     toast.fire({
+                        title: 'Update mahasiswa berhasil'
+                     });
+                     
                      $('#mahasiswa_modal').modal('hide');
-
-                     alert("Data berhasil dirubah")
 
                      let table = $('#mahasiswa_table').DataTable();
 
@@ -228,10 +258,45 @@ let project = {
                error: function (jqXhr, json, errorThrown) {
                   
                }
-
             });
          });
       });
+
+      // Untuk tombol hapus pada tabel
+      $('#mahasiswa_table_wrapper').on('click', '.delete', function() {
+         // let mahasiswa_uuid = 
+
+         let mahasiswa_uuid = $(this).data('uuid');
+
+         Swal.fire({
+            title: 'Apakah anda yakin ingin menghapus data ini ?',
+            showCancelButton: true,
+            showConfirmButton: true,
+         }).then((result) => {
+            if (result.isConfirmed) {
+               $.ajax({
+                  headers: {
+                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                  },
+                  type: 'DELETE',
+                  url: '/datatables/mahasiswa/' + mahasiswa_uuid,
+                  success: function (data, textStatus, jqXhr) {
+                     toast.fire({
+                        title: 'Data berhasil dihapus'
+                     })
+
+                     let table = $('#mahasiswa_table').DataTable();
+
+                     table.originalDataSet = [];
+                     table.ajax.reload(null, false)
+                  },
+                  error: function (data, json, errorThrown) {
+                     console.log(data);
+                  }
+               });
+            }
+         })
+      })
 
       // tombol close
       $('#mahasiswa_modal').on('click', '.clse, .close', function() {
@@ -242,6 +307,8 @@ let project = {
          //option kembali ke default
          $('select[name="jk"] option[value=L]').prop('selected', 'selected');
       });
+      
+      
    }
 }
 

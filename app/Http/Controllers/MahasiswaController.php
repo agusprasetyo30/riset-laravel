@@ -25,16 +25,6 @@ class MahasiswaController extends Controller
     }
 
     /**
-     * Untuk menampilkan tabel datatable
-     *
-     * @return void
-     */
-    public function indexDatatable()
-    {
-        return view('mmf.riset.datatables.index');
-    }
-
-    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

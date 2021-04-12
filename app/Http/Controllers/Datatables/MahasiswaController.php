@@ -24,43 +24,22 @@ class MahasiswaController extends Controller
                 <div class="btn-group-sm">
                     <button type="button" data-toggle="modal" data-target="#mahasiswa_modal" class="btn btn-primary btn-sm edit-mahasiswa" title="edit" ' .
                     'data-uuid=' . $mahasiswa->uuid . ' >Edit</button>' .
-                    '<button type="button" class="btn btn-sm btn-danger " title="Hapus">Hapus</button>' .
+                    '<button type="button" class="btn btn-sm btn-danger delete" title="Hapus" data-uuid= '. $mahasiswa->uuid .'>Hapus</button>' .
                 '</div>';
             })
             ->make(true);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Untuk menampilkan tabel datatable
      *
-     * @return \Illuminate\Http\Response
+     * @return void
      */
-    public function create()
+    public function indexDatatable()
     {
-        //
+        return view('mmf.riset.datatables.index');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -74,25 +53,14 @@ class MahasiswaController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Show the form for creating a new resource.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function destroy(Mahasiswa $mahasiswa)
     {
-        //
-    }
+        $mahasiswa->delete();
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return response()->json();
     }
 }

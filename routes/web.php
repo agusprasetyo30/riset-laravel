@@ -66,9 +66,8 @@ Route::group(['prefix' => 'test', 'as' => 'test.'], function () {
     });
 
     // Riset yajra/laravel-datatable
-    Route::group(['prefix' => 'laravel-datatables', 'as' => 'datatables.'], function() {
+    Route::group(['prefix' => 'laravel-datatables', 'as' => 'datatables.', 'namespace' => 'Datatables'], function() {
         Route::get('mahasiswa', 'MahasiswaController@indexDatatable')->name('mahasiswa');
-
     });
 
 });

@@ -8,6 +8,7 @@
    <title>@yield('title')</title>
    <link rel="stylesheet" href="{{ asset('vendors/bootstrap-4.5.3/css/bootstrap.min.css') }}">
    <link rel="stylesheet" href="{{ asset('vendors/datatables/dataTables.bootstrap4.min.css') }}">
+   <link rel="stylesheet" href="{{ asset('vendors/sweetalert2/sweetalert2.min.css') }}">
    
    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
    {{-- <link rel="stylesheet" href="{{ asset('vendors/datatables/datatables.min.css') }}"> --}}
@@ -28,6 +29,8 @@
    <script src="{{ asset('vendors/datatables/jquery.dataTables.min.js') }}"></script>
    <script src="{{ asset('vendors/datatables/dataTables.bootstrap4.min.js') }}"></script>
    <script src="{{ asset('vendors/bootstrap/js/bootstrap.min.js') }}"></script>
+   <script src="{{ asset('vendors/sweetalert2/sweetalert2.min.js') }}"></script>
+   
    {{-- <script src="{{ asset('vendors/bootstrap/js/bootstrap.min.js') }}"></script>
    <script src="{{ asset('vendors/datatables/datatables.min.js') }}"></script> --}}
    

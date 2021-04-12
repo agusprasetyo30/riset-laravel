@@ -10,7 +10,8 @@
          
          Route::get('/mahasiswa', 'MahasiswaController@index')->name('mahasiswa.index');
          Route::get('/mahasiswa/{mahasiswa}/edit', 'MahasiswaController@edit')->name('mahasiswa.edit');
-
+         
+         Route::delete('/mahasiswa/{mahasiswa}', 'MahasiswaController@destroy')->name('mahasiswa.destroy');
       });
 
    });
