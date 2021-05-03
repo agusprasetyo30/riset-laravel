@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Riset\Memfis;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\MataKuliahRequest;
 use App\Mata_kuliah;
 use Illuminate\Database\Eloquent\ModelNotFoundException;

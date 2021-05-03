@@ -30,7 +30,36 @@
   > Modul ini digunakan untuk . . .
 - spatie/laravel-tags               [ ]
   > Modul ini digunakan untuk . . .
-- syajra/laravel-datatables-oracle  [ ]
+- yajra/laravel-datatables-oracle   [X]
   > Modul ini digunakan untuk . . .
 
 ## Refrensi Tutorial
+
+- Riset Fitur Laravel
+  - Policy/Policies
+  - Form Request + Fungsinya
+    - [https://protone.media/en/blog/working-with-the-validator-instance-in-form-requests](https://protone.media/en/blog/working-with-the-validator-instance-in-form-requests)
+    - [https://www.apphp.com/tutorials/index.php?page=laravel-creating-custom-form-request](https://www.apphp.com/tutorials/index.php?page=laravel-creating-custom-form-request)
+  - Penerapan Polimorfisme
+    - [https://appdividend.com/2018/05/18/laravel-polymorphic-relationship-tutorial-example/](https://appdividend.com/2018/05/18/laravel-polymorphic-relationship-tutorial-example/)
+    - [https://dev.to/ellis22/learn-laravel-polymorphic-relationship-step-by-step-with-example-3pe3](https://dev.to/ellis22/learn-laravel-polymorphic-relationship-step-by-step-with-example-3pe3)
+
+<br>
+
+- Riset Package/Library
+  - nwidart/laravel-modules
+    - [https://medium.com/@destinyajax/how-to-build-modular-applications-in-laravel-the-plug-n-play-approach-part-1-13a87f7de06](https://medium.com/@destinyajax/how-to-build-modular-applications-in-laravel-the-plug-n-play-approach-part-1-13a87f7de06)
+  - owen-it/laravel-auditing
+  - spatie/laravel-sortable 
+  - spatie/laravel-activity-log
+  - spatie/laravel-backup
+    - [https://dev.to/ellis22/how-to-backup-laravel-files-and-database-3ehb](https://dev.to/ellis22/how-to-backup-laravel-files-and-database-3ehb)
+  - spatie/laravel-query-builder
+  - spatie/laravel-slugable 
+  - spatie/laravel-tags
+  - yajra/laravel-datatables-oracle
+    - [https://datatables.yajrabox.com/](https://datatables.yajrabox.com/)
+    - [https://stackoverflow.com/questions/31580366/jquery-datatables-hide-show-entries-text-but-show-the-dropdown-list](https://stackoverflow.com/questions/31580366/jquery-datatables-hide-show-entries-text-but-show-the-dropdown-list)
+    - [https://laravel-news.com/laravel-optional-helper](https://laravel-news.com/laravel-optional-helper)
+    - [http://live.datatables.net/kihecona/1/edit](http://live.datatables.net/kihecona/1/edit)
+    - Riset dan implementasi dari source code memfis

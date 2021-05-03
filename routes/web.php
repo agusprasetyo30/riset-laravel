@@ -32,88 +32,97 @@ Route::get('/riset-memfis', function() {
 // Include datatables route
 require('datatables.php');
 
-/**
- * Riset Memfis
- */
-Route::group(['prefix' => 'test', 'as' => 'test.'], function () {
+// Akses untuk masuk folder riset
+Route::group(['namespace' => 'Riset'], function() {
+
+    /********* Riset MeMFIS ********/
     
-    // Dashboard
-    Route::get('/', function () {
-        $mahasiswa = Mahasiswa::all();
+    Route::group(['namespace' => 'Memfis'], function() {
 
-        return view('mmf.index', compact('mahasiswa'));
-    })->name('index');
+        Route::group(['prefix' => 'test', 'as' => 'test.'], function () {
+            
+            // Dashboard
+            Route::get('/', function () {
+                $mahasiswa = Mahasiswa::all();
 
-    // Mata Kuliah
-    // Route::group([ 'as' => 'matakuliah.'], function () {
-        Route::resource("mata-kuliah", "MatakuliahController", [
-            "parameters" => ["mata-kuliah" => "mata_kuliah"],
-        ])->names([
-            "index"     => "matakuliah.index",
-            "create"    => "matakuliah.create",
-            "store"     => "matakuliah.store",
-            "edit"      => "matakuliah.edit",
-            "update"    => "matakuliah.update",
-            "destroy"   => "matakuliah.destroy",
-        ])->except('show');
+                return view('mmf.index', compact('mahasiswa'));
+            })->name('index');
 
-    // Mahasiswa    
-    Route::resource('mahasiswa', "MahasiswaController");
+            // Mata Kuliah
+                Route::resource("mata-kuliah", "MatakuliahController", [
+                    "parameters" => ["mata-kuliah" => "mata_kuliah"],
+                ])->names([
+                    "index"     => "matakuliah.index",
+                    "create"    => "matakuliah.create",
+                    "store"     => "matakuliah.store",
+                    "edit"      => "matakuliah.edit",
+                    "update"    => "matakuliah.update",
+                    "destroy"   => "matakuliah.destroy",
+                ])->except('show');
 
-    Route::group(['prefix' => 'mahasiswa', 'as' => 'mahasiswa.'], function () {
-        Route::get('/{uuid}/ambil-matkul', 'MahasiswaController@ambilMataKuliah')->name('ambil-matkul');
-        Route::get('/{id}/ambil-matkul/{matkul}/process', 'MahasiswaController@prosesPenambahanMatkul')->name('ambil-matkul.process');
+            // Mahasiswa    
+            Route::resource('mahasiswa', "MahasiswaController");
+
+            Route::group(['prefix' => 'mahasiswa', 'as' => 'mahasiswa.'], function () {
+                Route::get('/{uuid}/ambil-matkul', 'MahasiswaController@ambilMataKuliah')->name('ambil-matkul');
+                Route::get('/{id}/ambil-matkul/{matkul}/process', 'MahasiswaController@prosesPenambahanMatkul')->name('ambil-matkul.process');
+            });
+
+            // Riset yajra/laravel-datatable
+            Route::group(['prefix' => 'laravel-datatables', 'as' => 'datatables.', 'namespace' => 'Datatables'], function() {
+                Route::get('mahasiswa', 'MahasiswaController@indexDatatable')->name('mahasiswa');
+            });
+
+            // Riset Polymorfisme
+            Route::group(['prefix' => 'polymorphisme', 'as' => 'poly.'], function() {
+                // Route::get('/', 'MahasiswaController@indexPolymorphic')->name('index');
+            });
+        });
     });
 
-    // Riset yajra/laravel-datatable
-    Route::group(['prefix' => 'laravel-datatables', 'as' => 'datatables.', 'namespace' => 'Datatables'], function() {
-        Route::get('mahasiswa', 'MahasiswaController@indexDatatable')->name('mahasiswa');
+
+    /********* Riset Laravel ********/
+
+    Route::group(['namespace' => 'Laravel'], function() {
+
+        // Dummy Todo
+        Route::group(['prefix' => 'dummy-todo', 'as' => 'dummy.'], function () {
+            Route::get('/', 'TodoController@index')->name('index');
+            Route::get('/delete', 'TodoController@destroy')->name('delete');
+
+            Route::post('/', 'TodoController@store')->name('store');
+            Route::put('/{id}/update', 'TodoController@update')->name('update');
+        });
+
+        // Bulk Excel
+        Route::group(['prefix' => 'bulk-excel', 'as' => 'excel.'], function () {
+            Route::get('/', 'BulkExcelController@index')->name('index');
+            
+            // Export
+            Route::get('/print_collection', 'BulkExcelController@printExcelCollection')->name('print.collection');
+            Route::get('/print_query', 'BulkExcelController@printExcelQuery')->name('print.query');
+            Route::get('/print_view', 'BulkExcelController@printExcelView')->name('print.view');
+
+            // Import
+            Route::get('/import', 'BulkExcelController@importPage')->name('print.import-page');
+            Route::post('/import', 'BulkExcelController@importFileExcel')->name('print.import');
+
+        });
+
+        Route::group(['prefix' => 'data-api', 'as' => 'data-api.'], function () {
+            Route::get('/', 'TodoApiController@indexPage')->name('index');
+        });
+
+
+        Route::group(['prefix' => 'barcode-qr', 'as' => 'barcode-qr.'], function () {
+            
+            Route::get('/', 'BarcodeQrController@index')->name('index');
+            Route::get('/todo-barcode/{id}', 'BarcodeQrController@getTodoByID')->name('barcode-id');
+        });
     });
-
 });
 
 
-
-/**
- * Riset Laravel
- */
-
-// Dummy Todo
-Route::group(['prefix' => 'dummy-todo', 'as' => 'dummy.'], function () {
-    Route::get('/', 'TodoController@index')->name('index');
-    Route::get('/delete', 'TodoController@destroy')->name('delete');
-
-    Route::post('/', 'TodoController@store')->name('store');
-    Route::put('/{id}/update', 'TodoController@update')->name('update');
-});
-
-// Bulk Excel
-Route::group(['prefix' => 'bulk-excel', 'as' => 'excel.'], function () {
-    Route::get('/', 'BulkExcelController@index')->name('index');
-    
-    // Export
-    Route::get('/print_collection', 'BulkExcelController@printExcelCollection')->name('print.collection');
-    Route::get('/print_query', 'BulkExcelController@printExcelQuery')->name('print.query');
-    Route::get('/print_view', 'BulkExcelController@printExcelView')->name('print.view');
-
-    // Import
-    Route::get('/import', 'BulkExcelController@importPage')->name('print.import-page');
-    Route::post('/import', 'BulkExcelController@importFileExcel')->name('print.import');
-
-});
-
-Route::group(['prefix' => 'data-api', 'as' => 'data-api.'], function () {
-    Route::get('/', 'TodoApiController@indexPage')->name('index');
-});
-
-
-Route::group(['prefix' => 'barcode-qr', 'as' => 'barcode-qr.'], function () {
-    
-    Route::get('/', 'BarcodeQrController@index')->name('index');
-    Route::get('/todo-barcode/{id}', 'BarcodeQrController@getTodoByID')->name('barcode-id');
-
-
-});
 
 Route::any('captcha-test', function() {
     if (request()->getMethod() == 'POST') {

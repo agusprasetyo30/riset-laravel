@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Riset\Laravel;
 
+use App\Http\Controllers\Controller;
 use App\Todo;
 use Illuminate\Http\Request;
 

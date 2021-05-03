@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Riset\Laravel;
 
 use App\Exports\TodoReportCollection;
 use App\Exports\TodoReportQuery;
 use App\Exports\TodoReportView;
+use App\Http\Controllers\Controller;
 use App\Imports\TodoImports;
 use App\Todo;
 use Illuminate\Http\Request;

@@ -15,6 +15,7 @@ class Mata_kuliah extends Model
             'mata_kuliah_id', 'mahasiswa_id');
     }
 
+    
     public function getRouteKeyName()
     {
         return 'uuid';
