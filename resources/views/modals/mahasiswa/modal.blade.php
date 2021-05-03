@@ -22,7 +22,14 @@
             <label for="kelas">
               Kelas
             </label>
-            <input type="text" class="form-control" name="kelas" id="kelas" value="">
+            <select name="kelas" id="kelas" class="form-control">
+              <option value="MI-3A">MI-3A</option>
+              <option value="MI-3B">MI-3B</option>
+              <option value="MI-3C">MI-3C</option>
+              <option value="MI-3D">MI-3D</option>
+              <option value="MI-3E">MI-3E</option>
+              <option value="MI-3F">MI-3F</option>
+            </select>
             <small id="kelas-error" class="text-danger"></small>
 
           </div>
@@ -35,7 +42,7 @@
               <option value="P">Perempuan</option>
             </select>
           </div>
-          <input type="hidden" name="uuid" id="uuid">
+          <input type="hidden" name="mahasiswa_uuid" id="mahasiswa_uuid">
           <div class="form-group">
             <label for="alamat">
               Alamat

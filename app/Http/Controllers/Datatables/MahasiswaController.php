@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Datatables;
 
 use App\Http\Controllers\Controller;
 use App\Mahasiswa;
+use App\Mata_kuliah;
 use DataTables;
 use Illuminate\Http\Request;
 
@@ -37,6 +38,11 @@ class MahasiswaController extends Controller
      */
     public function indexDatatable()
     {
+        // $mahasiswa = Mata_kuliah::all();
+
+        // dd($mahasiswa);
+        // dd(json_decode($mahasiswa->origin_mahasiswa)->origin_mahasiswa);
+        
         return view('mmf.riset.datatables.index');
     }
 

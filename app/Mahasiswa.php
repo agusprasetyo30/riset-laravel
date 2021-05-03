@@ -13,7 +13,8 @@ class Mahasiswa extends Model
         "nama",
         "kelas",
         "jk",
-        "alamat"
+        "alamat",
+        'origin_mahasiswa'
     ];  
 
     public function mata_kuliah()

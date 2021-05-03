@@ -17,6 +17,7 @@ let Project = {
             url: '/test/mahasiswa/' + mahasiswa_uuid,
             data: {
                _token: $('input[name=_token').val(),
+               mahasiswa_uuid: mahasiswa_uuid,
                nama: nama,
                kelas: kelas,
                jk: jk,
@@ -29,12 +30,11 @@ let Project = {
                   } else {
                      $('#nama-error').html('');
                   }
-                  
                } else {
                   alert("Edit berhasil");
-                  // console.log(data);
+                  console.log(data);
 
-                  if (data.uuid) {
+                  if (data.mahasiswa_uuid) {
                      window.location.href = '/test/mahasiswa';
                   }
                }

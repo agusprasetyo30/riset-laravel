@@ -53,8 +53,9 @@ class MahasiswaController extends Controller
         $mahasiswa->jk = $request->get('jk');
         $mahasiswa->alamat = $request->get('alamat');
         $mahasiswa->uuid = $uuid;
+        $mahasiswa->origin_mahasiswa = $request->get('origin_mahasiswa');
 
-        $mahasiswa->save();
+        // $mahasiswa->save();
 
         return response()->json($mahasiswa, 200);
 
@@ -70,7 +71,6 @@ class MahasiswaController extends Controller
      */
     public function show(Mahasiswa $mahasiswa)
     {
-
         return view('mmf.mahasiswa.show', compact('mahasiswa'));
     }
 
@@ -83,6 +83,8 @@ class MahasiswaController extends Controller
     public function edit(Mahasiswa $mahasiswa)
     {
         try {
+            // dd(optional($mahasiswa->first())->toJson());
+            // dd($mahasiswa);
             return view('mmf.mahasiswa.edit', compact('mahasiswa'));
         } catch (ModelNotFoundException $m) {
             abort(404);
@@ -99,14 +101,19 @@ class MahasiswaController extends Controller
     public function update(MahasiswaRequest $request, Mahasiswa $mahasiswa)
     {
         try {
-            $mahasiswa->nama = $request->get('nama');
-            $mahasiswa->kelas = $request->get('kelas');
-            $mahasiswa->jk = $request->get('jk');
-            $mahasiswa->alamat = $request->get('alamat');
+            // Mahasiswa::where('uuid', $request->mahasiswa_uuid)->update([
+            //     'nama'              => $request->nama,
+            //     'kelas'             => $request->kelas,
+            //     'jk'                => $request->jk,
+            //     'alamat'            => $request->alamat,
+            //     'origin_mahasiswa'  => optional($mahasiswa)->toJson(),
+            // ]);
 
-            $mahasiswa->save();
+            $mahasiswa->update($request->all());
 
             return response()->json($mahasiswa, 200);
+            
+            // dd($mahasiswa, $request->all());
             // return redirect()
             //     ->route('test.mahasiswa.index');
 

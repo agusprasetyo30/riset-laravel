@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Mahasiswa;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
@@ -54,13 +55,16 @@ class MahasiswaRequest extends FormRequest
      */
     public function withValidator($validator)
     {
+        
         $validator->after(function ($validator) {
-                // $this->merge([
-                //     'input1' => "Saya input satu",
+            $mahasiswa = optional(Mahasiswa::where('uuid', $this->mahasiswa_uuid)->first());
+
+                $this->merge([
+                    "origin_mahasiswa" => optional($mahasiswa)->toJson(), //$this->mahasiswa_uuid adalah mengambil inputan yang diambil dari form
                 //     'input2' => "Saya input dua",
                 //     'input3' => "Saya input tiga",
                 //     'input4' => "Saya input empat",
-                // ]);
+                ]);
             // digabung
         });
     }

@@ -75,14 +75,14 @@
                   <div class="col-md-12">
                      <a class="btn links bg-dark" href="#">Policy/Policies</a>
                      <a class="btn links" href="{{ route('test.index') }}">Form Request + Fungsi</a>
-                     <a class="btn links bg-dark" href="#">Polimorphisme</a>
+                     <a class="btn links bg-warning" href="#">Polimorphisme</a>
                   </div>
                </div>
                <div class="row mt-4">
                   <label class="font-weight-bold">Daftar Package/Library</label>
                   <div class="col-md-12">
                      <a class="btn links bg-dark" href="#">nwidart/laravel-modules</a>
-                     <a class="btn links bg-dark" href="#">owen-it/laravel-auditing</a>
+                     <a class="btn links bg-warning" href="#">owen-it/laravel-auditing</a>
                      <a class="btn links bg-dark" href="#">spatie/laravel-sortable</a>
                      <a class="btn links bg-dark" href="#">spatie/laravel-activity-log</a>
                      <a class="btn links bg-dark" href="#">spatie/laravel-backup</a>

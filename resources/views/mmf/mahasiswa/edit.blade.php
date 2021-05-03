@@ -8,6 +8,7 @@
    <div class="row justify-content-center">
       <div class="col-md-6">
          <form name="mahasiswaFormEdit" id="mahasiswaFormEdit">
+         
             <div class="card">
                <div class="card-body">
                   <div class="form-group">
@@ -44,6 +45,7 @@
                   <input type="hidden" name="mahasiswa_uuid" id="mahasiswa_uuid" value="{{ $mahasiswa->uuid }}">
 
                   <div class="form-group">
+                     {{-- <button type="submit" class="btn btn-success simpan">Simpan</button> --}}
                      <button type="button" class="btn btn-success simpan">Simpan</button>
                      <a href="{{ route('test.mahasiswa.index') }}" class="btn btn-primary">Kembali</a>
                   </div>

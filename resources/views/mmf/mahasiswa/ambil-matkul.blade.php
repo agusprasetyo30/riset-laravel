@@ -8,6 +8,7 @@
 
    <a href="{{ route('test.mahasiswa.index') }}" class="btn btn-primary btn-sm mb-2 float-right">Kembali</a>
 
+   
    <table class="table table-bordered table-hover table-striped">
       <thead>
          <tr>

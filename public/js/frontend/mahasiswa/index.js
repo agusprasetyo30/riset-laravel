@@ -7,6 +7,7 @@ let project = {
          serverSide: true,
          scrollX: true,
          stateSave: true,
+         ordering: false,
          lengthMenu: [[5, 10, 15, 20], [5, 10, 15, 20]],
          pageLength: 5,
          oLanguage: {
@@ -19,10 +20,10 @@ let project = {
          },
          ajax: '/datatables/mahasiswa',
          columns: [
-            { data: 'nama', name: 'nama' },
+            { data: 'nama', name: 'nama', orderable: true },
             { data: 'kelas', name: 'kelas', searchable: false},
             { data: 'jk', name: 'jk', searchable: false },
-            { data: 'alamat', name: 'alamat', searchable: false, orderable: false },
+            { data: 'alamat', name: 'alamat', searchable: false},
             { data: 'action', name: 'action', orderable: false, searchable: false}
          ]
       });
@@ -47,7 +48,7 @@ let project = {
          $('#simpan').removeClass('update')
          $('#simpan').addClass('add')
          $('#simpan').html('Simpan')
-         $('#uuid').remove();
+         $('#mahasiswa_uuid').remove();
          
          $("#mahasiswaForm").trigger("reset");
 
@@ -63,7 +64,7 @@ let project = {
          $('#simpan').addClass('update')
          $('#simpan').html('Update')
 
-         $('.modal-body').append('<input type="hidden" name="uuid" id="uuid">')
+         $('.modal-body').append('<input type="hidden" name="mahasiswa_uuid" id="mahasiswa_uuid">')
       }
 
       // Menghapus isi inputan 
@@ -75,10 +76,10 @@ let project = {
 
       // Untuk menampilkan dan konfigurasi toast, nantinya ini akan dipisah menjadi file js sendiri
       let toast = Swal.mixin({
-         toast       : true,
-         icon        : 'success',
-         position    : 'top-end',
-         timer       : 3000,
+         toast             : true,
+         icon              : 'success',
+         position          : 'top-end',
+         timer             : 3000,
          showConfirmButton : false,
          timerProgressBar  : true,
          didOpen: (toast) => {
@@ -125,6 +126,7 @@ let project = {
                         title: 'Tambah mahasiswa berhasil'
                      });
 
+                     console.log(data);
                      if (data.uuid) {
                         $('#mahasiswa_modal').modal('hide');
 
@@ -161,7 +163,7 @@ let project = {
             type  : 'GET',
             url   : '/datatables/mahasiswa/' + uuid + '/edit',
             success: (data) => {
-               document.getElementById('uuid').value = data.uuid;
+               document.getElementById('mahasiswa_uuid').value = data.uuid;
                document.getElementById('nama').value = data.nama;
                document.getElementById('kelas').value = data.kelas;
                document.getElementById('alamat').value = data.alamat;
@@ -181,30 +183,7 @@ let project = {
                // console.log(data);
             },
             error: (jqXhr, json, errorThrown) => {
-               // let errors = jqXhr.responseJSON;
                
-               // if (errors.message) {
-               //       toastr.error(errors.message, errors.exception, {
-               //          closeButton: true,
-               //          timeOut: 10000
-               //       });
-            
-               // } else {
-               //       if(errors.error.message){
-               //          let error = errors.error;
-               //          toastr.error(error.message, error.title, {
-               //             closeButton: true,
-               //             timeOut: 10000
-               //          });
-               //       }else{
-               //          $.each(errors.error, function(index, value) {
-               //             toastr.error(value.message, value.title, {
-               //                   closeButton: true,
-               //                   timeOut: 10000
-               //             });
-               //          });
-               //       }
-               // }
             }
          });
 
@@ -212,17 +191,19 @@ let project = {
          $('.modal-footer').on('click', '.update', (event) => {
             let mahasiswaFormCreate = $('#mahasiswaForm');
             let formData = new FormData(mahasiswaFormCreate[0]);
+            let uuid_mahasiswa = $('input[name=mahasiswa_uuid]').val();
 
+            formData.append('mahasiswa_uuid', uuid_mahasiswa);
             formData.append('_method', 'PUT');
 
-            let mahasiswaUUID = $('input[name=uuid]').val();
+            // console.log(...formData);
 
             $.ajax({
                headers: {
                   'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                },
                type        : 'POST',
-               url         : '/test/mahasiswa/' + mahasiswaUUID,
+               url         : '/test/mahasiswa/' + uuid_mahasiswa,
                data        : formData,
                cache       : false,
                contentType : false,
@@ -242,29 +223,34 @@ let project = {
                   } else {
                      del_error_text();
                      tambah();
-
-                     toast.fire({
-                        title: 'Update mahasiswa berhasil'
-                     });
-                     
+                     // location.reload();
                      $('#mahasiswa_modal').modal('hide');
 
+                     console.log(data);
+                     // console.log(mahasiswa_uuid);
                      let table = $('#mahasiswa_table').DataTable();
 
                      table.originalDataSet = [];
                      table.ajax.reload(null, false)
+                     // console.log(data);
                   }
                },
                error: function (jqXhr, json, errorThrown) {
                   
-               }
+               },
+               complete: function (data) {
+                  toast.fire({
+                     title: 'Update mahasiswa berhasil',
+                     timer: 3000,
+                  });
+               },
+               async:   false,
             });
          });
       });
 
       // Untuk tombol hapus pada tabel
       $('#mahasiswa_table_wrapper').on('click', '.delete', function() {
-         // let mahasiswa_uuid = 
 
          let mahasiswa_uuid = $(this).data('uuid');
 
