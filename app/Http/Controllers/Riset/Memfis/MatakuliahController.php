@@ -71,8 +71,6 @@ class MatakuliahController extends Controller
             abort(404, $m->getMessage());
             // dd($m->getMessage());
         }
-
-
     }
 
     /**
