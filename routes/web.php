@@ -75,7 +75,10 @@ Route::group(['namespace' => 'Riset'], function() {
 
             // Riset Polymorfisme
             Route::group(['prefix' => 'polymorphisme', 'as' => 'poly.'], function() {
-                // Route::get('/', 'MahasiswaController@indexPolymorphic')->name('index');
+                Route::get('/', function() {
+                    
+                    return view('mmf.riset.polymorphic.index');
+                })->name('index');
             });
         });
     });

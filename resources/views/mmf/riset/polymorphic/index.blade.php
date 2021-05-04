@@ -12,7 +12,7 @@
       <h1>Polymorphisme</h1>
       <small>Menerapkan metode <b>Polymorphisme</b> dalam mengembangkan sistem, selain menggunakan metode yang telah ada seperti eloquent relationship dll</small>
       <br>
-      <small>Contoh dalam kasus ini adalah <b>Mahasiswa</b> Mengambil <b>Mata Kuliah</b></small>
+      <small>Contoh dalam kasus ini adalah <b>Post</b> dan <b>Video</b> Memiliki <b>Comment</b></small>
    </div>
    
    <div class="row mt-2">
@@ -26,20 +26,20 @@
                </tr>
             </thead>
             <tbody>
-               @foreach ($mahasiswas as $mahasiswa)
+               {{-- @foreach ($mahasiswas as $mahasiswa)
                   <tr>
                      <td>{{ $mahasiswa->nama }}</td>
                      <td>{{ $mahasiswa->kelas }}</td>
                      <td>{{ $mahasiswa->mata_kuliah->count() }}</td>
                   </tr>
-               @endforeach
+               @endforeach --}}
             </tbody>
             <tfoot >
                <tr>
                   <td colspan="3">
                      <div class="row text-center">
                         <div class="col-md-12 ">
-                              {{ $mahasiswas->appends(Request::all())->links() }}
+                              {{-- {{ $mahasiswas->appends(Request::all())->links() }} --}}
                         </div>
                      </div>
                   </td>
