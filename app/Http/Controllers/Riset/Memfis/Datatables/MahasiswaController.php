@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Datatables;
+namespace App\Http\Controllers\Riset\Memfis\Datatables;
 
 use App\Http\Controllers\Controller;
 use App\Mahasiswa;

@@ -25,7 +25,7 @@
 @section('content')
 <div class="container">
    <div class="text-left">
-      <a href="{{ route('test.index') }}">Back to menu</a>
+      <a href="{{ route('riset-memfis') }}">Back to menu</a>
    </div>
    
    <div class="text-center mt-3">

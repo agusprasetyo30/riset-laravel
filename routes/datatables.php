@@ -4,7 +4,7 @@
       Route::group([
 
          'prefix'    => 'datatables',
-         'namespace' => 'Datatables',
+         'namespace' => 'Riset\Memfis\Datatables',
 
       ], function () {
          

@@ -16,10 +16,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $videos = Video::paginate(3);
-        $posts = Post::paginate(3);
-
-        return view('mmf.riset.polymorphic.index', compact('videos', 'posts'));
+        return view('mmf.riset.polymorphic.index');
     }
 
     /**
