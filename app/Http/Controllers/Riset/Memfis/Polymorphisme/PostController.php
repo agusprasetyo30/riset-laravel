@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Riset\Polymorphisme;
+namespace App\Http\Controllers\Riset\Memfis\Polymorphisme;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class VideoController extends Controller
+class PostController extends Controller
 {
     /**
      * Display a listing of the resource.

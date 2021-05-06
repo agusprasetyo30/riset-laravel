@@ -74,11 +74,8 @@ Route::group(['namespace' => 'Riset'], function() {
             });
 
             // Riset Polymorfisme
-            Route::group(['prefix' => 'polymorphisme', 'as' => 'poly.'], function() {
-                Route::get('/', function() {
-                    
-                    return view('mmf.riset.polymorphic.index');
-                })->name('index');
+            Route::group(['prefix' => 'polymorphisme', 'as' => 'poly.', 'namespace' => 'Polymorphisme'], function() {
+                Route::get('/', 'DashboardController@index')->name('index');
             });
         });
     });
