@@ -38,7 +38,7 @@
    <div class="row justify-content-center mt-5">
       <div class="col-md-3">
          <div class="card">
-            <a href="" class="text-decoration-none">
+            <a href="{{ route('test.poly.video.index') }}" class="text-decoration-none">
                <div class="card-body text-center button-background">
                   <div class="p-3 font-weight-bolder font-20">Videos</div>
                </div>
@@ -47,7 +47,7 @@
       </div>
       <div class="col-md-3">
          <div class="card">
-            <a href="" class="text-decoration-none">
+            <a href="{{ route('test.poly.post.index') }}" class="text-decoration-none">
                <div class="card-body text-center button-background">
                   <div class="p-3 font-weight-bolder font-20">Posts</div>
                </div>

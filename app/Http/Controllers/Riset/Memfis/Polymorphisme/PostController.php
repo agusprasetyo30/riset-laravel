@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Riset\Memfis\Polymorphisme;
 
 use App\Http\Controllers\Controller;
+use App\Post;
+use App\Video;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -14,7 +16,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::paginate(5);
+
+        return view('mmf.riset.polymorphic.posts.index', compact('posts'));
     }
 
     /**

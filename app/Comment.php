@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
 
+    protected $fillable = ['body'];
     /**
      * Polymorphic: An entity can have zero or many approvals.
      *

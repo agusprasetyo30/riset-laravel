@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Video extends Model
 {
+    protected $fillable = ['title', 'url'];
+
     /**
      * Polymorphic: An entity can have zero or many approvals.
      *

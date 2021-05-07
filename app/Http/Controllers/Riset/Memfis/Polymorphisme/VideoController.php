@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Riset\Memfis\Polymorphisme;
 
+use App\Comment;
 use App\Http\Controllers\Controller;
 use App\Video;
 use Illuminate\Http\Request;
 
 class VideoController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +17,9 @@ class VideoController extends Controller
      */
     public function index()
     {
-        
+        $videos = Video::paginate(5);
+
+        return view('mmf.riset.polymorphic.videos.index', compact('videos'));
     }
 
     /**
@@ -25,7 +29,7 @@ class VideoController extends Controller
      */
     public function create()
     {
-        //
+        return view('mmf.riset.polymorphic.videos.create');
     }
 
     /**
@@ -47,7 +51,9 @@ class VideoController extends Controller
      */
     public function show($id)
     {
-        //
+        $video = Video::find($id);
+
+        return view('mmf.riset.polymorphic.videos.show', compact('video'));
     }
 
     /**
@@ -82,5 +88,19 @@ class VideoController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @return void
+     */
+    public function addCommentVideo(Request $request, $id)
+    {
+        Video::find($id)->comments()->create([
+            "body" => $request->get("comment"),
+        ]);
+
+        return redirect()->back();
     }
 }

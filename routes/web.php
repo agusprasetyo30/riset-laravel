@@ -76,6 +76,11 @@ Route::group(['namespace' => 'Riset'], function() {
             // Riset Polymorfisme
             Route::group(['prefix' => 'polymorphisme', 'as' => 'poly.', 'namespace' => 'Polymorphisme'], function() {
                 Route::get('/', 'DashboardController@index')->name('dashboard');
+                
+                Route::resource('video', 'VideoController');
+                Route::post('video/comment/{id}', 'VideoController@addCommentVideo')->name('video.comment');
+
+                Route::resource('post', 'PostController');
             });
         });
     });

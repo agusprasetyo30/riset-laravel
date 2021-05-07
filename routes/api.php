@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::group(['middleware' => 'auth:api'], function () {
+Route::group(['middleware' => 'auth:api', 'namespace' => 'Riset\Laravel'], function () {
     Route::get('todos', 'TodoApiController@index');
     Route::get('todos/{todo}', 'TodoApiController@show');
     Route::post('todos', 'TodoApiController@store');
