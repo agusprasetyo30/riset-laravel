@@ -40,7 +40,12 @@ class VideoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Video::create([
+            'title' => $request->get('title'),
+            'url'   => $request->get('url'),
+        ]);
+
+        return redirect()->route('test.poly.video.index');
     }
 
     /**
