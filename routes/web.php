@@ -81,6 +81,8 @@ Route::group(['namespace' => 'Riset'], function() {
                 Route::post('video/comment/{id}', 'VideoController@addCommentVideo')->name('video.comment');
 
                 Route::resource('post', 'PostController');
+                Route::post('post/comment/{id}', 'PostController@addCommentPost')->name('post.comment');
+
             });
         });
     });

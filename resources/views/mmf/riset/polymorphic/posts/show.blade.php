@@ -5,11 +5,11 @@
 @section('content') 
    <div class="container">
       <div class="text-left">
-         <a href="{{ route('test.poly.video.index') }}">Back to menu</a>
+         <a href="{{ route('test.poly.post.index') }}">Back to menu</a>
       </div>
       <div class="text-center mt-3">
          <h1>Polymorphisme</h1>
-         <h5>( Video | Show )</h5>
+         <h5>( Post | Show )</h5>
       </div>
 
       <div class="card">
@@ -19,13 +19,13 @@
                <div class="col-md-3">
                   <label class="font-weight-bolder">Title</label>
                   <div>
-                     {{ $video->title }}
+                     {{ $post->title }}
                   </div>
                </div>
                <div class="col-md-6">
-                  <label class="font-weight-bolder">Url</label>
+                  <label class="font-weight-bolder">Body</label>
                   <div>
-                     {{ $video->url }}
+                     {{ $post->body }}
                   </div>
                </div>
             </div>
@@ -37,17 +37,17 @@
             </div>
             <div class="row justify-content-center">
                <div class="col-md-9">
-                  @if ($video->comments->count() == 0)
+                  @if ($post->comments->count() == 0)
                   -
                   @else
                   <ul>
-                     @foreach ($video->comments as $comment)
+                     @foreach ($post->comments as $comment)
                      <li>{{ $comment->body }}</li>
                      @endforeach
                   </ul>
                   @endif
                   
-                  <form action="{{ route('test.poly.video.comment', $video->id) }}" method="post">
+                  <form action="{{ route('test.poly.post.comment', $post->id) }}" method="post">
                      @csrf
                      <div class="input-group mb-3">
                         <input type="text" class="form-control" name="comment" placeholder="Tambahkan Komentar">

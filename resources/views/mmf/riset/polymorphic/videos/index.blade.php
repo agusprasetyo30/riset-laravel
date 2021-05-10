@@ -1,6 +1,6 @@
 @extends('layouts.template')
 
-@section('title', 'Create | Polymorphisme')
+@section('title', 'Create Video | Polymorphisme')
 
 @section('content')
    <div class="container">

@@ -28,7 +28,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('mmf.riset.polymorphic.posts.create');
+        
     }
 
     /**
@@ -39,7 +40,12 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Post::create([
+            'title' => $request->get('title'),
+            'body'   => $request->get('body'),
+        ]);
+
+        return redirect()->route('test.poly.post.index');
     }
 
     /**
@@ -50,7 +56,9 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::find($id);
+
+        return view('mmf.riset.polymorphic.posts.show', compact('post'));
     }
 
     /**
@@ -85,5 +93,20 @@ class PostController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @param [type] $id
+     * @return void
+     */
+    public function addCommentPost(Request $request, $id)
+    {
+        Post::find($id)->comments()->create([
+            'body' => $request->get('comment'),
+        ]);
+
+        return redirect()->back();
     }
 }
