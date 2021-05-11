@@ -92,7 +92,13 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+
+        $post->comments()->where('commentable_id', $id)->delete();
+        
+        $post->delete();
+
+        return redirect()->back();
     }
 
     /**

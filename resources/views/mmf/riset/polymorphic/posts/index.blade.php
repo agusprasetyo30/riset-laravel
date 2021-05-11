@@ -30,12 +30,10 @@
                      <td>{{ $post->title }}</td>
                      <td>{{ $post->body }}</td>
                      <td>
-                        <form action="{{ route('test.poly.post.destroy', $post->id) }}" method="post">
-                           @csrf
-                           @method('delete')
+                        <div class="btn-group-vertical">
                            <a href="{{ route('test.poly.post.show', $post->id) }}" class="btn btn-sm btn-primary">Comment</a>
-
-                        </form>
+                           <a href="{{ route('test.poly.post.destroy', $post->id) }}" class="btn btn-sm btn-danger">Delete</a>
+                        </div>
                      </td>
                   </tr>
                @endforeach
