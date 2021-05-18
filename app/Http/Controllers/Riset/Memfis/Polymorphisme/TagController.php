@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Riset\Memfis\Polymorphisme;
 
 use App\Http\Controllers\Controller;
+use App\Tag;
 use Illuminate\Http\Request;
 
 class TagController extends Controller 
@@ -14,7 +15,9 @@ class TagController extends Controller
      */
     public function index()
     {
-        //
+        $tags = Tag::paginate(5);
+
+        return view('mmf.riset.polymorphic.tags.index', compact('tags'));
     }
 
     /**
@@ -24,7 +27,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        //
+        return view('mmf.riset.polymorphic.tags.create');
     }
 
     /**
@@ -35,7 +38,11 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Tag::create([
+            'name' => $request->get('name')
+        ]);
+
+        return redirect()->route('test.poly.tag.index');
     }
 
     /**

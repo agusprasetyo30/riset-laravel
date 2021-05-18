@@ -77,13 +77,18 @@ Route::group(['namespace' => 'Riset'], function() {
             Route::group(['prefix' => 'polymorphisme', 'as' => 'poly.', 'namespace' => 'Polymorphisme'], function() {
                 Route::get('/', 'DashboardController@index')->name('dashboard');
                 
-                Route::resource('/video', 'VideoController');
+                // Video
+                Route::resource('video', 'VideoController')->except(['destroy']);
+                Route::get('/video/{id}/delete', 'VideoController@destroy')->name('video.destroy');
                 Route::post('/video/comment/{id}', 'VideoController@addCommentVideo')->name('video.comment');
 
+                // Post
                 Route::resource('post', 'PostController')->except(['destroy']);
                 Route::get('/post/{id}/delete', 'PostController@destroy')->name('post.destroy');
                 Route::post('/post/comment/{id}', 'PostController@addCommentPost')->name('post.comment');
 
+                // Tag
+                Route::resource('tag', 'TagController');
             });
         });
     });

@@ -92,7 +92,13 @@ class VideoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $video = Video::find($id);
+
+        $video->comments()->where('commentable_id', $id)->delete();
+        
+        $video->delete();
+
+        return redirect()->back();
     }
 
     /**

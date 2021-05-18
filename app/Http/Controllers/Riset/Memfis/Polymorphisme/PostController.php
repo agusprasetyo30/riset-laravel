@@ -29,7 +29,6 @@ class PostController extends Controller
     public function create()
     {
         return view('mmf.riset.polymorphic.posts.create');
-        
     }
 
     /**
