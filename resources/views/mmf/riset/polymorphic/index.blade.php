@@ -77,7 +77,7 @@
                   </div>
                   <div class="col-md-6">
                      <div class="card">
-                        <a href="#" class="text-decoration-none">
+                        <a href="{{ route('test.poly.mtm.video.index') }}" class="text-decoration-none">
                            <div class="card-body text-center button-background">
                               <div class="p-3 font-weight-bolder font-20">Videos</div>
                            </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Riset\Memfis\Polymorphisme;
 
 use App\Comment;
 use App\Http\Controllers\Controller;
+use App\Post;
 use App\Video;
 use Illuminate\Http\Request;
 
@@ -19,7 +20,7 @@ class VideoController extends Controller
     {
         $videos = Video::paginate(5);
 
-        return view('mmf.riset.polymorphic.videos.index', compact('videos'));
+        return view('mmf.riset.polymorphic.videos.index-1tm', compact('videos'));
     }
 
     /**
@@ -29,7 +30,7 @@ class VideoController extends Controller
      */
     public function create()
     {
-        return view('mmf.riset.polymorphic.videos.create');
+        return view('mmf.riset.polymorphic.videos.create-1tm');
     }
 
     /**
@@ -45,7 +46,7 @@ class VideoController extends Controller
             'url'   => $request->get('url'),
         ]);
 
-        return redirect()->route('test.poly.video.index');
+        return redirect()->route('test.poly.video.index-1tm');
     }
 
     /**
@@ -58,7 +59,7 @@ class VideoController extends Controller
     {
         $video = Video::find($id);
 
-        return view('mmf.riset.polymorphic.videos.show', compact('video'));
+        return view('mmf.riset.polymorphic.videos.show-1tm', compact('video'));
     }
 
     /**
@@ -113,5 +114,25 @@ class VideoController extends Controller
         ]);
 
         return redirect()->back();
+    }
+
+    /**** Many to Many Polymorphic ***/
+
+    /**
+     * Index many to many
+     *
+     * @return void
+     */
+    public function indexManyToMany()
+    {
+        $videos = Video::paginate(5);
+
+        // $a = Post::find(2)->tags()->create([
+        //     'id' => 'Post',
+        // ]);
+        
+        dd($videos[0]);
+
+        return view('mmf.riset.polymorphic.videos.index-mtm', compact('videos'));
     }
 }

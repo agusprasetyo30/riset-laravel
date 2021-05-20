@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    /**** One to Many Polymorphic ***/
+
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +20,7 @@ class PostController extends Controller
     {
         $posts = Post::paginate(5);
 
-        return view('mmf.riset.polymorphic.posts.index', compact('posts'));
+        return view('mmf.riset.polymorphic.posts.index-1tm', compact('posts'));
     }
 
     /**
@@ -28,7 +30,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('mmf.riset.polymorphic.posts.create');
+        return view('mmf.riset.polymorphic.posts.create-1tm');
     }
 
     /**
@@ -44,7 +46,7 @@ class PostController extends Controller
             'body'   => $request->get('body'),
         ]);
 
-        return redirect()->route('test.poly.post.index');
+        return redirect()->route('test.poly.post.index-1tm');
     }
 
     /**
@@ -57,7 +59,7 @@ class PostController extends Controller
     {
         $post = Post::find($id);
 
-        return view('mmf.riset.polymorphic.posts.show', compact('post'));
+        return view('mmf.riset.polymorphic.posts.show-1tm', compact('post'));
     }
 
     /**
@@ -113,5 +115,19 @@ class PostController extends Controller
         ]);
 
         return redirect()->back();
+    }
+
+    /**** Many to Many Polymorphic ***/
+
+    /**
+     * Index many to many
+     *
+     * @return void
+     */
+    public function indexManyToMany()
+    {
+        $posts = Post::paginate(5);
+
+        return view('mmf.riset.polymorphic.posts.index-mtm', compact('posts'));
     }
 }

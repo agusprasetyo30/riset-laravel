@@ -20,7 +20,7 @@
             <thead class="text-center">
                <tr>
                   <th width=30%>Title</th>
-                  <th width=60%>Url</th>
+                  <th width=60%>Body</th>
                   <th width=10%>Action</th>
                </tr>
             </thead>
