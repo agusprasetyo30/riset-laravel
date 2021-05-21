@@ -30,10 +30,19 @@
                      <tr>
                         <td>{{ $video->title }}</td>
                         <td>{{ $video->url }}</td>
-                        <td>#</td>
+                        <td class="text-center">
+                           @if ($video->tags->count() == 0)
+                              -
+                           @else
+                              @foreach ($video->tags as $tag)
+                                 <label for="" class="badge badge-primary">{{ $tag->name }}</label>
+                              @endforeach
+                           @endif
+                        </td>
                         <td>
                            <div class="btn-group-vertical">
-                              <a href="{{ route('test.poly.video.show', $video->id) }}" class="btn btn-sm btn-primary">Comment</a>
+                              {{-- Tombol ini digunakan untuk menampilkan form untuk menambahkan tags --}}
+                              <a href="{{ route('test.poly.mtm.video.show', $video->id) }}" class="btn btn-sm btn-primary">Add Tags</a>
                               <a href="{{ route('test.poly.video.destroy', $video->id) }}" class="btn btn-sm btn-danger">Delete</a>
                            </div>
                         </td>

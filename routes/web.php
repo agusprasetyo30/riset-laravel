@@ -87,6 +87,9 @@ Route::group(['namespace' => 'Riset'], function() {
                 // Many to Many Polymorphic
                 Route::group(['prefix' => 'many-to-many', 'as' => 'mtm.video.'], function() {
                     Route::get('/video',  'VideoController@indexManyToMany')->name('index');
+                    Route::get('/video/{id}',  'VideoController@showManyToMany')->name('show');
+                    Route::post('/video/tag/{id}', 'VideoController@addTagVideo')->name('tag');
+
                 });
                 
 

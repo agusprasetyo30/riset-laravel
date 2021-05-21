@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Riset\Memfis\Polymorphisme;
 use App\Comment;
 use App\Http\Controllers\Controller;
 use App\Post;
+use App\Tag;
 use App\Video;
 use Illuminate\Http\Request;
 
@@ -128,11 +129,40 @@ class VideoController extends Controller
         $videos = Video::paginate(5);
 
         // $a = Post::find(2)->tags()->create([
-        //     'id' => 'Post',
+        //     'name' => 'Post',
         // ]);
-        
-        dd($videos[0]);
 
         return view('mmf.riset.polymorphic.videos.index-mtm', compact('videos'));
+    }
+
+    /**
+     * Show many to many
+     *
+     * @param [type] $id
+     * @return void
+     */
+    public function showManyToMany($id)
+    {
+        $video = Video::find($id);
+
+        $tags = Tag::all();
+
+        return view('mmf.riset.polymorphic.videos.show-mtm', compact('video', 'tags'));
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @param Request $request
+     * @param [type] $id
+     * @return void
+     */
+    public function addTagVideo(Request $request, $id)
+    {
+        Video::find($id)->tags()->attach([
+            'name' => $request->tag,
+        ]);
+
+        return redirect()->route('test.poly.mtm.video.index');
     }
 }
