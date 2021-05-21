@@ -9,7 +9,7 @@
    </div>
    
    <div class="text-center mt-3">
-      <h1>Polymorphisme</h1>
+      <h1>Polymorphisme (Many to Many)</h1>
       <h5>( Post )</h5>
    </div>
 
@@ -20,7 +20,8 @@
             <thead class="text-center">
                <tr>
                   <th width=30%>Title</th>
-                  <th width=60%>Body</th>
+                  <th width=40%>Body</th>
+                  <th width=20%>Tag</th>
                   <th width=10%>Action</th>
                </tr>
             </thead>
@@ -29,9 +30,18 @@
                   <tr>
                      <td>{{ $post->title }}</td>
                      <td>{{ $post->body }}</td>
+                     <td class="text-center">
+                        @if ($post->tags->count() == 0)
+                              -
+                        @else
+                           @foreach ($post->tags as $tag)
+                              <label class="badge badge-primary">{{ $tag->name }}</label>
+                           @endforeach
+                        @endif
+                     </td>
                      <td>
                         <div class="btn-group-vertical">
-                           <a href="{{ route('test.poly.post.show', $post->id) }}" class="btn btn-sm btn-primary">Comment</a>
+                           <a href="{{ route('test.poly.mtm.post.show', $post->id) }}" class="btn btn-sm btn-primary">Add Tags</a>
                            <a href="{{ route('test.poly.post.destroy', $post->id) }}" class="btn btn-sm btn-danger">Delete</a>
                         </div>
                      </td>

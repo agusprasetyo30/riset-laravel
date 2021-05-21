@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Riset\Memfis\Polymorphisme;
 
 use App\Http\Controllers\Controller;
 use App\Post;
+use App\Tag;
 use App\Video;
 use Illuminate\Http\Request;
 
@@ -129,5 +130,36 @@ class PostController extends Controller
         $posts = Post::paginate(5);
 
         return view('mmf.riset.polymorphic.posts.index-mtm', compact('posts'));
+    }
+
+    /**
+     * Show many to many
+     *
+     * @param [type] $id
+     * @return void
+     */
+    public function showManyToMany($id)
+    {
+        $post = Post::find($id);
+
+        $tags = Tag::all();
+
+        return view('mmf.riset.polymorphic.posts.show-mtm', compact('post', 'tags'));
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @param Request $request
+     * @param [type] $id
+     * @return void
+     */
+    public function addTagPost(Request $request, $id)
+    {
+        Post::find($id)->tags()->attach([
+            'name' => $request->tag,
+        ]);
+
+        return redirect()->route('test.poly.mtm.post.index');
     }
 }
