@@ -108,7 +108,7 @@ Route::group(['namespace' => 'Riset'], function() {
                     Route::get('/post',  'PostController@indexManyToMany')->name('index');
                     Route::get('/post/{id}',  'PostController@showManyToMany')->name('show');
                     Route::post('/post/tag/{id}', 'PostController@addTagPost')->name('add.tag'); // menambahkan tag
-                    Route::get('/post/tag/{id}',  'PostController@deleteTagPost')->name('delete.tag');
+                    Route::get('/post/tag/{id}',  'PostController@deleteTagPost')->name('delete.tag'); // Menghapus tag
                 });
 
                 /*** Tag ***/

@@ -125,9 +125,15 @@ class PostController extends Controller
      * @param [type] $id
      * @return void
      */
-    public function deleteCommentPost($id)
+    public function deleteCommentPost(Request $request, $id)
     {
-        Comment::where('id', $id)->delete();
+        // Mengambil value variabel URL
+        $commentPost = $request->get('del');
+
+        $post = Post::find($id);
+
+        $post->comments()
+            ->where('id', $commentPost)->delete();
 
         return redirect()->back();
     }

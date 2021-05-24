@@ -123,9 +123,15 @@ class VideoController extends Controller
      * @param [type] $id
      * @return void
      */
-    public function deleteCommentVideo($id)
+    public function deleteCommentVideo(Request $request, $id)
     {
-        Comment::where('id', $id)->delete();
+        // Mengambil value variabel URL
+        $commentVideo = $request->get('del');
+
+        $video = Video::find($id);
+
+        $video->comments()
+            ->where('id', $commentVideo)->delete();
 
         return redirect()->back();
     }

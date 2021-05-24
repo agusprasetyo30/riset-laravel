@@ -43,7 +43,7 @@
                      @foreach ($video->comments as $comment)
                      <li>
                         {{ $comment->body }} 
-                        <a href="{{ route('test.poly.video.comment.delete', $comment->id) }}" > [ Hapus ]</a>
+                        <a href="{{ route('test.poly.video.comment.delete', ['id' => $video->id, 'del' => $comment->id]) }}" > [ Hapus ]</a>
                      </li>
                      @endforeach
                   </ul>
