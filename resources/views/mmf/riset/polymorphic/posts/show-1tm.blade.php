@@ -42,7 +42,10 @@
                   @else
                   <ul>
                      @foreach ($post->comments as $comment)
-                     <li>{{ $comment->body }}</li>
+                     <li>
+                        {{ $comment->body }}
+                        <a href="{{ route('test.poly.post.comment.delete', $comment->id) }}" > [ Hapus ]</a>
+                     </li>
                      @endforeach
                   </ul>
                   @endif

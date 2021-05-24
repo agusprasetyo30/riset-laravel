@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Riset\Memfis\Polymorphisme;
 
+use App\Comment;
 use App\Http\Controllers\Controller;
 use App\Post;
 use App\Tag;
@@ -114,6 +115,19 @@ class PostController extends Controller
         Post::find($id)->comments()->create([
             'body' => $request->get('comment'),
         ]);
+
+        return redirect()->back();
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @param [type] $id
+     * @return void
+     */
+    public function deleteCommentPost($id)
+    {
+        Comment::where('id', $id)->delete();
 
         return redirect()->back();
     }

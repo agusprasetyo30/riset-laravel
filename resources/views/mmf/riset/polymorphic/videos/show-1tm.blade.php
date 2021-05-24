@@ -11,7 +11,6 @@
          <h1>Polymorphisme</h1>
          <h5>( Video | Show )</h5>
       </div>
-
       <div class="card">
          <div class="card-body">
 
@@ -42,7 +41,10 @@
                   @else
                   <ul>
                      @foreach ($video->comments as $comment)
-                     <li>{{ $comment->body }}</li>
+                     <li>
+                        {{ $comment->body }} 
+                        <a href="{{ route('test.poly.video.comment.delete', $comment->id) }}" > [ Hapus ]</a>
+                     </li>
                      @endforeach
                   </ul>
                   @endif

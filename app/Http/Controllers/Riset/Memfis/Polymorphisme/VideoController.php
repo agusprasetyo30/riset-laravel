@@ -117,6 +117,19 @@ class VideoController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * Undocumented function
+     *
+     * @param [type] $id
+     * @return void
+     */
+    public function deleteCommentVideo($id)
+    {
+        Comment::where('id', $id)->delete();
+
+        return redirect()->back();
+    }
+
     /**** Many to Many Polymorphic ***/
 
     /**

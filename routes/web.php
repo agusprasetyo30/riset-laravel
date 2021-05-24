@@ -83,6 +83,8 @@ Route::group(['namespace' => 'Riset'], function() {
                 Route::resource('video', 'VideoController')->except(['destroy']);
                 Route::get('/video/{id}/delete', 'VideoController@destroy')->name('video.destroy');
                 Route::post('/video/comment/{id}', 'VideoController@addCommentVideo')->name('video.comment');
+                Route::get('/video/comment/{id}/delete', 'VideoController@deleteCommentVideo')->name('video.comment.delete');
+
 
                 // Many to Many Polymorphic
                 Route::group(['prefix' => 'many-to-many', 'as' => 'mtm.video.'], function() {
@@ -99,6 +101,7 @@ Route::group(['namespace' => 'Riset'], function() {
                 Route::resource('post', 'PostController')->except(['destroy']);
                 Route::get('/post/{id}/delete', 'PostController@destroy')->name('post.destroy');
                 Route::post('/post/comment/{id}', 'PostController@addCommentPost')->name('post.comment');
+                Route::get('/post/comment/{id}/delete', 'PostController@deleteCommentPost')->name('post.comment.delete');
 
                 // Many to Many Polymorphic
                 Route::group(['prefix' => 'many-to-many', 'as' => 'mtm.post.'], function() {
