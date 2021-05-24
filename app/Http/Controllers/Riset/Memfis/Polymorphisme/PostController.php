@@ -14,7 +14,7 @@ class PostController extends Controller
     /**** One to Many Polymorphic ***/
 
     /**
-     * Display a listing of the resource.
+     * Menampilkan tampilan index Post
      *
      * @return \Illuminate\Http\Response
      */
@@ -26,7 +26,7 @@ class PostController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Menampilkan tampilan untuk menambahkan data Post
      *
      * @return \Illuminate\Http\Response
      */
@@ -52,7 +52,7 @@ class PostController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Menyimpan/save data Post
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -65,7 +65,7 @@ class PostController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Menampilkan tampilan edit Post
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -76,7 +76,7 @@ class PostController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update data Post
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -88,7 +88,7 @@ class PostController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Menghapus data Post beserta komentar
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -105,7 +105,7 @@ class PostController extends Controller
     }
 
     /**
-     * Undocumented function
+     * Fungsi untuk menambahkan komentar di Post 
      *
      * @param [type] $id
      * @return void
@@ -120,7 +120,7 @@ class PostController extends Controller
     }
 
     /**
-     * Undocumented function
+     * Fungsi untuk menghapus komentar pada Post
      *
      * @param [type] $id
      * @return void
@@ -162,7 +162,7 @@ class PostController extends Controller
     }
 
     /**
-     * Undocumented function
+     * menambahkan tag pada Post
      *
      * @param Request $request
      * @param [type] $id
@@ -175,5 +175,24 @@ class PostController extends Controller
         ]);
 
         return redirect()->route('test.poly.mtm.post.index');
+    }
+
+    /**
+     * menghapus tag post
+     *
+     * @param Request $request
+     * @param [type] $id
+     * @return void
+     */
+    public function deleteTagPost(Request $request, $id)
+    {
+        $tagPostId = $request->get('del');
+
+        Post::find($id)
+            ->tags()
+            // ->detach(['id' => $tagVideoId]);
+            ->detach($tagPostId);
+
+        return redirect()->back();
     }
 }

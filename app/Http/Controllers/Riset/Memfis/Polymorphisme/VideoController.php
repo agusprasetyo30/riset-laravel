@@ -13,7 +13,7 @@ class VideoController extends Controller
 {
 
     /**
-     * Display a listing of the resource.
+     * Menampilkan tampilan index video
      *
      * @return \Illuminate\Http\Response
      */
@@ -25,7 +25,7 @@ class VideoController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Menampilkan tampilan untuk menambahkan data video
      *
      * @return \Illuminate\Http\Response
      */
@@ -35,7 +35,7 @@ class VideoController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Menyimpan/save data video
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -51,7 +51,7 @@ class VideoController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Menampilkan data video beserta komentar
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -64,7 +64,7 @@ class VideoController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Menampilkan tampilan edit video
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -75,7 +75,7 @@ class VideoController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update data video
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -87,7 +87,7 @@ class VideoController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Menghapus data video beserta komentar
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -104,7 +104,7 @@ class VideoController extends Controller
     }
 
     /**
-     * Undocumented function
+     * Fungsi untuk menambahkan komentar di video 
      *
      * @return void
      */
@@ -118,7 +118,7 @@ class VideoController extends Controller
     }
 
     /**
-     * Undocumented function
+     * Fungsi untuk menghapus komentar pada video
      *
      * @param [type] $id
      * @return void
@@ -164,7 +164,7 @@ class VideoController extends Controller
     }
 
     /**
-     * Undocumented function
+     * menambahkan tag pada video
      *
      * @param Request $request
      * @param [type] $id
@@ -177,5 +177,25 @@ class VideoController extends Controller
         ]);
 
         return redirect()->route('test.poly.mtm.video.index');
+    }
+
+    /**
+     * menghapus tag video
+     *
+     * @param Request $request
+     * @param [type] $id
+     * @return void
+     */
+    public function deleteTagVideo(Request $request, $id)
+    {
+        $tagVideoId = $request->get('del');
+
+        // ->where('tag_id', $tagVideoId)
+        Video::find($id)
+            ->tags()
+            // ->detach(['id' => $tagVideoId]);
+            ->detach($tagVideoId);
+
+        return redirect()->back();
     }
 }

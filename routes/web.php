@@ -90,8 +90,8 @@ Route::group(['namespace' => 'Riset'], function() {
                 Route::group(['prefix' => 'many-to-many', 'as' => 'mtm.video.'], function() {
                     Route::get('/video',  'VideoController@indexManyToMany')->name('index');
                     Route::get('/video/{id}',  'VideoController@showManyToMany')->name('show');
-                    Route::post('/video/tag/{id}', 'VideoController@addTagVideo')->name('tag'); // menambahkan tag
-
+                    Route::post('/video/tag/{id}', 'VideoController@addTagVideo')->name('add.tag'); // menambahkan tag
+                    Route::get('/video/tag/{id}',  'VideoController@deleteTagVideo')->name('delete.tag'); // Menghapus tag
                 });
                 
 
@@ -107,7 +107,8 @@ Route::group(['namespace' => 'Riset'], function() {
                 Route::group(['prefix' => 'many-to-many', 'as' => 'mtm.post.'], function() {
                     Route::get('/post',  'PostController@indexManyToMany')->name('index');
                     Route::get('/post/{id}',  'PostController@showManyToMany')->name('show');
-                    Route::post('/post/tag/{id}', 'PostController@addTagPost')->name('tag'); // menambahkan tag
+                    Route::post('/post/tag/{id}', 'PostController@addTagPost')->name('add.tag'); // menambahkan tag
+                    Route::get('/post/tag/{id}',  'PostController@deleteTagPost')->name('delete.tag');
                 });
 
                 /*** Tag ***/

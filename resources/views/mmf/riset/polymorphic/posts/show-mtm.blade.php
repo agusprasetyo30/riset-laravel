@@ -42,12 +42,15 @@
                   @else
                   <ul>
                      @foreach ($post->tags as $tag)
-                        <li>{{ $tag->name }}</li>
+                        <li>
+                           {{ $tag->name }}
+                           <a href="{{ route('test.poly.mtm.post.delete.tag', ['id' => $post->id , 'del' => $tag->id]) }}"> [ Hapus ]</a>
+                        </li>
                      @endforeach
                   </ul>
                   @endif
                   
-                  <form action="{{ route('test.poly.mtm.post.tag', $post->id) }}" method="post">
+                  <form action="{{ route('test.poly.mtm.post.add.tag', $post->id) }}" method="post">
                      @csrf
                         <label for="tag">Pilih Tag</label>
                         <select name="tag" id="tag" class="form-control" style="cursor: pointer">
