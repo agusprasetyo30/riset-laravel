@@ -10,7 +10,25 @@
 
 - Policy/Policies                   [ ]
 - Form Request + Fungsinya          [X]
-- Penerapan Polimorfisme            [ ]
+- Penerapan Polimorfisme            [X]
+  ```
+  Pada kasus ini menggunakan kasus 
+    * One to Many
+      - Video
+      - Post
+      - Comment
+
+      ex: 
+      Pada kasus ini `Video` dan `Post` dapat menambahkan komentar/Comment
+
+    * Many to Many
+      - Video
+      - Post
+      - Tag
+
+      ex:
+      Pada kasus ini `Video` dan `Post` dapat menambahkan `Tag` sesuai keinginan, dan sebaliknya `Tag` memiliki beberapa `Video` dan `Post`
+  ```
 
 ### Riset Package/Library
 
@@ -31,7 +49,7 @@
 - spatie/laravel-tags               [ ]
   > Modul ini digunakan untuk . . .
 - yajra/laravel-datatables-oracle   [X]
-  > Modul ini digunakan untuk . . .
+  > Digunakan untuk meriset datatable yang digunakan pada MeMFIS
 
 ## Refrensi Tutorial
 
