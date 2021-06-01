@@ -1,5 +1,5 @@
 # Riset Laravel
-Ini adalah gabungan dari riset laravel yang sebelumnya dilakukan dengan riset MeMFIS
+Ini adalah gabungan dari riset laravel yang sebelumnya dilakukan dengan riset MeMFIS, Semangat
 
 ## Tahapan membuat project
 1. Membuat project dengan cara `composer create-project --prefer-dist laravel/laravel nama_project`
