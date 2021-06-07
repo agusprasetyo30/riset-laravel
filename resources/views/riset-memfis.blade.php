@@ -73,7 +73,7 @@
                <div class="row">
                   <label class="font-weight-bold">Riset Project Laravel</label>
                   <div class="col-md-12">
-                     <a class="btn links bg-dark" href="#">Policy/Policies</a>
+                     <a class="btn links bg-warning" href="#">Policy/Policies</a>
                      <a class="btn links" href="{{ route('test.index') }}">Form Request + Fungsi</a>
                      <a class="btn links" href="{{ route('test.poly.dashboard') }}">Polimorphisme</a>
                      <a class="btn links" href="{{ route('test.index') }}">ScopeOf... (Builder)</a>
