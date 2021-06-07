@@ -76,7 +76,7 @@
                      <a class="btn links bg-dark" href="#">Policy/Policies</a>
                      <a class="btn links" href="{{ route('test.index') }}">Form Request + Fungsi</a>
                      <a class="btn links" href="{{ route('test.poly.dashboard') }}">Polimorphisme</a>
-                     <a class="btn links bg-warning" href="#">ScopeOf... (Builder)</a>
+                     <a class="btn links" href="{{ route('test.index') }}">ScopeOf... (Builder)</a>
                   </div>
                </div>
                <div class="row mt-4">

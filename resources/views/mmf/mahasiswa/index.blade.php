@@ -7,6 +7,19 @@
 
    <a href="{{ route('test.mahasiswa.create') }}" class="btn btn-primary btn-sm mb-2">Tambah Mahasiswa</a>
    <a href="{{ route('test.index') }}" class="btn btn-primary btn-sm mb-2 float-right">Kembali</a>
+
+   <form action="{{ route('test.mahasiswa.index') }}" method="GET" class="form-group">
+      <div class="mt-2 mb-2 d-inline-block">
+         <label for="gender">Sorting (OfScope)</label>
+         <select name="gender" id="gender" class="form-control">
+            <option value="all">All</option>
+            <option value="L" {{ Request::get('gender') == 'L' ? 'selected' : '' }}>Laki-laki</option>
+            <option value="P" {{ Request::get('gender') == 'P' ? 'selected' : '' }}>Perempuan</option>
+         </select>
+         
+      </div>
+      <input type="submit" value="Cari" class="btn btn-success">
+   </form>
    <table class="table table-bordered table-hover table-striped">
       <thead>
          <tr>
@@ -40,7 +53,13 @@
                </td>
          </tr>
          @endforeach
-
       </tbody>
+      <tfoot>
+         <tr>
+            <td colspan="6">
+               {{ $mahasiswa->appends(Request::all())->links() }}
+            </td>
+         </tr>
+      </tfoot>
    </table>
 @endsection

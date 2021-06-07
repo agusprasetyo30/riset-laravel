@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class Mahasiswa extends Model
@@ -31,5 +32,29 @@ class Mahasiswa extends Model
     public function getRouteKeyName()
     {
         return 'uuid';
+    }
+
+    /** RISET GetAttribute & ScopeOf **/
+
+    /**
+     * Undocumented function
+     *
+     * @param [type] $query
+     * @param [type] $genderType
+     * @return void
+     */
+    public function scopeOfGender($query, $genderType)
+    {
+        return $query->where('jk', $genderType);
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @return void
+     */
+    public function getAmbilMataKuliahAttribute()
+    {
+        return $this->mata_kuliah()->get();
     }
 }

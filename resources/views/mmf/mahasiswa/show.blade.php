@@ -46,8 +46,9 @@
                         </div>
                   
                      @else
+                        {{-- Untuk relasi mata kuliah menggunakan Get{Attribute}Attribute pada model --}}
                         <ul>
-                           @foreach ($mahasiswa->mata_kuliah as $mata_kuliah)
+                           @foreach ($mahasiswa->AmbilMataKuliah as $mata_kuliah)
                               <li>{{ $mata_kuliah->nama }}</li>
                            @endforeach
                         </ul>

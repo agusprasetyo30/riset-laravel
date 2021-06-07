@@ -20,7 +20,15 @@ class MahasiswaController extends Controller
      */
     public function index(Request $request)
     {
-        $mahasiswa = Mahasiswa::all();
+        if ($request->get('gender') == 'L' || $request->get('gender') == 'P') {
+            $mahasiswa = Mahasiswa::ofGender($request->get('gender'))->paginate(5); 
+        
+        } else if ($request->get('gender') == 'all' || empty($request->get('gender'))) {
+            $mahasiswa = Mahasiswa::paginate(5);
+        
+        } else {
+            abort(404);
+        }
 
         return view('mmf.mahasiswa.index', compact('mahasiswa'));
     }
