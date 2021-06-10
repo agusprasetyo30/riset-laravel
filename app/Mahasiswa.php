@@ -37,7 +37,7 @@ class Mahasiswa extends Model
     /** RISET GetAttribute & ScopeOf **/
 
     /**
-     * Undocumented function
+     * Mencari/menampilkan gender berdasarkan type jenis kelamin yang diinput sesuai dengan type
      *
      * @param [type] $query
      * @param [type] $genderType
@@ -49,7 +49,7 @@ class Mahasiswa extends Model
     }
 
     /**
-     * Undocumented function
+     * Menampilkan mahasiswa yang memiliki/mengambil mata kuliah
      *
      * @return void
      */

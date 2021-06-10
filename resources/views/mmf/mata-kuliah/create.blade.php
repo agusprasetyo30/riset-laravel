@@ -7,30 +7,28 @@
 
    <div class="row justify-content-center">
       <div class="col-md-6">
-         <form name="matakuliahForm" id="matakuliahForm">
-            <div class="card">
-               <div class="card-body">
-                  <div class="form-group">
-                     <label for="nama">Nama Mata Kuliah</label>
-                     <input type="text" name="nama" id="nama" class="form-control" placeholder="Masukan Nama Mata Kuliah">
-                     <small id="nama-error" class="text-danger"></small>
-                  </div>
-                  
-                  <div class="form-group">
-                     <label for="status">Status</label>
-                     <select name="status" id="status" class="form-control">
-                        <option value="ACTIVE">ACTIVE</option>
-                        <option value="INACTIVE">INACTIVE</option>
-                     </select>
-                  </div>
-                  
-                  <div class="form-group">
-                     <button type="button" class="btn btn-success simpan">Simpan</button>
-                     <a href="{{ url()->previous() }}" class="btn btn-primary">Kembali</a>
-                  </div>
+         <div class="card">
+            <div class="card-body">
+               <div class="form-group">
+                  <label for="nama">Nama Mata Kuliah</label>
+                  <input type="text" name="nama" id="nama" class="form-control" placeholder="Masukan Nama Mata Kuliah">
+                  <small id="nama-error" class="text-danger"></small>
+               </div>
+               
+               <div class="form-group">
+                  <label for="status">Status</label>
+                  <select name="status" id="status" class="form-control">
+                     <option value="ACTIVE">ACTIVE</option>
+                     <option value="INACTIVE">INACTIVE</option>
+                  </select>
+               </div>
+               
+               <div class="form-group">
+                  <button type="button" class="btn btn-success simpan">Simpan</button>
+                  <a href="{{ route('test.matakuliah.index') }}" class="btn btn-primary">Kembali</a>
                </div>
             </div>
-         </form>
+         </div>
       </div>
    </div>
 @endsection

@@ -43,22 +43,24 @@ Route::group(['namespace' => 'Riset'], function() {
             
             // Dashboard
             Route::get('/', function () {
-                $mahasiswa = Mahasiswa::all();
+                $mahasiswa = Mahasiswa::paginate(5);
 
                 return view('mmf.index', compact('mahasiswa'));
             })->name('index');
 
             // Mata Kuliah
-                Route::resource("mata-kuliah", "MatakuliahController", [
-                    "parameters" => ["mata-kuliah" => "mata_kuliah"],
-                ])->names([
-                    "index"     => "matakuliah.index",
-                    "create"    => "matakuliah.create",
-                    "store"     => "matakuliah.store",
-                    "edit"      => "matakuliah.edit",
-                    "update"    => "matakuliah.update",
-                    "destroy"   => "matakuliah.destroy",
-                ])->except('show');
+            Route::resource("mata-kuliah", "MatakuliahController", [
+                "parameters" => ["matakuliah" => "mata_kuliah"],
+            ])->names([
+                "index"     => "matakuliah.index",
+                "create"    => "matakuliah.create",
+                "store"     => "matakuliah.store",
+                "edit"      => "matakuliah.edit",
+                "update"    => "matakuliah.update",
+                "destroy"   => "matakuliah.destroy",
+                "show"      => "matakuliah.show",
+            ]);
+            // ->except('show');
 
             // Mahasiswa    
             Route::resource('mahasiswa', "MahasiswaController");

@@ -20,7 +20,9 @@
          @foreach ($mata_kuliah as $index => $item)
             <tr>
                <td>{{ ++$index }}. </td>
-               <td>{{ $item->nama }}</td>
+               <td>
+                  <a href="{{ route('test.matakuliah.show', $item->uuid) }}">{{ $item->nama }}</a>
+               </td>
                <td>
                   @if ($item->status == "ACTIVE")
                      <span class="badge badge-success">ACTIVE</span>

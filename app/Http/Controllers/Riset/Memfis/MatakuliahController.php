@@ -37,6 +37,23 @@ class MatakuliahController extends Controller
     /**
      * Undocumented function
      *
+     * @param Mata_kuliah $mata_kuliah
+     * @return void
+     */
+    public function show(Mata_kuliah $mata_kuliah)
+    {
+        try {
+            return view('mmf.mata-kuliah.show', compact('mata_kuliah'));
+        
+        } catch (ModelNotFoundException $m) {
+            abort(404, $m->getMessage());
+            // dd($m->getMessage());
+        }
+    }
+
+    /**
+     * Undocumented function
+     *
      * @return void
      */
     public function store(MataKuliahRequest $request)
@@ -50,7 +67,7 @@ class MatakuliahController extends Controller
         $mata_kuliah->status = $request->get('status');
         $mata_kuliah->uuid = $uuid;
 
-        // $mata_kuliah->save();
+        $mata_kuliah->save();
 
         return response()->json($mata_kuliah, 200);
         // return redirect()

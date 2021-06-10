@@ -34,6 +34,13 @@
                </tr>
             @endforeach
          </tbody>
+         <tfoot>
+            <tr>
+               <td colspan=4>
+                  {{ $mahasiswa->appends(Request::all())->links() }}
+               </td>
+            </tr>
+         </tfoot>
       </table>
    </div>
 @endsection
