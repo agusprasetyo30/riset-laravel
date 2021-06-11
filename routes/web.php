@@ -41,14 +41,20 @@ Route::group(['namespace' => 'Riset'], function() {
 
         Route::group(['prefix' => 'test', 'as' => 'test.'], function () {
             
-            // Dashboard
+            /**
+             * Data route dashboard
+             */
             Route::get('/', function () {
                 $mahasiswa = Mahasiswa::paginate(5);
 
                 return view('mmf.index', compact('mahasiswa'));
             })->name('index');
 
-            // Mata Kuliah
+            /**
+             * NOTE : Route untuk identifikasi data Mata Kuliah untuk kebutuhan riset
+             * 
+             * Data Mata Kuliah
+             */
             Route::resource("mata-kuliah", "MatakuliahController", [
                 "parameters" => ["matakuliah" => "mata_kuliah"],
             ])->names([
@@ -62,20 +68,32 @@ Route::group(['namespace' => 'Riset'], function() {
             ]);
             // ->except('show');
 
-            // Mahasiswa    
+            /**
+             * NOTE : Route untuk identifikasi data mahasiswa untuk kebutuhan riset
+             * 
+             * Data Mahasiswa
+             */
             Route::resource('mahasiswa', "MahasiswaController");
-
             Route::group(['prefix' => 'mahasiswa', 'as' => 'mahasiswa.'], function () {
                 Route::get('/{uuid}/ambil-matkul', 'MahasiswaController@ambilMataKuliah')->name('ambil-matkul');
                 Route::get('/{id}/ambil-matkul/{matkul}/process', 'MahasiswaController@prosesPenambahanMatkul')->name('ambil-matkul.process');
             });
 
-            // Riset yajra/laravel-datatable
+            /**
+             * NOTE : Route untuk identifikasi riset datatable
+             * 
+             * Riset yajra/laravel-datatable
+             */ 
             Route::group(['prefix' => 'laravel-datatables', 'as' => 'datatables.', 'namespace' => 'Datatables'], function() {
                 Route::get('mahasiswa', 'MahasiswaController@indexDatatable')->name('mahasiswa');
             });
 
-            // Riset Polymorfisme
+            /**
+             * NOTE : Route untuk identifikasi riset polymorphisme
+             * 
+             * Riset Polymorfisme
+             */
+             
             Route::group(['prefix' => 'polymorphisme', 'as' => 'poly.', 'namespace' => 'Polymorphisme'], function() {
                 Route::get('/', 'DashboardController@index')->name('dashboard');
                 
@@ -117,16 +135,18 @@ Route::group(['namespace' => 'Riset'], function() {
                 Route::resource('tag', 'TagController');
             });
 
-            /**  Riset Library **/
-
+            /**  
+             * NOTE : Route untuk identifikasi riset package yang terdapat di sistem MeMFIS 
+             * 
+             * Riset Library 
+             */
             Route::group(['prefix' => 'package', 'namespace' => 'Package'], function() {
+
                 // Laravel Auditing
                 Route::group(['prefix' => 'laravel-auditing', 'as' => 'auditing.' ], function() {
                     Route::get('/', 'AuditingController@index')->name('index');
                 });
             });
-
-
 
         });
     });
