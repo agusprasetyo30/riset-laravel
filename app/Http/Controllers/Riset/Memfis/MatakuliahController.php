@@ -18,7 +18,7 @@ class MatakuliahController extends Controller
      */
     public function index()
     {
-        $mata_kuliah = Mata_kuliah::all();
+        $mata_kuliah = Mata_kuliah::paginate(5);
 
         return view('mmf.mata-kuliah.index', compact('mata_kuliah'));
     }

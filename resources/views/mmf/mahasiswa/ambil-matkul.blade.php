@@ -33,7 +33,6 @@
                         @php $status = true; @endphp
 
                      @endif
-
                   @endfor
 
                   {{-- Cek Status --}}
@@ -44,7 +43,6 @@
                      <span class="badge badge-primary">Belum Diambil</span>
                   @endif
 
-
                </td>
                <td>
                   @if ($status)
@@ -52,31 +50,19 @@
 
                   @else
                      <a href="{{ route('test.mahasiswa.ambil-matkul.process', ['id' => $mahasiswa->id, 'matkul' => $item->id, 'type' => 'add']) }}" class="btn btn-sm btn-success">Ambil Matkul</a>
-                  
                   @endif
                </td>
                @php $status = false; @endphp
 
             </tr>
          @endforeach
-         {{-- @foreach ($mahasiswa as $index => $item)
-            <tr>
-               <td>{{ ++$index }}. </td>
-               <td>{{ $item->nama }}</td>
-               <td>{{ $item->kelas }}</td>
-               <td>{{ $item->jk }}</td>
-               <td>{{ $item->alamat }}</td>
-               <td> 
-                  <span class="badge badge-success">Pemrograman Dasar</span>
-               </td>
-               <td>
-                  <a href="{{ route('test.mahasiswa.ambil-matkul', $item->id) }}" class="btn btn-success btn-sm">Ambil Matkul</a>
-                  <a href="{{ route('test.mahasiswa.edit', $item->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                  <a href="{{ route('test.matakuliah.destroy', $item->id) }}" class="btn btn-danger btn-sm">Hapus</a>
-               </td>
-         </tr> 
-         @endforeach--}}
-
       </tbody>
+      <tfoot>
+         <tr>
+            <td colspan=4>
+               {{ $mata_kuliah->appends(Request::all())->links() }}
+            </td>
+         </tr>
+      </tfoot>
    </table>
 @endsection

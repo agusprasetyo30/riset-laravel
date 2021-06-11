@@ -83,7 +83,7 @@
                   <label class="font-weight-bold">Daftar Package/Library</label>
                   <div class="col-md-12">
                      <a class="btn links bg-dark" href="#">nwidart/laravel-modules</a>
-                     <a class="btn links bg-warning" href="#">owen-it/laravel-auditing</a>
+                     <a class="btn links" href="{{ route('test.auditing.index') }}">owen-it/laravel-auditing</a>
                      <a class="btn links bg-dark" href="#">spatie/laravel-sortable</a>
                      <a class="btn links bg-dark" href="#">spatie/laravel-activity-log</a>
                      <a class="btn links bg-dark" href="#">spatie/laravel-backup</a>

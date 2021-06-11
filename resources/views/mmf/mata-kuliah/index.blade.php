@@ -37,7 +37,13 @@
                </td>
          </tr>
          @endforeach
-
       </tbody>
+      <tfoot>
+         <tr>
+            <td colspan=4>
+               {{ $mata_kuliah->appends(Request::all())->links() }}
+            </td>
+         </tr>
+      </tfoot>
    </table>
 @endsection

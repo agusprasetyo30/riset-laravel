@@ -144,7 +144,7 @@ class MahasiswaController extends Controller
             $mahasiswa = Mahasiswa::where("uuid", "=", $uuid)->firstOrFail();
 
             // Untuk load mata kuliah
-            $mata_kuliah = Mata_kuliah::where("status", "ACTIVE")->get();
+            $mata_kuliah = Mata_kuliah::where("status", "ACTIVE")->paginate(10);
 
             // dd($mahasiswa->mata_kuliah[1]->pivot->mata_kuliah_id);
 

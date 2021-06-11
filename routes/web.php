@@ -116,6 +116,18 @@ Route::group(['namespace' => 'Riset'], function() {
                 /*** Tag ***/
                 Route::resource('tag', 'TagController');
             });
+
+            /**  Riset Library **/
+
+            Route::group(['prefix' => 'package', 'namespace' => 'Package'], function() {
+                // Laravel Auditing
+                Route::group(['prefix' => 'laravel-auditing', 'as' => 'auditing.' ], function() {
+                    Route::get('/', 'AuditingController@index')->name('index');
+                });
+            });
+
+
+
         });
     });
 
