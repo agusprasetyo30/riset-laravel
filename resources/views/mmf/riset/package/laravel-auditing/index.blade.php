@@ -1,6 +1,6 @@
 @extends('layouts.template')
 
-@section('title', 'Riset Polymorphisme')
+@section('title', 'Riset Laravel Auditing')
 
 @section('content')
    <h2>Laravel Auditing</h2>
