@@ -29,14 +29,14 @@ return [
         'guards'       => [
             'web',
             'api',
-        ],
+        ]
     ],
 
     /*
     |--------------------------------------------------------------------------
     | Audit Resolvers
     |--------------------------------------------------------------------------
-    |
+    |                                       
     | Define the User, IP Address, User Agent and URL resolver implementations.
     |
     */

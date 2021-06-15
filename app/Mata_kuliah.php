@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class Mata_kuliah extends Model
+class Mata_kuliah extends Model implements Auditable
 {
+    use \OwenIt\Auditing\Auditable;
+
     protected $table = 'mata_kuliah';
     
     // Menyambungkan many to many
@@ -15,7 +18,11 @@ class Mata_kuliah extends Model
             'mata_kuliah_id', 'mahasiswa_id');
     }
 
-    
+    /**
+     * Undocumented function
+     *
+     * @return void
+     */
     public function getRouteKeyName()
     {
         return 'uuid';

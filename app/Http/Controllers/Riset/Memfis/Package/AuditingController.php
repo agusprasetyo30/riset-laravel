@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Riset\Memfis\Package;
 
 use App\Http\Controllers\Controller;
+use App\Post;
 use Illuminate\Http\Request;
 
 class AuditingController extends Controller
@@ -15,6 +16,19 @@ class AuditingController extends Controller
     public function index()
     {
         return view('mmf.riset.package.laravel-auditing.index');
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @return void
+     */
+    public function getPostAudits()
+    {
+        
+        // $audits = Post::find(13)->audits()->first();
+
+        // dd($audits);
     }
 
     /**

@@ -3,9 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use \OwenIt\Auditing\Auditable;
 
-class Comment extends Model
+class Comment extends Model implements Auditable
 {
+    use \OwenIt\Auditing\Auditable;
 
     protected $fillable = ['body'];
     /**

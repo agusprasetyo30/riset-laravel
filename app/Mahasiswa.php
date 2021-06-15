@@ -4,9 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class Mahasiswa extends Model
+class Mahasiswa extends Model implements Auditable
 {
+    use \OwenIt\Auditing\Auditable;
+    
     protected $table = 'mahasiswa';
 
     protected $fillable = [
@@ -18,6 +21,11 @@ class Mahasiswa extends Model
         'origin_mahasiswa'
     ];  
 
+    /**
+     * Undocumented function
+     *
+     * @return void
+     */
     public function mata_kuliah()
     {
         return $this->belongsToMany('App\Mata_kuliah', 'mahasiswa_mata_kuliah', 

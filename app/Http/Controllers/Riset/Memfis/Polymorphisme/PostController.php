@@ -48,7 +48,7 @@ class PostController extends Controller
             'body'   => $request->get('body'),
         ]);
 
-        return redirect()->route('test.poly.post.index-1tm');
+        return redirect()->route('test.poly.post.index');
     }
 
     /**
@@ -138,7 +138,7 @@ class PostController extends Controller
         return redirect()->back();
     }
 
-    /**** Many to Many Polymorphic ***/
+    /***** Many to Many Polymorphic ****/
 
     /**
      * Index many to many
