@@ -117,7 +117,6 @@ class MahasiswaController extends Controller
             //     'alamat'            => $request->alamat,
             //     'origin_mahasiswa'  => optional($mahasiswa)->toJson(),
             // ]);
-
             $mahasiswa->update($request->all());
 
             return response()->json($mahasiswa, 200);

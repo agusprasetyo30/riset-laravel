@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Riset\Memfis\Package;
 
 use App\Http\Controllers\Controller;
+use App\Mahasiswa;
 use App\Post;
 use Illuminate\Http\Request;
+use OwenIt\Auditing\Models\Audit;
 
 class AuditingController extends Controller
 {
@@ -13,9 +15,22 @@ class AuditingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('mmf.riset.package.laravel-auditing.index');
+        // $audit = Audit::find(15);
+        // dd($audit->getModified());
+
+        $model = $request->get('model');
+        $type = "App" .'\\'. $model;
+        $audits = Audit::with('user')->where('auditable_type', $type)->first();
+
+        if (!$audits) { 
+            abort(404);
+        }
+
+        // dd($audits->old_values, $audits->new_values);
+
+        return view('mmf.riset.package.laravel-auditing.index', compact('audits'));
     }
 
     /**
