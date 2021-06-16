@@ -15,7 +15,7 @@ class Post extends Model implements Auditable
      * Polymorphic: An entity can have zero or many approvals.
      *
      * This function will get all comment's approvals.
-     * See: post's comments() method for the inverse
+     * See: comment's post() method for the inverse
      *
      * @return void
      */
@@ -24,9 +24,26 @@ class Post extends Model implements Auditable
         return $this->morphMany('App\Comment', 'commentable');
     }
 
-    
+    /**
+     * Many-to-Many: A Position may have many or many Benefit.
+     *
+     * This function will retrieve all the Positions of a given Benefit.
+     * See: tag's post() method for the inverse
+     *
+     * @return mixed
+     */
     public function tags()
     {
         return $this->morphToMany('App\Tag', 'taggable');
     }
+
+    /**
+     * Attributes to include in the Audit.
+     *
+     * @var array
+     */
+    protected $auditInclude = [
+        'title', 
+        'body'
+    ];
 }

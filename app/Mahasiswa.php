@@ -65,4 +65,16 @@ class Mahasiswa extends Model implements Auditable
     {
         return $this->mata_kuliah()->get();
     }
+
+    /**
+     * Attributes to include in the Audit.
+     *
+     * @var array
+     */
+    protected $auditInclude = [
+        "nama",
+        "kelas",
+        "jk",
+        "alamat"
+    ];
 }

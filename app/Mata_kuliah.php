@@ -10,6 +10,12 @@ class Mata_kuliah extends Model implements Auditable
     use \OwenIt\Auditing\Auditable;
 
     protected $table = 'mata_kuliah';
+
+    protected $fillable = [
+        "uuid",
+        "nama",
+        "status",
+    ];
     
     // Menyambungkan many to many
     public function mahasiswa()
@@ -51,4 +57,14 @@ class Mata_kuliah extends Model implements Auditable
     {
         return $this->mahasiswa()->paginate(5);
     }
+
+    /**
+     * Attributes to include in the Audit.
+     *
+     * @var array
+     */
+    protected $auditInclude = [
+        "nama",
+        "status",
+    ];
 }

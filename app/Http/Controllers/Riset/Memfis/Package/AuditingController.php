@@ -22,12 +22,14 @@ class AuditingController extends Controller
 
         $model = $request->get('model');
         $type = "App" .'\\'. $model;
-        $audits = Audit::with('user')->where('auditable_type', $type)->first();
+        $audits = Audit::with('user')->where('auditable_type', $type)->get();
 
         if (!$audits) { 
             abort(404);
         }
 
+        // dd($audits[5]->new_values);
+        // dd($audits->getModified());
         // dd($audits->old_values, $audits->new_values);
 
         return view('mmf.riset.package.laravel-auditing.index', compact('audits'));
