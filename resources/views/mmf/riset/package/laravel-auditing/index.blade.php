@@ -14,7 +14,7 @@
       <br>
 
       <div class="row justify-content-center">
-         <div class="col-md-8">
+         <div class="col-md-10">
             <div class="card mt-5">
                <div class="card-title text-left m-2">
                   Pilih Model
@@ -28,7 +28,22 @@
                   <a href="{{ route('test.auditing.index', ['model' => 'Video']) }}" class="btn btn-primary">Video</a>
                   
                   <div class="mt-3 text-left">
-                     {{ $audits }}
+                     <ul>
+                        @foreach ($audits as $audit)
+                        <li>
+                           {{-- Ini menggunakan konfigurasi @lang yang terdapat pada folder lang/en dan disesuaikan dengan kebutuhan --}}
+                           @lang('mahasiswa.updated.metadata', $audit->getMetadata());
+
+                           @foreach ($audit->getModified() as $attribute => $modified)
+                              <ul>
+                                 <li>
+                                    @lang('mahasiswa.' . $audit->event . '.modified.' . $attribute , $modified )
+                                 </li>
+                              </ul>
+                           @endforeach
+                        </li>
+                        @endforeach
+                     </ul>
                   </div>
                </div>
             </div>

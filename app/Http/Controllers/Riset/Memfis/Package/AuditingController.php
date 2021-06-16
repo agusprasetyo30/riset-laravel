@@ -28,8 +28,9 @@ class AuditingController extends Controller
             abort(404);
         }
 
-        // dd($audits[5]->new_values);
-        // dd($audits->getModified());
+        // dd($audits);
+        // dd($audits->first()->getMetadata());
+        // dd($audits->first()->getModified());
         // dd($audits->old_values, $audits->new_values);
 
         return view('mmf.riset.package.laravel-auditing.index', compact('audits'));

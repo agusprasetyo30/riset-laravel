@@ -61,9 +61,6 @@ class MahasiswaRequest extends FormRequest
             $mahasiswa = Mahasiswa::where('uuid', $this->mahasiswa_uuid)->get(['id', 'uuid', 'nama', 'kelas', 'jk', 'alamat', 'created_at', 'updated_at'])->first();
             $origin = $mahasiswa->toJson();
 
-            $mahasiswa->origin_mahasiswa = [];
-            $mahasiswa->update();
-
                 $this->merge([
                     "origin_mahasiswa" => $origin, //$this->mahasiswa_uuid adalah mengambil inputan yang diambil dari form
                 //     'input2' => "Saya input dua",
