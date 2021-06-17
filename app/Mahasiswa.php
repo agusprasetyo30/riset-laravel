@@ -22,6 +22,18 @@ class Mahasiswa extends Model implements Auditable
     ];  
 
     /**
+     * Attributes to include in the Audit.
+     *
+     * @var array
+     */
+    protected $auditInclude = [
+        "nama",
+        "kelas",
+        "jk",
+        "alamat"
+    ];
+
+    /**
      * Undocumented function
      *
      * @return void
@@ -67,14 +79,12 @@ class Mahasiswa extends Model implements Auditable
     }
 
     /**
-     * Attributes to include in the Audit.
-     *
-     * @var array
+     * {@inheritdoc}
      */
-    protected $auditInclude = [
-        "nama",
-        "kelas",
-        "jk",
-        "alamat"
-    ];
+    public function generateTags(): array
+    {
+        return [
+            $this->nama
+        ];
+    }
 }

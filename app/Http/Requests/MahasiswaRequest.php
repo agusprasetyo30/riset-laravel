@@ -58,11 +58,11 @@ class MahasiswaRequest extends FormRequest
         
         $validator->after(function ($validator) {
             // yang jadi masalah penumpukan adalah origin_mahasiswa yang menumpuk
-            $mahasiswa = Mahasiswa::where('uuid', $this->mahasiswa_uuid)->get(['id', 'uuid', 'nama', 'kelas', 'jk', 'alamat', 'created_at', 'updated_at'])->first();
-            $origin = $mahasiswa->toJson();
+            $mahasiswa = optional(Mahasiswa::where('uuid', $this->mahasiswa_uuid)->get(['id', 'uuid', 'nama', 'kelas', 'jk', 'alamat', 'created_at', 'updated_at'])->first());
 
+                // Optional() ini digunakan jika pencairan tidak ada maka secara otomatis akan diinput null
                 $this->merge([
-                    "origin_mahasiswa" => $origin, //$this->mahasiswa_uuid adalah mengambil inputan yang diambil dari form
+                    "origin_mahasiswa" => optional($mahasiswa)->toJson(), //$this->mahasiswa_uuid adalah mengambil inputan yang diambil dari form
                 //     'input2' => "Saya input dua",
                 //     'input3' => "Saya input tiga",
                 //     'input4' => "Saya input empat",
