@@ -29,6 +29,7 @@
                   
                   <div class="mt-3 text-left">
                      <ul>
+
                         @foreach ($audits as $audit)
 
                         @php
@@ -48,15 +49,15 @@
                               <ul>
                                  @if($audit->event == 'updated')
                                     <li>
-                                       @lang('mahasiswa.' . $audit->event . '.modified.title', $audit->getMetadata())
-                                       @lang('mahasiswa.' . $audit->event . '.modified.' . $attribute, $modified)
+                                       @lang($file_location . '.' . $audit->event . '.modified.title', $audit->getMetadata())
+                                       @lang($file_location . '.' . $audit->event . '.modified.' . $attribute, $modified)
                                     </li>
                                  @endif
 
                                  @if ($audit->event == 'created' || $audit->event == 'deleted')
                                     @if ($loop->first)
                                        <li>
-                                          @lang('mahasiswa.' . $audit->event . '.modified.' . $attribute, $modified)
+                                          @lang($file_location . '.' . $audit->event . '.modified.' . $attribute, $modified)
                                        </li>
                                     @endif
                                  @endif
@@ -67,6 +68,11 @@
                         </li>
                         @endforeach
                      </ul>
+                     @if ($audits->isEmpty())
+                        <div class="text-center p-2 bg-dark text-light">
+                           <p>@lang($file_location . '.unavailable_audits')</p>
+                        </div>
+                     @endif
                   </div>
                </div>
             </div>

@@ -21,8 +21,11 @@ class AuditingController extends Controller
         // dd($audit->getModified());
 
         $model = $request->get('model');
+
         $type = "App" .'\\'. $model;
         $audits = Audit::with('user')->where('auditable_type', $type)->get();
+
+        $file_location = strtolower($model);
 
         if (!$audits) { 
             abort(404);
@@ -33,7 +36,7 @@ class AuditingController extends Controller
         // dd($audits->first()->tags);
         // dd($audits->old_values, $audits->new_values);
 
-        return view('mmf.riset.package.laravel-auditing.index', compact('audits'));
+        return view('mmf.riset.package.laravel-auditing.index', compact('audits', 'file_location'));
     }
 
     /**
