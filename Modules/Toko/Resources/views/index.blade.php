@@ -1,9 +1,36 @@
-@extends('toko::layouts.master')
+@extends('layouts.template')
+
+@section('title', 'Laravel Module')
 
 @section('content')
-    <h1>Hello World</h1>
+<div class="container">
+    <div class="text-center mt-3">
+        <h1>Laravel Modules</h1>
+        <small>
+            <b style="font-size: 15px">nwidart/laravel-modules</b> adalah senbuah Package Laravel untuk mengelola aplikasi laravel 
+            yang lebih besar menggunakan modul yang terpisah. Didalam module memiliki beberapa tampilan (view), pengontrol (controller), dan model.
+        </small>
+    </div>
 
-    <p>
-        This view is loaded from module: {!! config('toko.name') !!}
-    </p>
+    <div class="row justify-content-center mt-3">
+        <div class="col-md-3">
+            <a href="#" class="text-white text-center text-decoration-none" title="Untuk menampilkan daftar item">
+                <div class="card">
+                    <div class="card-body bg-primary">
+                        Item
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-3">
+            <a href="#" class="text-white text-center text-decoration-none" title="Untuk menampilkan daftar kategori">
+                <div class="card">
+                    <div class="card-body bg-primary">
+                        Category
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
 @endsection

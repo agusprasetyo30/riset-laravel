@@ -11,6 +11,14 @@
 |
 */
 
-Route::prefix('toko')->group(function() {
-    Route::get('/', 'TokoController@index');
+Route::group(['prefix' => 'test', 'as' => 'test.'], function() 
+{
+
+    Route::prefix('toko')->name('toko.')->group(function() {
+        Route::get('/', function() {
+            return view('toko::index');
+        })->name('dashboard');
+    });
+
 });
+
