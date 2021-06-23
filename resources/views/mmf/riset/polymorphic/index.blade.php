@@ -24,9 +24,6 @@
 
 @section('content')
 <div class="container">
-   <div class="text-left">
-      <a href="{{ route('riset-memfis') }}">Back to menu</a>
-   </div>
    
    <div class="text-center mt-3">
       <h1>Polymorphisme</h1>

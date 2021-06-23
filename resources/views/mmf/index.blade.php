@@ -9,9 +9,6 @@
       <div class="mb-2">
          <a href="{{ route('test.mahasiswa.index') }}" class="btn btn-primary btn-sm">Mahasiswa</a>
          <a href="{{ route('test.matakuliah.index') }}" class="btn btn-primary btn-sm">Mata Kuliah</a>
-         <div class="float-right">
-            <a href="{{ route('riset-memfis') }}">Back to menu</a>
-         </div>
       </div>
       <table class="table table-bordered table-hover table-striped">
          <thead>

@@ -4,10 +4,6 @@
 
 @section('content')
 <div class="container">
-   <div class="text-left">
-      <a href="{{ route('riset-memfis') }}">Back to menu</a>
-   </div>
-
    <div class="text-center mt-3">
       <h1>Laravel Auditing</h1>
       <small>Menerapkan metode <b>Laravel Auditing</b> yang digunakan untuk audit dan menampilkan history dan riwayat perubahan model yang terjadi</small>

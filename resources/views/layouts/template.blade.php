@@ -21,6 +21,9 @@
       {{-- <a href="#" class="float-right">{{ \Auth::user()->name }}</a> --}}
       
       {{-- Content --}}
+      <div class="text-left">
+         <a href="{{ route('riset-memfis') }}">Back to menu</a>
+      </div>
       @yield('content')
    </div>
 

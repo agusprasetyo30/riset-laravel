@@ -7,10 +7,6 @@
 @endsection
 
 @section('content')
-   <div class="text-left">
-      <a href="{{ route('riset-memfis') }}">Back to menu</a>
-   </div>
-
    <div class="text-center mt-3">
       <h2>Mahasiswa</h2>
       <small>Menampilkan tabel <b>Mahasiswa</b> menggunakan <b>yajra/laravel-datatable</b></small>
