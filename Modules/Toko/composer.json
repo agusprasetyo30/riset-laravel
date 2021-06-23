@@ -1,5 +1,5 @@
 {
-    "name": "nwidart/page",
+    "name": "nwidart/toko",
     "description": "",
     "authors": [
         {
@@ -17,7 +17,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Modules\\Page\\": ""
+            "Modules\\Toko\\": ""
         }
     }
 }

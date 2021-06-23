@@ -11,6 +11,6 @@
 |
 */
 
-Route::prefix('page')->group(function() {
-    Route::get('/', 'PageController@index')->name('page');
+Route::prefix('toko')->group(function() {
+    Route::get('/', 'TokoController@index');
 });

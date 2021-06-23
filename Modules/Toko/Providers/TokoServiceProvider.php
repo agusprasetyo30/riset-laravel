@@ -1,21 +1,21 @@
 <?php
 
-namespace Modules\Page\Providers;
+namespace Modules\Toko\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
 
-class PageServiceProvider extends ServiceProvider
+class TokoServiceProvider extends ServiceProvider
 {
     /**
      * @var string $moduleName
      */
-    protected $moduleName = 'Page';
+    protected $moduleName = 'Toko';
 
     /**
      * @var string $moduleNameLower
      */
-    protected $moduleNameLower = 'page';
+    protected $moduleNameLower = 'toko';
 
     /**
      * Boot the application events.

@@ -1,12 +1,12 @@
 <?php
 
-namespace Modules\Page\Http\Controllers;
+namespace Modules\Toko\Http\Controllers;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
-class PageController extends Controller
+class TokoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class PageController extends Controller
      */
     public function index()
     {
-        return view('page::index');
+        return view('toko::index');
     }
 
     /**
@@ -23,7 +23,7 @@ class PageController extends Controller
      */
     public function create()
     {
-        return view('page::create');
+        return view('toko::create');
     }
 
     /**
@@ -43,7 +43,7 @@ class PageController extends Controller
      */
     public function show($id)
     {
-        return view('page::show');
+        return view('toko::show');
     }
 
     /**
@@ -53,7 +53,7 @@ class PageController extends Controller
      */
     public function edit($id)
     {
-        return view('page::edit');
+        return view('toko::edit');
     }
 
     /**

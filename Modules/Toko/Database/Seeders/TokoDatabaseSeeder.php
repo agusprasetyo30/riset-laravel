@@ -1,11 +1,11 @@
 <?php
 
-namespace Modules\Page\Database\Seeders;
+namespace Modules\Toko\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 
-class PageDatabaseSeeder extends Seeder
+class TokoDatabaseSeeder extends Seeder
 {
     /**
      * Run the database seeds.
