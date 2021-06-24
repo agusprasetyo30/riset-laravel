@@ -7,8 +7,18 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Item extends Model
 {
-    
+    protected $fillable = ['name', 'price', 'created_by'];
 
-    protected $fillable = [];
-   
+    /**
+     * Polymorphic: An entity can have zero or many approvals.
+     *
+     * This function will get all comment's approvals.
+     * See: comment's post() method for the inverse
+     *
+     * @return void
+     */
+    public function category()
+    {
+        return $this->morphMany('App\Category', 'categoriable');
+    }
 }

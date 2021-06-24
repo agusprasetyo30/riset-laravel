@@ -18,7 +18,12 @@ Route::group(['prefix' => 'test', 'as' => 'test.'], function()
         Route::get('/', function() {
             return view('toko::index');
         })->name('dashboard');
+
+        /*** Category ***/
+        Route::resource('category', 'CategoryController');
+        
+        // Route::group(['prefix' => 'category'], function() {
+        // });
     });
 
 });
-
