@@ -11,6 +11,9 @@
 - Policy/Policies                   [ ]
 - Form Request + Fungsinya          [X]
 - Penerapan Polimorfisme            [X]
+- ScopeOf... (Builder)              [X]
+  > Implementasinya di input Mahasiswa dengan filter berdasarkan Gender
+  
   ```
   Pada kasus ini menggunakan kasus 
     * One to Many
@@ -32,10 +35,10 @@
 
 ### Riset Package/Library
 
-- nwidart/laravel-modules           [ ]
-  > Modul ini digunakan untuk . . .
-- owen-it/laravel-auditing          [ ]
-  > Modul ini digunakan untuk . . .
+- nwidart/laravel-modules           [X] [ Progress ]
+  > Modul ini digunakan untuk mengelola aplikasi yang lebih besar menggunakan modul yang terpisah. Didalam modul ini terdiri dari beberapa tampilan (view), pengontrol (Controller), dan model
+- owen-it/laravel-auditing          [X]
+  > Modul ini yang digunakan untuk audit dan menampilkan history dan riwayat perubahan model yang terjadi
 - spatie/laravel-sortable           [ ]
   > Modul ini digunakan untuk . . .
 - spatie/laravel-activity-log       [ ]
@@ -61,13 +64,21 @@
   - Penerapan Polimorfisme
     - [https://appdividend.com/2018/05/18/laravel-polymorphic-relationship-tutorial-example/](https://appdividend.com/2018/05/18/laravel-polymorphic-relationship-tutorial-example/)
     - [https://dev.to/ellis22/learn-laravel-polymorphic-relationship-step-by-step-with-example-3pe3](https://dev.to/ellis22/learn-laravel-polymorphic-relationship-step-by-step-with-example-3pe3)
+    - [https://www.nicesnippets.com/blog/laravel-one-to-many-polymorphic-eloquent-relationship-example](https://www.nicesnippets.com/blog/laravel-one-to-many-polymorphic-eloquent-relationship-example)
+    - [https://laracasts.com/discuss/channels/eloquent/remove-many-to-many-polymorphic-relations-taggables](https://laracasts.com/discuss/channels/eloquent/remove-many-to-many-polymorphic-relations-taggables)
+    - [https://www.itsolutionstuff.com/post/laravel-one-to-many-polymorphic-relationship-tutorialexample.html](https://www.itsolutionstuff.com/post/laravel-one-to-many-polymorphic-relationship-tutorialexample.html)
 
 <br>
 
 - Riset Package/Library
   - nwidart/laravel-modules
     - [https://medium.com/@destinyajax/how-to-build-modular-applications-in-laravel-the-plug-n-play-approach-part-1-13a87f7de06](https://medium.com/@destinyajax/how-to-build-modular-applications-in-laravel-the-plug-n-play-approach-part-1-13a87f7de06)
+    - [https://www.ayongoding.com/menggunakan-laravel-modules/](https://www.ayongoding.com/menggunakan-laravel-modules/)
+    - [https://nwidart.com/laravel-modules/v6/introduction](https://nwidart.com/laravel-modules/v6/introduction)
   - owen-it/laravel-auditing
+    - [http://www.laravel-auditing.com/](http://www.laravel-auditing.com/)
+    - [https://www.youtube.com/watch?v=kxBRJvxx05Q](https://www.youtube.com/watch?v=kxBRJvxx05Q)
+    - [https://laracasts.com/discuss/channels/laravel/audit-with-laravel-auditing](https://laracasts.com/discuss/channels/laravel/audit-with-laravel-auditing)
   - spatie/laravel-sortable 
   - spatie/laravel-activity-log
   - spatie/laravel-backup

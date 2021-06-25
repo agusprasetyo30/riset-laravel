@@ -13,7 +13,7 @@
 	<div class="text-center mt-3">
 		<h1>Laravel Modules</h1>
 		<small>
-			<b style="font-size: 15px">nwidart/laravel-modules</b> adalah senbuah Package Laravel untuk mengelola aplikasi laravel 
+			<b style="font-size: 15px">nwidart/laravel-modules</b> adalah sebuah Package Laravel untuk mengelola aplikasi laravel 
 			yang lebih besar menggunakan modul yang terpisah. Didalam module memiliki beberapa tampilan (view), pengontrol (controller), dan model.
 		</small>
 	</div>
