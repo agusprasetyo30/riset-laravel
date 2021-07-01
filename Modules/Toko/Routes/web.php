@@ -16,7 +16,7 @@ Route::group(['prefix' => 'test', 'as' => 'test.'], function()
 
     Route::prefix('toko')->name('toko.')->group(function() {
         Route::get('/', function() {
-            return view('toko::index');
+            return view('toko::dashboard');
         })->name('dashboard');
 
         /*** Category ***/
@@ -25,8 +25,9 @@ Route::group(['prefix' => 'test', 'as' => 'test.'], function()
         
         Route::get('category/{id}/delete', 'CategoryController@destroy')->name('category.destroy');
 
-        // Route::group(['prefix' => 'category'], function() {
-        // });
-    });
+        /*** Item ***/
+        Route::resource('item', 'ItemController')
+            ->except(['show', 'destroy']);
 
+    });
 });

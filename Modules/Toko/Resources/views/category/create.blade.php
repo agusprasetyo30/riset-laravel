@@ -13,12 +13,11 @@
                   <div class="form-group">
                      <label for="nama">Name</label>
                      <input type="text" name="name" id="name" class="form-control" placeholder="Category's name">
-                     <small id="nama-error" class="text-danger"></small>
                   </div>
                   
                   <div class="form-group">
-                     <button type="submit" class="btn btn-success simpan">Simpan</button>
-                     <a href="{{ route('test.toko.category.index') }}" class="btn btn-primary">Kembali</a>
+                     <button type="submit" class="btn btn-success">Save</button>
+                     <a href="{{ route('test.toko.category.index') }}" class="btn btn-primary">Back</a>
                   </div>
                </div>
             </form>

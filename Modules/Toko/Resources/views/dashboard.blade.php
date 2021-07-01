@@ -20,7 +20,7 @@
 
 	<div class="row justify-content-center mt-3">
 		<div class="col-md-3">
-			<a href="#" class="text-white text-center text-decoration-none" title="Untuk menampilkan daftar item">
+			<a href="{{ route('test.toko.item.index') }}" class="text-white text-center text-decoration-none" title="Untuk menampilkan daftar item">
 				<div class="card">
 					<div class="card-body bg-primary">
 						Item

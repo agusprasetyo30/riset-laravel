@@ -14,7 +14,7 @@ class ItemController extends Controller
      */
     public function index()
     {
-        return view('toko::index');
+        return view('toko::item.index');
     }
 
     /**

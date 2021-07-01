@@ -1,22 +1,23 @@
 @extends('layouts.template')
 
-@section('title', 'Mata Kuliah')
+@section('title', 'Item List')
 
 @section('content')
-   <h2 class="text-center m-3">Category</h2>
+   <h2 class="text-center m-3">Item</h2>
 
-   <a href="{{ route('test.toko.category.create') }}" class="btn btn-primary btn-sm mb-2">Add Category</a>
+   <a href="{{ route('test.toko.item.create') }}" class="btn btn-primary btn-sm mb-2">Add Item</a>
    <a href="{{ route('test.toko.dashboard') }}" class="btn btn-primary btn-sm mb-2 float-right">Back</a>
    <table class="table table-bordered table-hover table-striped">
       <thead>
          <tr>
             <th>#</th>
-            <th width=60%>Name</th>
+            <th width=40%>Name</th>
+            <th width=30%>Price</th>
             <th width=30%>Action</th>
          </tr>
       </thead>
       <tbody>
-         @foreach ($categories as $index => $category)
+         {{-- @foreach ($categories as $index => $category)
             <tr>
                <td>{{ ++$index }}. </td>
                <td>
@@ -24,7 +25,7 @@
                </td>
                <td>
                   <a href="{{ route('test.toko.category.edit', $category->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                  <a onclick="return confirm('Are you sure ?')" href="{{ route('test.toko.category.destroy', $category->id) }}" class="btn btn-danger btn-sm">Delete</a>
+                  <a onclick="return confirm('Are you sure ?')" href="{{ route('test.toko.category.destroy', $category->id) }}" class="btn btn-danger btn-sm">Hapus</a>
                </td>
             </tr>
          @endforeach
@@ -32,10 +33,10 @@
          @if ($categories->isEmpty())
          <tr>
             <td colspan="4" align=center>
-               Data Empty
+               Data Kosong
             </td>
          </tr>
-         @endif
+         @endif --}}
       </tbody>
       <tfoot>
          <tr>
