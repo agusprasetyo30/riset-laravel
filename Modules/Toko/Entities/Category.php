@@ -13,7 +13,7 @@ class Category extends Model
      * Many-to-Many: A Position may have many or many Benefit.
      * 
      * This function will retrieve all the Positions of a given Benefit.
-     * See: post's category() method for the inverse
+     * See: item's category() method for the inverse
      *
      * @return void
      */

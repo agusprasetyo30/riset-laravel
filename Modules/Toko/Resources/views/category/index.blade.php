@@ -11,8 +11,8 @@
       <thead>
          <tr>
             <th>#</th>
-            <th>Name</th>
-            <th>Action</th>
+            <th width=60%>Name</th>
+            <th width=30%>Action</th>
          </tr>
       </thead>
       <tbody>
@@ -23,10 +23,10 @@
                   {{ $category->name }}
                </td>
                <td>
-                  <a href="#" class="btn btn-warning btn-sm">Edit</a>
-                  <a href="#" class="btn btn-danger btn-sm">Hapus</a>
+                  <a href="{{ route('test.toko.category.edit', $category->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                  <a onclick="return confirm('Are you sure ?')" href="{{ route('test.toko.category.destroy', $category->id) }}" class="btn btn-danger btn-sm">Hapus</a>
                </td>
-         </tr>
+            </tr>
          @endforeach
          
          @if ($categories->isEmpty())

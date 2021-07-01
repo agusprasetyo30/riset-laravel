@@ -20,8 +20,11 @@ Route::group(['prefix' => 'test', 'as' => 'test.'], function()
         })->name('dashboard');
 
         /*** Category ***/
-        Route::resource('category', 'CategoryController');
+        Route::resource('category', 'CategoryController')
+            ->except(['show', 'destroy']);
         
+        Route::get('category/{id}/delete', 'CategoryController@destroy')->name('category.destroy');
+
         // Route::group(['prefix' => 'category'], function() {
         // });
     });

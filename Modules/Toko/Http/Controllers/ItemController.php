@@ -18,7 +18,7 @@ class ItemController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new resource. 
      * @return Renderable
      */
     public function create()

@@ -59,7 +59,9 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        return view('toko::edit');
+        $category = Category::find($id);
+
+        return view('toko::category.edit', compact('category'));
     }
 
     /**
@@ -70,7 +72,13 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $category = Category::find($id);
+
+        $category->update([
+            'name' => $request->get('name'),
+        ]);
+
+        return redirect()->route('test.toko.category.index');
     }
 
     /**
@@ -80,6 +88,10 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::find($id);
+
+        $category->delete();
+
+        return redirect()->back();
     }
 }
