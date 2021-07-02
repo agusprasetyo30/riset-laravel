@@ -9,3 +9,32 @@ Ini adalah gabungan dari riset laravel yang sebelumnya dilakukan dengan riset Me
 ## List Riset
 - [Riset Laravel](/riset-laravel.md)
 - [Riset MeMFIS](/riset-memfis.md)
+
+
+## Database/Tabel yang digunakan
+  ### Riset MeMFIS
+  
+  - Polimorphisme
+    - `videos`
+    - `posts`
+    - `tags`
+    - `taggables`
+
+  - Form Request + fungsi
+    - `mahasiswa`
+    - `mata_kuliah`
+    - `mahasiswa_mata_kuliah`
+
+  - ScopeOf()... (builder)
+    - `mahasiswa`
+
+  - owen-it/laravel-auditing
+    - `audits`
+
+  - yajra/laravel-datatable
+    - `mahasiswa`
+
+  - nwidart/laravel-modules
+    - `items`
+    - `categories`
+    - `categoriables`
