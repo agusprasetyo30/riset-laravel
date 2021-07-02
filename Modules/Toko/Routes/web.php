@@ -28,6 +28,11 @@ Route::group(['prefix' => 'test', 'as' => 'test.'], function()
         /*** Item ***/
         Route::resource('item', 'ItemController')
             ->except(['show', 'destroy']);
+        
+        Route::group(['prefix' => 'item', 'as' => 'item.'], function() {
+
+        });
+        // Route::get('')
 
     });
 });

@@ -5,6 +5,7 @@ namespace Modules\Toko\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Toko\Entities\Item;
 
 class ItemController extends Controller
 {
@@ -14,7 +15,9 @@ class ItemController extends Controller
      */
     public function index()
     {
-        return view('toko::item.index');
+        $items = Item::all();
+
+        return view('toko::item.index', compact('items'));
     }
 
     /**
@@ -23,7 +26,7 @@ class ItemController extends Controller
      */
     public function create()
     {
-        return view('toko::create');
+        return view('toko::item.create');
     }
 
     /**
@@ -33,7 +36,13 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Item::create([
+            'name'       => $request->get('name'),
+            'price'      => $request->get('price'),
+            'created_by' => \Auth::user()->id
+        ]);
+
+        return redirect()->route('test.toko.item.index');
     }
 
     /**

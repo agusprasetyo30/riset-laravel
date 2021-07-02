@@ -18,7 +18,28 @@
 <body>
    <div class="container mt-2">
 
-      {{-- <a href="#" class="float-right">{{ \Auth::user()->name }}</a> --}}
+      <div class="float-right">
+         @auth
+            <div class="btn btn-sm btn-primary">
+               {{ \Auth::user()->name }}
+            </div>
+            
+            <a class="btn btn-sm btn-danger" href="{{ route('logout') }}" onclick="event.preventDefault();
+               document.getElementById('logout-form').submit();">
+               Logout
+            </a>
+            
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+               @csrf
+            </form>
+            
+         @else
+            <a href="{{ route('login') }}" class="btn btn-sm btn-danger">
+               Belum Login
+            </a>
+         @endauth
+      </div>
+      
       
       {{-- Content --}}
       <div class="text-left">

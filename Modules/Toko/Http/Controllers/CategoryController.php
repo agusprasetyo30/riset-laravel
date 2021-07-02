@@ -94,4 +94,11 @@ class CategoryController extends Controller
 
         return redirect()->back();
     }
+
+    public function addCategoryItemIndex()
+    {
+        $categories = Category::all();
+
+        return view('toko.item.add-category', compact('categories'));
+    }
 }
