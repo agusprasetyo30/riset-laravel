@@ -3,9 +3,8 @@
 @section('title', 'Mata Kuliah')
 
 @section('content')
-   <h2 class="text-center m-3">Category</h2>
+   <h2 class="text-center m-3">Add Category <br> <b>[ {{ $item->name }} ]</b></h2>
 
-   <a href="{{ route('test.toko.category.create') }}" class="btn btn-primary btn-sm mb-2">Add Category</a>
    <a href="{{ route('test.toko.dashboard') }}" class="btn btn-primary btn-sm mb-2 float-right">Back</a>
    <table class="table table-bordered table-hover table-striped">
       <thead>
@@ -23,8 +22,17 @@
                   {{ $category->name }}
                </td>
                <td>
-                  <a href="{{ route('test.toko.category.edit', $category->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                  <a onclick="return confirm('Are you sure ?')" href="{{ route('test.toko.category.destroy', $category->id) }}" class="btn btn-danger btn-sm">Delete</a>
+                  <form action="{{ route('test.toko.item.save-item-category', $item->id) }}" method="post">
+                     @csrf
+                     <input type="hidden" name="id_category" value="{{ $category->id }}">
+
+                     <button type="submit" class="btn btn-sm btn-primary">Simpan</button>
+                     <a href="#" class="btn btn-danger btn-sm">Hapus</a>
+                  </form>
+
+                  {{-- <form action="" method="post"> --}}
+                  {{-- </form> --}}
+                  {{-- <a onclick="return confirm('Are you sure ?')" href="{{ route('test.toko.category.destroy', $category->id) }}" class="btn btn-danger btn-sm">Delete</a> --}}
                </td>
             </tr>
          @endforeach

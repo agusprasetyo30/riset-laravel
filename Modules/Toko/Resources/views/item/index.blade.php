@@ -24,12 +24,20 @@
                <td>
                   {{ $item->name }}
                </td>
-               <td>-</td>
+               <td>
+                  @foreach ($item->category as $category)
+                     <span class="badge badge-success">{{ $category->name }}</span>
+                  @endforeach
+
+                  @if($item->category->isEmpty())
+                     -
+                  @endif
+               </td>
                <td>
                   Rp. {{ number_format($item->price, 0, ',', '.')  }}
                </td>
                <td>
-                  <a href="#" class="btn btn-sm btn-success">Add Category</a>
+                  <a href="{{ route('test.toko.item.add-item-category-index', $item->id) }}" class="btn btn-sm btn-success">Add Category</a>
                   <a href="{{ route('test.toko.item.edit', $item->id) }}" class="btn btn-warning btn-sm">Edit</a>
                   {{-- <a onclick="return confirm('Are you sure ?')" href="{{ route('test.toko.item.destroy', $item->id) }}" class="btn btn-danger btn-sm">Hapus</a> --}}
                </td>

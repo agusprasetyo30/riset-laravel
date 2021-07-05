@@ -5,6 +5,7 @@ namespace Modules\Toko\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Toko\Entities\Category;
 use Modules\Toko\Entities\Item;
 
 class ItemController extends Controller
@@ -16,7 +17,7 @@ class ItemController extends Controller
     public function index()
     {
         $items = Item::all();
-
+        
         return view('toko::item.index', compact('items'));
     }
 
@@ -46,23 +47,15 @@ class ItemController extends Controller
     }
 
     /**
-     * Show the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function show($id)
-    {
-        return view('toko::show');
-    }
-
-    /**
      * Show the form for editing the specified resource.
      * @param int $id
      * @return Renderable
      */
     public function edit($id)
     {
-        return view('toko::edit');
+        $item = Item::find($id);
+
+        return view('toko::item.edit', compact('item'));
     }
 
     /**
@@ -73,7 +66,14 @@ class ItemController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $item = Item::find($id);
+
+        $item->update([
+            'name'  => $request->get('name'),
+            'price' => $request->get('price')
+        ]);
+
+        return redirect()->route('test.toko.item.index');
     }
 
     /**
@@ -84,5 +84,40 @@ class ItemController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /*** Category ***/
+
+    /**
+     * Undocumented function
+     *
+     * @param [type] $id
+     * @return void
+     */
+    public function addItemCategory($id)
+    {
+        $item = Item::find($id);
+
+        $categories = Category::all();
+
+        return view('toko::item.add-category', compact('categories', 'item'));
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @param Request $request
+     * @param [type] $id
+     * @return void
+     */
+    public function saveItemCategory(Request $request, $id)
+    {
+        Item::find($id)->category()->attach([
+            // Ini sebagai parameter input M-M polymorphic adalah 'name' karena pada model category yang fillable adalah 'name'
+            // Dan nantinya diisi dengan ID Category yang nantinya akan dimasukan ke dalam relasi
+            'name'  => $request->get('id_category'),
+        ]);
+
+        return redirect()->route('test.toko.item.index');
     }
 }

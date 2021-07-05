@@ -19,6 +19,6 @@ class Item extends Model
      */
     public function category()
     { 
-        return $this->morphMany('App\Category', 'categoriable');
+        return $this->morphToMany(Category::class, 'categoriable');
     }
 }

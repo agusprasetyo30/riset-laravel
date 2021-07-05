@@ -17,7 +17,7 @@ class CreateCategoriablesTables extends Migration
             $table->id();
             $table->bigInteger('category_id');
             $table->bigInteger('categoriable_id');
-            $table->bigInteger('categoriable_type');
+            $table->string('categoriable_type');
         });
     }
 

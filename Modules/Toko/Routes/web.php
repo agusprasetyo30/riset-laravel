@@ -30,7 +30,11 @@ Route::group(['prefix' => 'test', 'as' => 'test.'], function()
             ->except(['show', 'destroy']);
         
         Route::group(['prefix' => 'item', 'as' => 'item.'], function() {
+            Route::get('{id}/add-category', 'ItemController@addItemCategory')
+                ->name('add-item-category-index');
 
+            Route::post('{id}/add-category', 'ItemController@saveItemCategory')
+                ->name('save-item-category');
         });
         // Route::get('')
 
