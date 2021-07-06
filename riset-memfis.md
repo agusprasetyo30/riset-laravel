@@ -35,7 +35,7 @@
 
 ### Riset Package/Library
 
-- nwidart/laravel-modules           [X] [ Progress ]
+- nwidart/laravel-modules           [X]
   > Modul ini digunakan untuk mengelola aplikasi yang lebih besar menggunakan modul yang terpisah. Didalam modul ini terdiri dari beberapa tampilan (view), pengontrol (Controller), dan model
 - owen-it/laravel-auditing          [X]
   > Modul ini yang digunakan untuk audit dan menampilkan history dan riwayat perubahan model yang terjadi

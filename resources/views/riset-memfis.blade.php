@@ -94,7 +94,7 @@
                      <a class="btn links bg-dark" href="#">spatie/laravel-sortable</a>
                      <a class="btn links bg-dark" href="#">spatie/laravel-activity-log</a>
                      <a class="btn links bg-dark" href="#">spatie/laravel-backup</a>
-                     <a class="btn links bg-dark" href="#">spatie/laravel-query-builder</a>
+                     <a class="btn links bg-warning" href="#">spatie/laravel-query-builder</a>
                      <a class="btn links bg-dark" href="#">spatie/laravel-slugable</a>
                      <a class="btn links bg-dark" href="#">spatie/laravel-tags</a> 
                      <a class="btn links" href="{{ route('test.datatables.mahasiswa') }}">yajra/laravel-datatables-oracle</a>
