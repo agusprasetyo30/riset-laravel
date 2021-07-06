@@ -83,7 +83,14 @@ class ItemController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item = Item::find($id);
+
+        $item->category()
+            ->detach();
+
+        $item->delete();
+
+        return redirect()->back();
     }
 
     /*** Category ***/

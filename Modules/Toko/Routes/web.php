@@ -28,7 +28,7 @@ Route::group(['prefix' => 'test', 'as' => 'test.'], function()
         /*** Item ***/
         Route::resource('item', 'ItemController')
             ->except(['show', 'destroy']);
-        Route::get('item/{id}/delete', 'ItemController@deleteItemCategory')
+        Route::get('item/{id}/delete', 'ItemController@destroy')
             ->name('item.destroy');
         
         Route::group(['prefix' => 'item', 'as' => 'item.'], function() {
