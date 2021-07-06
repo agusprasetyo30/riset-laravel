@@ -1,11 +1,11 @@
 @extends('layouts.template')
 
-@section('title', 'Mata Kuliah')
+@section('title', 'Add Item Category')
 
 @section('content')
    <h2 class="text-center m-3">Add Category <br> <b>[ {{ $item->name }} ]</b></h2>
 
-   <a href="{{ route('test.toko.dashboard') }}" class="btn btn-primary btn-sm mb-2 float-right">Back</a>
+   <a href="{{ route('test.toko.item.index') }}" class="btn btn-primary btn-sm mb-2 float-right">Back</a>
    <table class="table table-bordered table-hover table-striped">
       <thead>
          <tr>
@@ -22,17 +22,29 @@
                   {{ $category->name }}
                </td>
                <td>
-                  <form action="{{ route('test.toko.item.save-item-category', $item->id) }}" method="post">
-                     @csrf
-                     <input type="hidden" name="id_category" value="{{ $category->id }}">
+                  @php
+                     $status = false;
+                  @endphp
 
-                     <button type="submit" class="btn btn-sm btn-primary">Simpan</button>
-                     <a href="#" class="btn btn-danger btn-sm">Hapus</a>
-                  </form>
+                  @for ($i = 0; $i < $item->category->count(); $i++)
+                     @if ($item->category[$i]->id == $category->id)
+                        @php $status = true; @endphp
+                     @endif
+                  @endfor
 
-                  {{-- <form action="" method="post"> --}}
-                  {{-- </form> --}}
-                  {{-- <a onclick="return confirm('Are you sure ?')" href="{{ route('test.toko.category.destroy', $category->id) }}" class="btn btn-danger btn-sm">Delete</a> --}}
+                  @if ($status)
+                     <a href="{{ route('test.toko.item.delete-item-category', ['id_item' => $item->id, 'id_category' => $category->id]) }}" class="btn btn-danger btn-sm">Hapus</a>
+                  
+                  @else
+                     <form action="{{ route('test.toko.item.save-item-category', $item->id) }}" method="post">
+                        @csrf
+                        <input type="hidden" name="id_category" value="{{ $category->id }}">
+
+                        <button type="submit" class="btn btn-sm btn-primary">Simpan</button>
+                     </form>
+                  @endif
+                  
+
                </td>
             </tr>
          @endforeach

@@ -120,4 +120,20 @@ class ItemController extends Controller
 
         return redirect()->route('test.toko.item.index');
     }
+
+    /**
+     * Undocumented function
+     *
+     * @param [type] $id_item
+     * @param [type] $id_category
+     * @return void
+     */
+    public function deleteItemCategory($id_item, $id_category)
+    {
+        Item::find($id_item)
+            ->category()
+            ->detach($id_category);
+
+        return redirect()->route('test.toko.item.index');
+    }
 }

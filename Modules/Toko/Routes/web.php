@@ -28,6 +28,8 @@ Route::group(['prefix' => 'test', 'as' => 'test.'], function()
         /*** Item ***/
         Route::resource('item', 'ItemController')
             ->except(['show', 'destroy']);
+        Route::get('item/{id}/delete', 'ItemController@deleteItemCategory')
+            ->name('item.destroy');
         
         Route::group(['prefix' => 'item', 'as' => 'item.'], function() {
             Route::get('{id}/add-category', 'ItemController@addItemCategory')
@@ -35,6 +37,9 @@ Route::group(['prefix' => 'test', 'as' => 'test.'], function()
 
             Route::post('{id}/add-category', 'ItemController@saveItemCategory')
                 ->name('save-item-category');
+
+            Route::get('{id_item}/delete-category/{id_category}', 'ItemController@deleteItemCategory')
+                ->name('delete-item-category');
         });
         // Route::get('')
 

@@ -12,8 +12,8 @@
          <tr>
             <th>#</th>
             <th width=30%>Name</th>
-            <th width=10%>Categories</th>
-            <th width=30%>Price</th>
+            <th width=25%>Categories</th>
+            <th width=15%>Price</th>
             <th width=30%>Action</th>
          </tr>
       </thead>
@@ -39,6 +39,7 @@
                <td>
                   <a href="{{ route('test.toko.item.add-item-category-index', $item->id) }}" class="btn btn-sm btn-success">Add Category</a>
                   <a href="{{ route('test.toko.item.edit', $item->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                  <a href="{{ route('test.toko.item.destroy', $item->id) }}" class="btn btn-sm btn-warning btn-danger">Hapus</a>
                   {{-- <a onclick="return confirm('Are you sure ?')" href="{{ route('test.toko.item.destroy', $item->id) }}" class="btn btn-danger btn-sm">Hapus</a> --}}
                </td>
             </tr>
