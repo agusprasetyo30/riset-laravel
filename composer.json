@@ -22,6 +22,7 @@
         "milon/barcode": "^7.0",
         "nwidart/laravel-modules": "^8.2",
         "owen-it/laravel-auditing": "^10.0",
+        "spatie/laravel-query-builder": "^3.5",
         "webpatser/laravel-uuid": "^3.0",
         "yajra/laravel-datatables-oracle": "~9.0"
     },

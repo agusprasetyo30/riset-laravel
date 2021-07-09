@@ -84,6 +84,7 @@
   - spatie/laravel-backup
     - [https://dev.to/ellis22/how-to-backup-laravel-files-and-database-3ehb](https://dev.to/ellis22/how-to-backup-laravel-files-and-database-3ehb)
   - spatie/laravel-query-builder
+    - [https://spatie.be/docs/laravel-query-builder/v3/introduction](https://spatie.be/docs/laravel-query-builder/v3/introduction)
   - spatie/laravel-slugable 
   - spatie/laravel-tags
   - yajra/laravel-datatables-oracle
