@@ -1,4 +1,4 @@
-<h1 align=center>Riset Laravel :shipit:</h1>
+<h1 align=center>:cat: Riset Laravel & Riset MeMFIS :cat:</h1>
 Ini adalah gabungan dari riset laravel yang sebelumnya saya riset dengan riset MeMFIS, Semangat
 
 ## Tahapan membuat project
@@ -13,7 +13,7 @@ Ini adalah gabungan dari riset laravel yang sebelumnya saya riset dengan riset M
 
 ## Database/Tabel yang digunakan
 
-  ### Riset Laravel (Riset Lama) :eyes:
+  ### :eyes: Riset Laravel (Riset Lama)
   Riset ini dimulai untuk menyelesaikan rasa penasaran saya untuk mencoba package & Library baru pada laravel
 
   - Dummy Data
@@ -25,7 +25,7 @@ Ini adalah gabungan dari riset laravel yang sebelumnya saya riset dengan riset M
   - Barcode/QRCode
     - `todos`
 
-  ### Riset MeMFIS :eyes:
+  ### :eyes: Riset MeMFIS 
   Riset ini digunakan untuk mencoba fitur, package, dan library yang terdapat di MeMFIS
 
   - Polimorphisme
