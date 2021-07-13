@@ -6,10 +6,10 @@
    <table class="table table-bordered table-hover mt-2">
       <thead>
          <tr class="text-center">
-            <th width="10px">#</th>
+            <th >#</th>
             <th>Todo</th>
-            <th width="150px">Status</th>
-            <th width="150px">Tanggal Buat</th>
+            <th >Status</th>
+            <th >Tanggal Buat</th>
          </tr>
       </thead>
       <tbody>

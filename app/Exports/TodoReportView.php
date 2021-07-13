@@ -18,8 +18,8 @@ class TodoReportView implements FromView
     */
    public function view() : View
    {
-      return view('bulk-excel.print-view', [
-         'todo_data' => Todo::all()
-      ]);
+      $todo_data = Todo::all();
+
+      return view('bulk-excel.print-view', compact('todo_data'));
    }
 }

@@ -1,5 +1,5 @@
-# Riset Laravel
-Ini adalah gabungan dari riset laravel yang sebelumnya dilakukan dengan riset MeMFIS, Semangat
+<h1 align=center>Riset Laravel :shipit:</h1>
+Ini adalah gabungan dari riset laravel yang sebelumnya saya riset dengan riset MeMFIS, Semangat
 
 ## Tahapan membuat project
 1. Membuat project dengan cara `composer create-project --prefer-dist laravel/laravel nama_project`
@@ -12,8 +12,22 @@ Ini adalah gabungan dari riset laravel yang sebelumnya dilakukan dengan riset Me
 
 
 ## Database/Tabel yang digunakan
-  ### Riset MeMFIS
-  
+
+  ### Riset Laravel (Riset Lama) :eyes:
+  Riset ini dimulai untuk menyelesaikan rasa penasaran saya untuk mencoba package & Library baru pada laravel
+
+  - Dummy Data
+    - `todos`
+  - Convert excel + Bulks file Excel
+    - `todos`
+  - API Laravel Auth (Rest API tanpa Passport ataupun Sanctum)
+    - `users`
+  - Barcode/QRCode
+    - `todos`
+
+  ### Riset MeMFIS :eyes:
+  Riset ini digunakan untuk mencoba fitur, package, dan library yang terdapat di MeMFIS
+
   - Polimorphisme
     - `videos`
     - `posts`
