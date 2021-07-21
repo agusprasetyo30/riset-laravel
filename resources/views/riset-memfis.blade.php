@@ -84,6 +84,7 @@
                      <a class="btn links" href="{{ route('test.index') }}">Form Request + Fungsi</a>
                      <a class="btn links" href="{{ route('test.poly.dashboard') }}">Polimorphisme</a>
                      <a class="btn links" href="{{ route('test.mahasiswa.index') }}">ScopeOf... (Builder)</a>
+                     <a class="btn links bg-dark" href="#">stdClass</a>
                   </div>
                </div>
                <div class="row mt-4">
@@ -98,6 +99,10 @@
                      <a class="btn links bg-dark" href="#">spatie/laravel-slugable</a>
                      <a class="btn links bg-dark" href="#">spatie/laravel-tags</a> 
                      <a class="btn links" href="{{ route('test.datatables.mahasiswa') }}">yajra/laravel-datatables-oracle</a>
+                     <a class="btn links bg-dark" href="#">iio/libmergepdf</a>
+                     <a class="btn links bg-dark" href="#">league/flysystem-aws-s3-v3</a>
+                     <a class="btn links bg-dark" href="#">flynsarmy/csv-seeder</a>
+                     <a class="btn links bg-dark" href="#">barryvdh/laravel-dompdf</a>
                   </div>
                </div>
             </div>

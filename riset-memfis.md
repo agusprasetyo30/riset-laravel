@@ -11,9 +11,6 @@
 - Policy/Policies                   [ ]
 - Form Request + Fungsinya          [X]
 - Penerapan Polimorfisme            [X]
-- ScopeOf... (Builder)              [X]
-  > Implementasinya di input Mahasiswa dengan filter berdasarkan Gender
-  
   ```
   Pada kasus ini menggunakan kasus 
     * One to Many
@@ -32,6 +29,9 @@
       ex:
       Pada kasus ini `Video` dan `Post` dapat menambahkan `Tag` sesuai keinginan, dan sebaliknya `Tag` memiliki beberapa `Video` dan `Post`
   ```
+- ScopeOf... (Builder)              [X]
+  > Implementasinya di input Mahasiswa dengan filter berdasarkan Gender
+- stdClass [ ]
 
 ### Riset Package/Library
 
@@ -53,11 +53,20 @@
   > Modul ini digunakan untuk . . .
 - yajra/laravel-datatables-oracle   [X]
   > Digunakan untuk meriset datatable yang digunakan pada MeMFIS
+- iio/libmergepdf                   [ ]
+  > Modul ini digunakan untuk . . .
+- flynsarmy/csv-seeder              [ ]
+  > Modul ini digunakan untuk . . .
+- barryvdh/laravel-dompdf           [ ]
+  > Modul ini digunakan untuk . . .
+- league/flysystem-aws-s3-v3        [ ]
+  > Modul ini digunakan untuk . . .
 
 ## Refrensi Tutorial
 
 - Riset Fitur Laravel
   - Policy/Policies
+    - ...
   - Form Request + Fungsinya
     - [https://protone.media/en/blog/working-with-the-validator-instance-in-form-requests](https://protone.media/en/blog/working-with-the-validator-instance-in-form-requests)
     - [https://www.apphp.com/tutorials/index.php?page=laravel-creating-custom-form-request](https://www.apphp.com/tutorials/index.php?page=laravel-creating-custom-form-request)
@@ -67,6 +76,13 @@
     - [https://www.nicesnippets.com/blog/laravel-one-to-many-polymorphic-eloquent-relationship-example](https://www.nicesnippets.com/blog/laravel-one-to-many-polymorphic-eloquent-relationship-example)
     - [https://laracasts.com/discuss/channels/eloquent/remove-many-to-many-polymorphic-relations-taggables](https://laracasts.com/discuss/channels/eloquent/remove-many-to-many-polymorphic-relations-taggables)
     - [https://www.itsolutionstuff.com/post/laravel-one-to-many-polymorphic-relationship-tutorialexample.html](https://www.itsolutionstuff.com/post/laravel-one-to-many-polymorphic-relationship-tutorialexample.html)
+  - ScopeOf
+    - [https://medium.com/@janaksan_/using-scope-with-laravel-7c80dd6a2c3d](https://medium.com/@janaksan_/using-scope-with-laravel-7c80dd6a2c3d)
+    - [https://www.larashout.com/using-scopes-in-laravel](https://www.larashout.com/using-scopes-in-laravel)
+    - [https://elishaukpongson.medium.com/laravel-scope-an-introduction-87ec5acc39e](https://elishaukpongson.medium.com/laravel-scope-an-introduction-87ec5acc39e)
+    - [https://laravel.com/docs/5.6/eloquent#query-scopes](https://laravel.com/docs/5.6/eloquent#query-scopes)
+  - stdClass
+    - ...
 
 <br>
 
@@ -80,16 +96,28 @@
     - [https://www.youtube.com/watch?v=kxBRJvxx05Q](https://www.youtube.com/watch?v=kxBRJvxx05Q)
     - [https://laracasts.com/discuss/channels/laravel/audit-with-laravel-auditing](https://laracasts.com/discuss/channels/laravel/audit-with-laravel-auditing)
   - spatie/laravel-sortable 
+    - ...
   - spatie/laravel-activity-log
+    - ...
   - spatie/laravel-backup
     - [https://dev.to/ellis22/how-to-backup-laravel-files-and-database-3ehb](https://dev.to/ellis22/how-to-backup-laravel-files-and-database-3ehb)
   - spatie/laravel-query-builder
     - [https://spatie.be/docs/laravel-query-builder/v3/introduction](https://spatie.be/docs/laravel-query-builder/v3/introduction)
   - spatie/laravel-slugable 
+    - ...
   - spatie/laravel-tags
+    - ...
   - yajra/laravel-datatables-oracle
     - [https://datatables.yajrabox.com/](https://datatables.yajrabox.com/)
     - [https://stackoverflow.com/questions/31580366/jquery-datatables-hide-show-entries-text-but-show-the-dropdown-list](https://stackoverflow.com/questions/31580366/jquery-datatables-hide-show-entries-text-but-show-the-dropdown-list)
     - [https://laravel-news.com/laravel-optional-helper](https://laravel-news.com/laravel-optional-helper)
     - [http://live.datatables.net/kihecona/1/edit](http://live.datatables.net/kihecona/1/edit)
     - Riset dan implementasi dari source code memfis
+  - iio/libmergepdf
+    - ...
+  - flynsarmy/csv-seeder
+    - ...
+  - barryvdh/laravel-dompdf
+    - ...
+  - league/flysystem-aws-s3-v3
+    - ...
