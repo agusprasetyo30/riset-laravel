@@ -103,6 +103,7 @@
     - [https://dev.to/ellis22/how-to-backup-laravel-files-and-database-3ehb](https://dev.to/ellis22/how-to-backup-laravel-files-and-database-3ehb)
   - spatie/laravel-query-builder
     - [https://spatie.be/docs/laravel-query-builder/v3/introduction](https://spatie.be/docs/laravel-query-builder/v3/introduction)
+    - [https://www.larablocks.com/package/spatie/laravel-query-builder](https://www.larablocks.com/package/spatie/laravel-query-builder)
   - spatie/laravel-slugable 
     - ...
   - spatie/laravel-tags

@@ -146,6 +146,10 @@ Route::group(['namespace' => 'Riset'], function() {
                 Route::group(['prefix' => 'laravel-auditing', 'as' => 'auditing.' ], function() {
                     Route::get('/', 'AuditingController@index')->name('index');
                 });
+
+                Route::group(['prefix' => 'laravel-query-builder', 'as' => 'query-builder.'], function() {
+                    Route::get('/', 'QueryBuilderController@index')->name('index');
+                });
             });
 
         });
