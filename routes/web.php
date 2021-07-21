@@ -2,6 +2,7 @@
 
 use App\Mahasiswa;
 use Illuminate\Support\Facades\Route;
+use Spatie\QueryBuilder\QueryBuilder;
 
 /*
 |--------------------------------------------------------------------------
@@ -148,7 +149,12 @@ Route::group(['namespace' => 'Riset'], function() {
                 });
 
                 Route::group(['prefix' => 'laravel-query-builder', 'as' => 'query-builder.'], function() {
-                    Route::get('/', 'QueryBuilderController@index')->name('index');
+                    $mahasiswa = QueryBuilder::for(Mahasiswa::class)
+                        ->allowedFilters(['nama'])
+                        ->get();
+
+                    return $mahasiswa;
+                    // Route::get('/', 'QueryBuilderController@index')->name('index');
                 });
             });
 

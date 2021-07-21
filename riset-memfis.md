@@ -104,6 +104,7 @@
   - spatie/laravel-query-builder
     - [https://spatie.be/docs/laravel-query-builder/v3/introduction](https://spatie.be/docs/laravel-query-builder/v3/introduction)
     - [https://www.larablocks.com/package/spatie/laravel-query-builder](https://www.larablocks.com/package/spatie/laravel-query-builder)
+    - [https://laracasts.com/discuss/channels/laravel/spatie-laravel-query-builder](https://laracasts.com/discuss/channels/laravel/spatie-laravel-query-builder)
   - spatie/laravel-slugable 
     - ...
   - spatie/laravel-tags

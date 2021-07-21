@@ -34,7 +34,7 @@
       <button class="btn btn-sm btn-primary">Filter</button>
    </div>
 
-   {{-- {{ request()->input('filter.name') }} --}}
+   {{ print_r(explode(",", request()->input('filter.name'))) }}
 
    <table class="table table-bordered table-hover table-striped">
       <thead>
@@ -68,3 +68,9 @@
       </tfoot>
    </table>
 @endsection
+
+@push('js')
+   <script>
+      
+   </script>
+@endpush
