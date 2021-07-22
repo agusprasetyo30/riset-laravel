@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Riset\Memfis\Package;
 use App\Http\Controllers\Controller;
 use App\Mahasiswa;
 use Illuminate\Http\Request;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class QueryBuilderController extends Controller
 {
@@ -15,9 +16,15 @@ class QueryBuilderController extends Controller
      */
     public function index()
     {
-        $mahasiswas = Mahasiswa::all();
+        $paginationLength = 5;
+        $numberPagination = numberPagination($paginationLength);
 
-        return view('mmf.riset.package.laravel-query-builder.index', compact('mahasiswas'));
+        $mahasiswas = Mahasiswa::paginate($paginationLength);
+        // $mahasiswas = QueryBuilder::for(Mahasiswa::class)
+        //     ->allowedFilters(['kelas'])
+        //     ->paginate($paginationLength);
+
+        return view('mmf.riset.package.laravel-query-builder.index', compact('mahasiswas', 'numberPagination'));
     }
 
     /**

@@ -149,12 +149,15 @@ Route::group(['namespace' => 'Riset'], function() {
                 });
 
                 Route::group(['prefix' => 'laravel-query-builder', 'as' => 'query-builder.'], function() {
-                    $mahasiswa = QueryBuilder::for(Mahasiswa::class)
-                        ->allowedFilters(['nama'])
-                        ->get();
+                    
+                    // Route::get('/', function() {
+                    //     $mahasiswa = QueryBuilder::for(Mahasiswa::class)
+                    //     ->allowedFilters(['kelas'])
+                    //     ->get();
 
-                    return $mahasiswa;
-                    // Route::get('/', 'QueryBuilderController@index')->name('index');
+                    //     return $mahasiswa[0]->nama;
+                    // });
+                    Route::get('/', 'QueryBuilderController@index')->name('index');
                 });
             });
 

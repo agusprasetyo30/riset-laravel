@@ -8,33 +8,33 @@
    <label>Filter Kelas</label>
    <div>
       <label>
-         <input type="checkbox" name="" id="">
+         <input type="checkbox" name="kelas" value="MI-3A">
          MI-3A
       </label>
       <label>
-         <input type="checkbox" name="" id="">
+         <input type="checkbox" name="kelas" value="MI-3B">
          MI-3B
       </label>
       <label>
-         <input type="checkbox" name="" id="">
+         <input type="checkbox" name="kelas" value="MI-3C">
          MI-3C
       </label>
       <label>
-         <input type="checkbox" name="" id="">
+         <input type="checkbox" name="kelas" value="MI-3D">
          MI-3D
       </label>
       <label>
-         <input type="checkbox" name="" id="">
+         <input type="checkbox" name="kelas" value="MI-3E">
          MI-3E
       </label>
       <label>
-      <input type="checkbox" name="" id="">
+      <input type="checkbox" name="kelas" value="MI-3F">
          MI-3F
       </label>
-      <button class="btn btn-sm btn-primary">Filter</button>
+      <button class="btn btn-sm btn-primary" id="filter">Filter</button>
    </div>
 
-   {{ print_r(explode(",", request()->input('filter.name'))) }}
+   {{-- {{ print_r(explode(",", request()->input('filter.name'))) }} --}}
 
    <table class="table table-bordered table-hover table-striped">
       <thead>
@@ -47,9 +47,9 @@
          </tr>
       </thead>
       <tbody>
-         @foreach ($mahasiswas as $index => $mahasiswa)
+         @foreach ($mahasiswas as $mahasiswa)
             <tr>
-               <td>{{ ++$index }}. </td>
+               <td>{{ $numberPagination++ }}. </td>
                <td>
                   <a href="{{ route('test.mahasiswa.show', $mahasiswa->uuid) }}">{{ $mahasiswa->nama }}</a>
                </td>
@@ -62,7 +62,7 @@
       <tfoot>
          <tr>
             <td colspan="6">
-               {{-- {{ $mahasiswas->appends(Request::all())->links() }} --}}
+               {{ $mahasiswas->appends(Request::all())->links() }}
             </td>
          </tr>
       </tfoot>
@@ -71,6 +71,35 @@
 
 @push('js')
    <script>
-      
+      function getIds(checkboxName) {
+         let checkBoxes = document.getElementsByName(checkboxName);
+         let ids = Array.prototype.slice.call(checkBoxes)
+                        .filter(check => check.checked==true)
+                        .map(check => check.value);
+         return ids;
+      }
+
+      function filterResults () {
+         let kelasIds = getIds("kelas");
+
+
+         // console.log(kelasIds);
+         // let catagoryIds = getIds("catagory");
+
+         let href = 'laravel-query-builder?';
+
+         if(kelasIds.length) {
+            href += 'filter[kelas]=' + kelasIds ;
+         }
+
+         // if(catagoryIds.length) {
+         //    href += '&filter[category]=' + catagoryIds;
+         // }
+
+         document.location.href=href;
+      }
+
+      document.getElementById('filter').addEventListener("click", filterResults)
+
    </script>
 @endpush
