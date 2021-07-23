@@ -19,12 +19,14 @@ class QueryBuilderController extends Controller
         $paginationLength = 5;
         $numberPagination = numberPagination($paginationLength);
 
-        $mahasiswas = Mahasiswa::paginate($paginationLength);
-        // $mahasiswas = QueryBuilder::for(Mahasiswa::class)
-        //     ->allowedFilters(['kelas'])
-        //     ->paginate($paginationLength);
+        // $mahasiswas = Mahasiswa::paginate($paginationLength);
+        $mahasiswas = QueryBuilder::for(Mahasiswa::class)
+            ->allowedFilters(['kelas'])
+            ->paginate($paginationLength);
 
-        return view('mmf.riset.package.laravel-query-builder.index', compact('mahasiswas', 'numberPagination'));
+        $kelas = ["MI-3A", "MI-3B", "MI-3C", "MI-3D", "MI-3E", "MI-3F"];
+
+        return view('mmf.riset.package.laravel-query-builder.index', compact('mahasiswas', 'numberPagination', 'kelas'));
     }
 
     /**
@@ -33,7 +35,7 @@ class QueryBuilderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
+    { 
         //
     }
 

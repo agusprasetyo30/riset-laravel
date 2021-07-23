@@ -7,31 +7,19 @@
 
    <label>Filter Kelas</label>
    <div>
-      <label>
-         <input type="checkbox" name="kelas" value="MI-3A">
-         MI-3A
-      </label>
-      <label>
-         <input type="checkbox" name="kelas" value="MI-3B">
-         MI-3B
-      </label>
-      <label>
-         <input type="checkbox" name="kelas" value="MI-3C">
-         MI-3C
-      </label>
-      <label>
-         <input type="checkbox" name="kelas" value="MI-3D">
-         MI-3D
-      </label>
-      <label>
-         <input type="checkbox" name="kelas" value="MI-3E">
-         MI-3E
-      </label>
-      <label>
-      <input type="checkbox" name="kelas" value="MI-3F">
-         MI-3F
-      </label>
+      @foreach ($kelas as $item)
+         <label>
+            <input type="checkbox" name="kelas" value="{{ $item }}"
+               @if (in_array($item, explode(",", request()->input('filter.kelas'))))
+                  checked
+               @endif
+            >
+            {{ $item }}
+         </label>
+      @endforeach
+      
       <button class="btn btn-sm btn-primary" id="filter">Filter</button>
+      {{-- <button class="btn btn-sm btn-primary" id="cek">Cek</button> --}}
    </div>
 
    {{-- {{ print_r(explode(",", request()->input('filter.name'))) }} --}}
@@ -71,20 +59,18 @@
 
 @push('js')
    <script>
+      // Digunakan untuk mengambil ID dan kemudian di masukan ke dalam array
       function getIds(checkboxName) {
          let checkBoxes = document.getElementsByName(checkboxName);
          let ids = Array.prototype.slice.call(checkBoxes)
                         .filter(check => check.checked==true)
                         .map(check => check.value);
+         
          return ids;
       }
 
       function filterResults () {
          let kelasIds = getIds("kelas");
-
-
-         // console.log(kelasIds);
-         // let catagoryIds = getIds("catagory");
 
          let href = 'laravel-query-builder?';
 
@@ -92,14 +78,22 @@
             href += 'filter[kelas]=' + kelasIds ;
          }
 
-         // if(catagoryIds.length) {
-         //    href += '&filter[category]=' + catagoryIds;
-         // }
-
          document.location.href=href;
       }
 
       document.getElementById('filter').addEventListener("click", filterResults)
 
+      // document.getElementById('cek').addEventListener("click", function () {
+      //    let checkBoxes = document.getElementsByName("kelas");
+         
+      //    cek = Array.prototype.slice.call(checkBoxes)
+      //       .filter(c => c.checked == true)
+      //       .map(c => c.value)
+      //       .values()
+
+      //    for (const value of cek) {
+      //       console.log(value);
+      //    }
+      // });
    </script>
 @endpush
