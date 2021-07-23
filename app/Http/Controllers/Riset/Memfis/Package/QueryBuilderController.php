@@ -21,11 +21,14 @@ class QueryBuilderController extends Controller
 
         // $mahasiswas = Mahasiswa::paginate($paginationLength);
         $mahasiswas = QueryBuilder::for(Mahasiswa::class)
+            ->allowedSorts('nama', 'kelas', 'jk')
             ->allowedFilters(['kelas'])
-            ->paginate($paginationLength);
-
+            // ->paginate($paginationLength);
+            ->get();
+        
+        
         $kelas = ["MI-3A", "MI-3B", "MI-3C", "MI-3D", "MI-3E", "MI-3F"];
-
+        
         return view('mmf.riset.package.laravel-query-builder.index', compact('mahasiswas', 'numberPagination', 'kelas'));
     }
 

@@ -5,22 +5,38 @@
 @section('content')
    <h2 class="text-center m-3">Laravel Query Builder</h2>
 
-   <label>Filter Kelas</label>
-   <div>
-      @foreach ($kelas as $item)
-         <label>
-            <input type="checkbox" name="kelas" value="{{ $item }}"
-               @if (in_array($item, explode(",", request()->input('filter.kelas'))))
-                  checked
-               @endif
-            >
-            {{ $item }}
-         </label>
-      @endforeach
-      
-      <button class="btn btn-sm btn-primary" id="filter">Filter</button>
-      {{-- <button class="btn btn-sm btn-primary" id="cek">Cek</button> --}}
+   <div class="row">
+      <div class="col-md-6">
+         <label>Filter Kelas: </label>
+         <div>
+            @foreach ($kelas as $item)
+               <label>
+                  <input type="checkbox" name="kelas" value="{{ $item }}"
+                     @if (in_array($item, explode(",", request()->input('filter.kelas'))))
+                        checked
+                     @endif
+                  >
+                  {{ $item }}
+               </label>
+            @endforeach
+            
+            <button class="btn btn-sm btn-primary" id="filter">Filter</button>
+            {{-- <button class="btn btn-sm btn-primary" id="cek">Cek</button> --}}
+         </div>
+      </div>
+      <div class="col-md-6">
+         <label>Sorting</label>
+         <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+            <label class="form-check-label" for="inlineRadio1">1</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+            <label class="form-check-label" for="inlineRadio2">2</label>
+          </div>
+      </div>
    </div>
+   
 
    {{-- {{ print_r(explode(",", request()->input('filter.name'))) }} --}}
 
@@ -50,7 +66,7 @@
       <tfoot>
          <tr>
             <td colspan="6">
-               {{ $mahasiswas->appends(Request::all())->links() }}
+               {{-- {{ $mahasiswas->appends(Request::all())->links() }} --}}
             </td>
          </tr>
       </tfoot>

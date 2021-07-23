@@ -64,8 +64,9 @@
                      <a class="nav-item nav-link" href="{{ route('login') }}">Login</a>
 
                      @if (Route::has('register'))
-                        <a class="nav-item nav-link" href="{{ route('register') }}">Register</a>
+                        <a class="nav-item nav-link" href="{{ route('register') }}">Register</a>385711
                      @endif
+                     386983
                   @endauth
                @endif
          </div>
@@ -95,7 +96,7 @@
                      <a class="btn links bg-dark" href="#">spatie/laravel-sortable</a>
                      <a class="btn links bg-dark" href="#">spatie/laravel-activity-log</a>
                      <a class="btn links bg-dark" href="#">spatie/laravel-backup</a>
-                     {{-- <a class="btn links" href="{{ route('test.query-builder.index') }}">spatie/laravel-query-builder</a> --}}
+                     <a class="btn links" href="{{ route('test.query-builder.index') }}">spatie/laravel-query-builder</a>
                      <a class="btn links bg-dark" href="#">spatie/laravel-slugable</a>
                      <a class="btn links bg-dark" href="#">spatie/laravel-tags</a> 
                      <a class="btn links" href="{{ route('test.datatables.mahasiswa') }}">yajra/laravel-datatables-oracle</a>

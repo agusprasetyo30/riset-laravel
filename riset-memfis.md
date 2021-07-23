@@ -46,7 +46,7 @@
 - spatie/laravel-backup             [ ]
   > Modul ini digunakan untuk . . .
 - spatie/laravel-query-builder      [ ]
-  > Modul ini digunakan untuk . . .
+  > Package ini memungkinkan untuk `filter`, `sorting`, dan include `eloquent relations` yang berdasarkan permintaan/request. `QueryBuilder` yang digunakan dalam package ini untuk memperluas/`extends` default `laravel eloquent builder`
 - spatie/laravel-slugable           [ ]
   > Modul ini digunakan untuk . . .
 - spatie/laravel-tags               [ ]
