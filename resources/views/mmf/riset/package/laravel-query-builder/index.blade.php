@@ -125,18 +125,32 @@
       // Sorting berdasarkan data yang dipilih
 
       // 
-      function getValueChecked(input_radio_name)
+      function getValueChecked(input_radio_name, query_string_name)
       {
          tipe_sorting = getRadioButtonValue(input_radio_name)
          var urlParams = new URLSearchParams(window.location.search)
 
          for (let i = 0; i < tipe_sorting.length; i++) {
-            if (urlParams.get('sort') == tipe_sorting[i]) {
-               let value = tipe_sorting[i]
-               $("#" + value).prop("checked", true)
+            if (urlParams.get(query_string_name) == tipe_sorting[i] || urlParams.get(query_string_name) == "-" + tipe_sorting[i]) {
+               $("#" + tipe_sorting[i]).prop("checked", true)
 
-               return value
+               return tipe_sorting[i]
                break
+            }
+         }
+      }
+
+      //
+      function sortOrderChecked(order_name)
+      {
+         let order_type_check = getRadioButtonValue(order_name)
+         let check_query_string_sort = new URLSearchParams(window.location.search)
+         
+         for (let i = 0; i < order_type_check.length; i++) {
+            if (check_query_string_sort.get('sort')[0] == "-") { // mengambil satu huruf di depan untuk mengidentifikasi tanda "-"
+               $("#desc").prop("checked", true)
+            } else {
+               $("#asc").prop("checked", true)
             }
          }
       }
@@ -170,17 +184,16 @@
       }
       
       getRadioButtonValue('tipe_sorting')
-      getValueChecked('tipe_sorting');
-
+      getValueChecked('tipe_sorting', 'sort')
+      sortOrderChecked('order_type')
+      
       let order_type = document.querySelectorAll('input[name="order_type"]');
-
-      console.log(getValueChecked('tipe_sorting'));
       for (let i = 0; i < order_type.length; i++) {
          order_type[i].addEventListener("change", function() {
             if (this.value == "DESC") {
-               href += "sort=-" + getValueChecked('tipe_sorting')
+               href += "sort=-" + getValueChecked('tipe_sorting', 'sort')
             } else {
-               href += "sort=" + getValueChecked('tipe_sorting')
+               href += "sort=" + getValueChecked('tipe_sorting', 'sort')
             }
 
             if (getFilter.length > 0) {
@@ -190,6 +203,8 @@
             document.location.href = href;
          });
       }
+
+
 
    </script>
 @endpush
