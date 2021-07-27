@@ -3,12 +3,14 @@
 @section('title', 'Riset Laravel Query Builder')
 
 @section('content')
-   <h2 class="text-center m-3">Laravel Query Builder</h2>
+   <div class="text-center m-4">
+      <h2>Laravel Query Builder</h2>
+      <small>Pada halaman ini mengimplemtasikan <b>Laravel Query Builder</b> untuk melakukan <b>Filter</b> dan <b>Sorting</b> data mahasiswa</small>
+   </div>
 
    <div class="row">
       <div class="col-md-6">
-         <label>Filter Kelas: </label>
-         <div>
+         <h5>Filter Kelas</h5>
             @foreach ($kelas as $item)
                <label>
                   <input type="checkbox" name="kelas" value="{{ $item }}"
@@ -22,27 +24,24 @@
             
             <button class="btn btn-sm btn-primary" id="filter">Filter</button>
             {{-- <button class="btn btn-sm btn-primary" id="cek">Cek</button> --}}
-         </div>
       </div>
       <div class="col-md-4">
-         <label>Sorting</label>
-         <div>
-            <div class="form-check form-check-inline">
-               <input class="form-check-input" type="radio" name="tipe_sorting" id="kelas" value="kelas">
-               <label class="form-check-label" for="kelas">Kelas</label>
-            </div>
-            <div class="form-check form-check-inline">
-               <input class="form-check-input" type="radio" name="tipe_sorting" id="nama" value="nama">
-               <label class="form-check-label" for="nama">Nama</label>
-            </div>
-            <div class="form-check form-check-inline">
-               <input class="form-check-input" type="radio" name="tipe_sorting" id="jk" value="jk">
-               <label class="form-check-label" for="jk">Jenis Kelamin</label>
-            </div>
+         <h5>Sorting</h5>
+         <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="tipe_sorting" id="kelas" value="kelas">
+            <label class="form-check-label" for="kelas">Kelas</label>
          </div>
-         
+         <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="tipe_sorting" id="nama" value="nama">
+            <label class="form-check-label" for="nama">Nama</label>
+         </div>
+         <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="tipe_sorting" id="jk" value="jk">
+            <label class="form-check-label" for="jk">Jenis Kelamin</label>
+         </div>
       </div>
       <div class="col-md-2">
+         <h5>Order By</h5>
          <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="order_type" id="asc" value="ASC" checked>
             <label class="form-check-label" for="asc">ASC</label>
