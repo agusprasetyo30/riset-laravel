@@ -44,11 +44,11 @@
       </div>
       <div class="col-md-2">
          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="type" id="asc" value="ASC" checked>
+            <input class="form-check-input" type="radio" name="order_type" id="asc" value="ASC" checked>
             <label class="form-check-label" for="asc">ASC</label>
          </div>
          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="type" id="desc" value="DESC">
+            <input class="form-check-input" type="radio" name="order_type" id="desc" value="DESC">
             <label class="form-check-label" for="desc">DESC</label>
          </div>
       </div>
@@ -92,18 +92,23 @@
 
 @push('js')
    <script>
+      let href = 'laravel-query-builder?';
+
+      //Untuk filter berdasarkan kelas
 
       // Digunakan untuk mengambil ID dan kemudian di masukan ke dalam array
-      function getIds(checkboxName) {
+      function getIds(checkboxName) 
+      {
          let checkBoxes = document.getElementsByName(checkboxName);
          let ids = Array.prototype.slice.call(checkBoxes)
-                        .filter(check => check.checked==true)
-                        .map(check => check.value);
+            .filter(check => check.checked==true)
+            .map(check => check.value);
          
          return ids;
       }
 
-      function filterResults () {
+      function filterResults () 
+      {
          let kelasIds = getIds("kelas");
          let href = 'laravel-query-builder?';
 
@@ -117,37 +122,17 @@
       document.getElementById('filter').addEventListener("click", filterResults)
 
 
-      let tipe_sorting = document.querySelectorAll('input[name="tipe_sorting"]');
-      let type = document.querySelectorAll('input[name="type"]');
+      // Sorting berdasarkan data yang dipilih
 
-      for (let i = 0; i < tipe_sorting.length; i++) {
-         tipe_sorting[i].addEventListener("change", function() {
-
-            let href = 'laravel-query-builder?';
-            let val = this.value; // this == the clicked radio,
-            href += "sort=" + val;
-
-            // link = href;
-            document.location.href = href;
-         });
-      }
-      
-      function getRadioButtonValue(radioName) {
-         let checkbox = document.querySelectorAll(radioName);
-         console.log(checkbox);
-      }
-
-      getRadioButtonValue('type')
-
-      console.log(type);
-
-      function getValueChecked(tipe_sorting)
+      // 
+      function getValueChecked(input_radio_name)
       {
-         var urlParams = new URLSearchParams(window.location.search);
+         tipe_sorting = getRadioButtonValue(input_radio_name)
+         var urlParams = new URLSearchParams(window.location.search)
 
          for (let i = 0; i < tipe_sorting.length; i++) {
-            if (urlParams.get('sort') == tipe_sorting[i].value) {
-               let value = tipe_sorting[i].value
+            if (urlParams.get('sort') == tipe_sorting[i]) {
+               let value = tipe_sorting[i]
                $("#" + value).prop("checked", true)
 
                return value
@@ -156,10 +141,55 @@
          }
       }
 
-      // let a = getValueChecked(tipe_sorting)
-      // console.log(a);
+      // 
+      function getRadioButtonValue(radioName) 
+      {
+         let getInputRadio = document.querySelectorAll('input[name="' + radioName +  '"]')
+         let value = Array.prototype.slice.call(getInputRadio)
+            .map(check => check.value);
+         
+         return value;
+      }
 
+      //
+      let tipe_sorting = document.querySelectorAll('input[name="tipe_sorting"]');
+      let getFilter = getIds('kelas');
+
+      for (let i = 0; i < tipe_sorting.length; i++) {
+
+         tipe_sorting[i].addEventListener("change", function() {
+            href += "sort=" + this.value; // this == the clicked radio,
+            
+            // Cek apakah ada filter apa belum
+            if (getFilter.length > 0) {
+               href += "&filter[kelas]=" + getFilter
+            }
+
+            document.location.href = href;
+         });
+      }
       
+      getRadioButtonValue('tipe_sorting')
+      getValueChecked('tipe_sorting');
+
+      let order_type = document.querySelectorAll('input[name="order_type"]');
+
+      console.log(getValueChecked('tipe_sorting'));
+      for (let i = 0; i < order_type.length; i++) {
+         order_type[i].addEventListener("change", function() {
+            if (this.value == "DESC") {
+               href += "sort=-" + getValueChecked('tipe_sorting')
+            } else {
+               href += "sort=" + getValueChecked('tipe_sorting')
+            }
+
+            if (getFilter.length > 0) {
+               href += "&filter[kelas]=" + getFilter
+            }
+
+            document.location.href = href;
+         });
+      }
 
    </script>
 @endpush
