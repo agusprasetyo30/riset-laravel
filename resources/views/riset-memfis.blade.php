@@ -103,7 +103,7 @@
                      <a class="btn links bg-warning" href="#">iio/libmergepdf</a>
                      <a class="btn links bg-dark" href="#">league/flysystem-aws-s3-v3</a>
                      <a class="btn links bg-dark" href="#">flynsarmy/csv-seeder</a>
-                     <a class="btn links bg-dark" href="#">barryvdh/laravel-dompdf</a>
+                     <a class="btn links bg-warning" href="#">barryvdh/laravel-dompdf</a>
                   </div>
                </div>
             </div>

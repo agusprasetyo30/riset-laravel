@@ -161,6 +161,14 @@ Route::group(['namespace' => 'Riset'], function() {
                 });
             });
 
+            /**
+             * Menampilkan Readme
+             */
+            Route::get('cek', function() {
+                $markdown_content = file_get_contents('../riset-memfis.md');
+                echo Illuminate\Mail\Markdown::parse($markdown_content);
+            });
+
         });
     });
 
