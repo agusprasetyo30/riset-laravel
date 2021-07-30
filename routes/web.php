@@ -149,15 +149,16 @@ Route::group(['namespace' => 'Riset'], function() {
                 });
 
                 Route::group(['prefix' => 'laravel-query-builder', 'as' => 'query-builder.'], function() {
-                    
-                    // Route::get('/', function() {
-                    //     $mahasiswa = QueryBuilder::for(Mahasiswa::class)
-                    //     ->allowedFilters(['kelas'])
-                    //     ->get();
-
-                    //     return $mahasiswa[0]->nama;
-                    // });
                     Route::get('/', 'QueryBuilderController@index')->name('index');
+                });
+
+                Route::group(['prefix' => 'laravel-dompdf', 'as' => 'dompdf.'], function() {
+                    // Route::get('/', '')
+                    Route::get('/', function() {
+                        $pdf = PDF::loadView('mmf.riset.package.laravel-dompdf.index');
+                        return $pdf->stream('document.pdf');
+                        // return view('mmf.riset.package.laravel-dompdf.index');
+                    });
                 });
             });
 

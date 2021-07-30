@@ -123,6 +123,7 @@
   - flynsarmy/csv-seeder
     - ...
   - barryvdh/laravel-dompdf
+    - [https://github.com/dompdf/dompdf](https://github.com/dompdf/dompdf)
     - [https://github.com/barryvdh/laravel-dompdf](https://github.com/barryvdh/laravel-dompdf)
     - [https://www.remotestack.io/how-to-generate-pdf-file-in-laravel-with-dompdf/](https://www.remotestack.io/how-to-generate-pdf-file-in-laravel-with-dompdf/)
     - [https://www.malasngoding.com/membuat-laporan-pdf-dengan-dompdf-laravel/](https://www.malasngoding.com/membuat-laporan-pdf-dengan-dompdf-laravel/)
