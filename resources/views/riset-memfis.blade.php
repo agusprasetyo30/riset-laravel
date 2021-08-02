@@ -64,9 +64,9 @@
                      <a class="nav-item nav-link" href="{{ route('login') }}">Login</a>
 
                      @if (Route::has('register'))
-                        <a class="nav-item nav-link" href="{{ route('register') }}">Register</a>385711
+                        <a class="nav-item nav-link" href="{{ route('register') }}">Register</a>
                      @endif
-                     386983
+                     
                   @endauth
                @endif
          </div>
