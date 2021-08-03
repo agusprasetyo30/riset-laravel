@@ -100,10 +100,9 @@
                      <a class="btn links bg-dark" href="#">spatie/laravel-slugable</a>
                      <a class="btn links bg-dark" href="#">spatie/laravel-tags</a> 
                      <a class="btn links" href="{{ route('test.datatables.mahasiswa') }}">yajra/laravel-datatables-oracle</a>
-                     <a class="btn links bg-warning" href="#">iio/libmergepdf</a>
                      <a class="btn links bg-dark" href="#">league/flysystem-aws-s3-v3</a>
                      <a class="btn links bg-dark" href="#">flynsarmy/csv-seeder</a>
-                     <a class="btn links bg-warning" href="#">barryvdh/laravel-dompdf</a>
+                     <a class="btn links" href="{{ route('test.dompdf.index') }}">barryvdh/laravel-dompdf & iio/libmergepdf</a>
                   </div>
                </div>
             </div>

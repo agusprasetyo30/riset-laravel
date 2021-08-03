@@ -155,6 +155,7 @@ Route::group(['namespace' => 'Riset'], function() {
                 Route::group(['prefix' => 'laravel-dompdf', 'as' => 'dompdf.'], function() {
                     // Route::get('/', '')
                     Route::get('/', 'DompdfController@index')->name('index');
+                    Route::get('/print-dompdf', 'DompdfController@printDompdf')->name('print');
                     // Route::get('/', function() {
                         // $pdf = PDF::loadView('mmf.riset.package.laravel-dompdf.index');
                         // return $pdf->stream('document.pdf');

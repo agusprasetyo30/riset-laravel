@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Riset\Memfis\Package;
 
 use App\Http\Controllers\Controller;
+use App\Mahasiswa;
 use Illuminate\Http\Request;
 
 class DompdfController extends Controller
@@ -15,6 +16,14 @@ class DompdfController extends Controller
     public function index()
     {
         return view('mmf.riset.package.laravel-dompdf.index');
+    }
+
+    
+    public function printDompdf()
+    {
+        $mahasiswas = Mahasiswa::all();
+
+        return view('mmf.riset.package.laravel-dompdf.print-dompdf', compact('mahasiswas'));
     }
 
     /**
