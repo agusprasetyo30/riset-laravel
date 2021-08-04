@@ -115,19 +115,19 @@
     - [https://laravel-news.com/laravel-optional-helper](https://laravel-news.com/laravel-optional-helper)
     - [http://live.datatables.net/kihecona/1/edit](http://live.datatables.net/kihecona/1/edit)
     - Riset dan implementasi dari source code memfis
-  - iio/libmergepdf
-    - [https://github.com/hanneskod/libmergepdf](https://github.com/hanneskod/libmergepdf)
-    - [https://laracasts.com/discuss/channels/laravel/merging-pdf-files](https://laracasts.com/discuss/channels/laravel/merging-pdf-files)
-    - [http://www.muslimaswaja.id/2020/08/multiorientasi-di-dompdf-bisakah.html](http://www.muslimaswaja.id/2020/08/multiorientasi-di-dompdf-bisakah.html)
-    - [https://stackoverflow.com/questions/36012174/dompdf-page-orientation-both-landscape-and-portrait](https://stackoverflow.com/questions/36012174/dompdf-page-orientation-both-landscape-and-portrait)
   - flynsarmy/csv-seeder
     - ...
-  - barryvdh/laravel-dompdf
+  - barryvdh/laravel-dompdf & iio/libmergepdf (Untuk merge file pdf ex: potrait & landscape)
     - [https://github.com/dompdf/dompdf](https://github.com/dompdf/dompdf)
+    - [http://eclecticgeek.com/dompdf/debug.php](http://eclecticgeek.com/dompdf/debug.php) => Untuk debug dompdf
     - [https://github.com/barryvdh/laravel-dompdf](https://github.com/barryvdh/laravel-dompdf)
     - [https://www.remotestack.io/how-to-generate-pdf-file-in-laravel-with-dompdf/](https://www.remotestack.io/how-to-generate-pdf-file-in-laravel-with-dompdf/)
     - [https://www.malasngoding.com/membuat-laporan-pdf-dengan-dompdf-laravel/](https://www.malasngoding.com/membuat-laporan-pdf-dengan-dompdf-laravel/)
     - [https://solutech.id/2019/07/17/cara-membuat-report-pdf-dengan-dompdf-pada-laravel/](https://solutech.id/2019/07/17/cara-membuat-report-pdf-dengan-dompdf-pada-laravel/)
+    - [https://github.com/hanneskod/libmergepdf](https://github.com/hanneskod/libmergepdf) => [ merge PDF ]
+    - [https://laracasts.com/discuss/channels/laravel/merging-pdf-files](https://laracasts.com/discuss/channels/laravel/merging-pdf-files)
+    - [http://www.muslimaswaja.id/2020/08/multiorientasi-di-dompdf-bisakah.html](http://www.muslimaswaja.id/2020/08/multiorientasi-di-dompdf-bisakah.html)
+    - [https://stackoverflow.com/questions/36012174/dompdf-page-orientation-both-landscape-and-portrait](https://stackoverflow.com/questions/36012174/dompdf-page-orientation-both-landscape-and-portrait)
     - ...
   - league/flysystem-aws-s3-v3
     - ...

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Riset\Memfis\Package;
 
 use App\Http\Controllers\Controller;
 use App\Mahasiswa;
+use App\Mata_kuliah;
 use Illuminate\Http\Request;
 
 class DompdfController extends Controller
@@ -21,9 +22,21 @@ class DompdfController extends Controller
     
     public function printDompdf()
     {
-        $mahasiswas = Mahasiswa::all();
+        // Referensi : https://stackoverflow.com/questions/30231862/laravel-eloquent-has-with-wherehas-what-do-they-mean
 
-        return view('mmf.riset.package.laravel-dompdf.print-dompdf', compact('mahasiswas'));
+        $pdf = \PDF::loadView('mmf.riset.package.laravel-dompdf.print-dompdf', [
+            "data_mahasiswa"            => Mahasiswa::all(),
+            "data_mata_kuliah"          => Mata_kuliah::all(),
+            'data_mahasiswa_matakuliah' => Mahasiswa::has('mata_kuliah')->get()   
+        ])->setPaper('a4', 'potrait');
+            
+        return $pdf->stream('document.pdf');
+            
+        // $data_mahasiswa = Mahasiswa::all();
+        // $data_mata_kuliah = Mata_kuliah::all();
+        // $data_mahasiswa_matakuliah = Mahasiswa::has('mata_kuliah')->get();
+        
+        // return view('mmf.riset.package.laravel-dompdf.print-dompdf', compact('data_mahasiswa', 'data_mata_kuliah', 'data_mahasiswa_matakuliah'));
     }
 
     /**

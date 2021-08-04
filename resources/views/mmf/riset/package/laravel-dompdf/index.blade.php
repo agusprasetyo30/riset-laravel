@@ -12,7 +12,7 @@
       
       <div class="row justify-content-center mt-3">
          <div class="col-md-3">
-            <a href="{{ route('test.dompdf.print') }}" class="text-white text-center text-decoration-none">
+            <a href="{{ route('test.dompdf.print') }}" class="text-white text-center text-decoration-none" target="_blank">
                <div class="card">
                   <div class="card-body bg-primary">
                      Print Dompdf
