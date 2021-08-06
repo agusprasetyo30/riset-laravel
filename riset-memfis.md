@@ -53,12 +53,10 @@
   > Modul ini digunakan untuk . . .
 - yajra/laravel-datatables-oracle   [X]
   > Digunakan untuk meriset datatable yang digunakan pada MeMFIS
-- iio/libmergepdf                   [ ]
-  > Modul ini digunakan untuk . . .
 - flynsarmy/csv-seeder              [ ]
   > Modul ini digunakan untuk . . .
-- barryvdh/laravel-dompdf           [ ]
-  > Modul ini digunakan untuk . . .
+- barryvdh/laravel-dompdf & iio/libmergepdf [ ]
+  > Modul ini digunakan untuk membuat print PDF dan DOMpdf. Selain itu juga mengkonfigurasi/merge file pdf
 - league/flysystem-aws-s3-v3        [ ]
   > Modul ini digunakan untuk . . .
 
