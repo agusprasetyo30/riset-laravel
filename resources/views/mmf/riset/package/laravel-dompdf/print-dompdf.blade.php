@@ -72,15 +72,15 @@
          <div class="col-md-10">
             <h2 style="text-align: center">MAHASISWA</h2>
 
-            <table align="center" width="70%" cellpadding="8">
-               <thead style="background: #3555e2; color: white">
-                  <tr>
+            <table align="center" width="70%" cellpadding="10">
+               {{-- <thead > --}}
+                  <tr style="background: #3555e2; color: white">
                      <th align="center">No</th>
                      <th align="center">Nama</th>
                      <th align="center">Kelas</th>
                   </tr>
-               </thead>
-               <tbody>
+               {{-- </thead> --}}
+               {{-- <tbody> --}}
                   @foreach ($data_mahasiswa as $key => $mahasiswa)
                      <tr>
                         <td align="center">{{ ++$key }}. </td>
@@ -88,28 +88,32 @@
                         <td align="center">{{ $mahasiswa->kelas }}</td>
                      </tr>
                   @endforeach
-               </tbody>
+               {{-- </tbody> --}}
             </table>
+
+            <div class="page-break"></div>
 
             <h2 style="text-align: center; margin-top: 30px">MATA KULIAH</h2>
 
-            <table align="center" width="70%" cellpadding="8">
-               <thead style="background: #3555e2; color: white">
-                  <tr>
+            <table align="center" width="70%" cellpadding="10">
+               {{-- <thead > --}}
+                  <tr style="background: #3555e2; color: white">
                      <th align="center">No</th>
                      <th align="center">Nama</th>
                      <th align="center">Status</th>
                   </tr>
-               </thead>
-               <tbody>
+               {{-- </thead> --}}
+               {{-- <tbody> --}}
                   @foreach ($data_mata_kuliah as $key => $mata_kuliah)
                      <tr>
                         <td align="center">{{ ++$key }}. </td>
                         <td align="center">{{ $mata_kuliah->nama }}</td>
-                        <td align="center">{{ $mata_kuliah->status }}</td>
+                        <td align="center" style="{{ $mata_kuliah->status == "INACTIVE" ? 'color: red; font-weight:bolder' : null }}">
+                           {{ $mata_kuliah->status }}
+                        </td>
                      </tr>
                   @endforeach
-               </tbody>
+               {{-- </tbody> --}}
             </table>
             
             <div class="page-break"></div>
