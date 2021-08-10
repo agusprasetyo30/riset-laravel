@@ -43,7 +43,7 @@
                   </a>
                </div>
                <div class="col-md-6">
-                  <a href="{{ route('test.dompdf.print') }}" class="text-center text-decoration-none" target="_blank">
+                  <a href="{{ route('test.dompdf.print-filter') }}" class="text-center text-decoration-none">
                      <div class="card">
                         <div class="card-body btn-background-blue">
                            Print Dompdf dengan Filter
