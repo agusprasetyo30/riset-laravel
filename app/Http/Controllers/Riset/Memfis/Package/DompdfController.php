@@ -41,7 +41,9 @@ class DompdfController extends Controller
 
     public function printDompdfFilter()
     {
-        return view('mmf.riset.package.laravel-dompdf.print-dompdf-filter');
+        $mahasiswa = Mahasiswa::all();
+
+        return view('mmf.riset.package.laravel-dompdf.print-dompdf-filter', compact('mahasiswa'));
     }
 
     /**
