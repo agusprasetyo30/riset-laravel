@@ -39,11 +39,17 @@ class DompdfController extends Controller
         // return view('mmf.riset.package.laravel-dompdf.print-dompdf', compact('data_mahasiswa', 'data_mata_kuliah', 'data_mahasiswa_matakuliah'));
     }
 
-    public function printDompdfFilter()
+    public function dompdfFilter()
     {
         $mahasiswa = Mahasiswa::all();
 
         return view('mmf.riset.package.laravel-dompdf.print-dompdf-filter', compact('mahasiswa'));
+    }
+
+    public function printDompdfFilter(Request $request)
+    {
+        
+        dd($request->get('kelas') ? "ini kelas" : "ini tidak kelas");
     }
 
     /**
