@@ -48,22 +48,31 @@ class DompdfController extends Controller
     {
         $mahasiswa = Mahasiswa::all();
 
-        return view('mmf.riset.package.laravel-dompdf.print-dompdf-filter', compact('mahasiswa'));
+        return view('mmf.riset.package.laravel-dompdf.index-filter', compact('mahasiswa'));
     }
 
+    /**
+     * Undocumented function
+     *
+     * @param Request $request
+     * @return void
+     */
     public function printDompdfFilter(Request $request)
     {
         // Jika Pencarian/Filter berdasarkan Kelas
         if ($request->get('kelas')) {
-            $mahasiswa = Mahasiswa::where("kelas", $request->get('kelas'))->get();
+            $data_mahasiswa = Mahasiswa::has('mata_kuliah')->where("kelas", $request->get('kelas'))->get();
 
+            // dd($data_mahasiswa);
         }
 
         // Jika pencarian/filter berdasarkan nama mahasiswa
         if ($request->get('mahasiswa')) {
-            $mahasiswa = Mahasiswa::with('mata_kuliah')->where("uuid", $request->get('mahasiswa'))->get();
-
+            $data_mahasiswa = Mahasiswa::with('mata_kuliah')->where("uuid", $request->get('mahasiswa'))->get();
         }
+
+        return view('mmf.riset.package.laravel-dompdf.print-dompdf-filter', compact('data_mahasiswa'));
+
     }
 
     /**

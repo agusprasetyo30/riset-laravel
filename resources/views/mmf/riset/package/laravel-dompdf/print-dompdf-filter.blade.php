@@ -1,58 +1,120 @@
-@extends('layouts.template')
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-@section('title', 'Riset Laravel Domp PDF')
+   <title>Print dompdf</title>
+   <style>
+      @page {
+         margin: 0cm 0cm;
+      }
+      
+      header {
+         position: fixed;
+         top: 0cm;
+         left: 0cm;
+         right: 0cm;
+         height: 3cm;
+      }
 
-@section('content')
-<div class="container">
-   <div class="text-center mt-3">
-      <h1>Laravel Dompdf & iio/libmergepdf (Dengan Filter)</h1>
-      <small>Mengimplementasikan tampilan <b>PDF</b> dan <b>PRINT</b> PDF sesuai dengan tampilan/request dari perintah, 
-         selain itu juga mengimplementasikan library untuk <b>merge/mengabungkan file PDF</b> <br>(merge antara Tampilan <b>Potrait</b> & <b>Landscape</b>)</small>
-      <br>
-   </div>
+      footer {
+         position: fixed;
+         bottom: 0cm;
+         left: 0cm;
+         right: 0cm;
+         height: 1cm;
+      }
 
-   <div class="form-row justify-content-center mt-3">
-      <div class="col-md-4">
-         <div class="card">
-            <div class="card-body bg-primary">
-               <form action="{{ route('test.dompdf.print-filter') }}" method="get">
-                  {{-- <p class="text-left font-weight-bold">Filter</p> --}}
-                  <label for="kelas" class="text-white">Kelas</label>
-                  <select name="kelas" id="kelas" class="form-control" style="cursor: pointer">
-                     <option value="MI-3A">MI-3A</option>
-                     <option value="MI-3B">MI-3B</option>
-                     <option value="MI-3C">MI-3C</option>
-                     <option value="MI-3D">MI-3D</option>
-                     <option value="MI-3E">MI-3E</option>
-                     <option value="MI-3F">MI-3F</option>
-                  </select>
-                  
-                  <button type="submit" class="btn btn-success mt-2">Cari</button>
-               </form>
-            </div>
+      html,
+      body {
+         padding: 0;
+         margin: 0;
+         font-size: 15px;
+      }
+
+      body{
+         font-family: Arial, Helvetica, sans-serif;
+         /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+         /* margin-top: 4.6cm;
+         margin-bottom: 1.2cm; */
+      }
+      
+      ul {
+         /* display: inline-block; */
+         width: 70%;
+         margin: auto;
+         text-align: left;
+      }
+
+      table {
+         border-collapse: collapse;
+         border: 1px solid black;
+      }
+
+      table td,th {
+         border: 1px solid black;
+      }
+
+      .page-break {
+         page-break-after: always;
+      }
+   </style>
+</head>
+<body>
+   <div class="container mt-3">
+      <div class="row justify-content-center">
+         <div class="col-md-10">
+            <h2 style="text-align: center">MAHASISWA</h2>
+
+            <table align="center" width="70%" cellpadding="10">
+               {{-- <thead > --}}
+                  <tr style="background: #3555e2; color: white">
+                     <th align="center">No</th>
+                     <th align="center">Nama</th>
+                     <th align="center">Kelas</th>
+                  </tr>
+               {{-- </thead> --}}
+               {{-- <tbody> --}}
+                  @foreach ($data_mahasiswa as $key => $mahasiswa)
+                     <tr>
+                        <td align="center">{{ ++$key }}. </td>
+                        <td align="center">{{ $mahasiswa->nama }}</td>
+                        <td align="center">{{ $mahasiswa->kelas }}</td>
+                     </tr>
+                  @endforeach
+               {{-- </tbody> --}}
+            </table>
+
+            {{-- <div class="page-break"></div> --}}
+
+            <h2 style="text-align: center; margin-top: 30px">MATA KULIAH</h2>
+
+            <table align="center" width="70%" cellpadding="10">
+               <thead >
+                  <tr style="background: #3555e2; color: white">
+                     <th align="center">No</th>
+                     <th align="center">Nama</th>
+                     <th align="center">Status</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  @foreach ($data_mahasiswa->mata_kuliah as $key => $mata_kuliah)
+                     <tr>
+                        <td align="center">{{ ++$key }}. </td>
+                        <td align="center">{{ $mata_kuliah->nama }}</td>
+                        <td align="center" style="{{ $mata_kuliah->status == "INACTIVE" ? 'color: red; font-weight:bolder' : null }}">
+                           {{ $mata_kuliah->status }}
+                        </td>
+                     </tr>
+                  @endforeach
+               </tbody>
+            </table>
          </div>
       </div>
-   {{-- </div>
-
-   <div class="form-row justify-content-center mt-3"> --}}
-      <div class="col-md-4">  
-         <div class="card">
-            <div class="card-body bg-primary">
-               <form action="{{ route('test.dompdf.print-filter') }}" method="get">
-            
-                  {{-- <p class="text-left font-weight-bold">Filter</p> --}}
-                  <label for="mahasiswa" class="text-white">Mahasiswa</label>
-                  <select name="mahasiswa" id="mahasiswa" class="form-control" style="cursor: pointer">
-                     @foreach ($mahasiswa as $item)
-                        <option value="{{ $item->uuid }}">{{ $item->nama }}</option>
-                     @endforeach
-                  </select>
-
-                  <button type="submit" class="btn btn-success mt-2">Cari</button>
-               </form>
-            </div>
-         </div>
-      </div>
    </div>
-</div>
-@endsection
+
+</body>
+</html>
