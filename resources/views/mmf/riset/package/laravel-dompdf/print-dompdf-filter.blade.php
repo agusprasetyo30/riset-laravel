@@ -35,19 +35,21 @@
    {{-- </div>
 
    <div class="form-row justify-content-center mt-3"> --}}
-      <div class="col-md-4">
+      <div class="col-md-4">  
          <div class="card">
             <div class="card-body bg-primary">
+               <form action="{{ route('test.dompdf.print-filter') }}" method="get">
             
-            {{-- <p class="text-left font-weight-bold">Filter</p> --}}
-               <label for="mahasiswa" class="text-white">Mahasiswa</label>
-               <select name="mahasiswa" id="mahasiswa" class="form-control" style="cursor: pointer">
-                  @foreach ($mahasiswa as $item)
-                     <option value="{{ $item->nama }}">{{ $item->nama }}</option>
-                  @endforeach
-               </select>
+                  {{-- <p class="text-left font-weight-bold">Filter</p> --}}
+                  <label for="mahasiswa" class="text-white">Mahasiswa</label>
+                  <select name="mahasiswa" id="mahasiswa" class="form-control" style="cursor: pointer">
+                     @foreach ($mahasiswa as $item)
+                        <option value="{{ $item->uuid }}">{{ $item->nama }}</option>
+                     @endforeach
+                  </select>
 
-               <button type="submit" class="btn btn-success mt-2">Cari</button>
+                  <button type="submit" class="btn btn-success mt-2">Cari</button>
+               </form>
             </div>
          </div>
       </div>
