@@ -61,9 +61,14 @@ class DompdfController extends Controller
     {
         // Jika Pencarian/Filter berdasarkan Kelas
         if ($request->get('kelas')) {
-            $data_mahasiswa = Mahasiswa::has('mata_kuliah')->where("kelas", $request->get('kelas'))->get();
+            // $data_mahasiswa = Mahasiswa::with('mata_kuliah')->where("kelas", $request->get('kelas'))->get();
 
-            // dd($data_mahasiswa);
+            $pdf = \PDF::loadView('mmf.riset.package.laravel-dompdf.print-dompdf-filter', [
+                // "data_mahasiswa" => Mahasiswa::has('mata_kuliah')->where("kelas", $request->get('kelas'))->get(),
+                "data_mahasiswa" => Mahasiswa::with('mata_kuliah')->where("kelas", $request->get('kelas'))->get(),
+            ]);
+
+            return $pdf->stream('document.pdf');
         }
 
         // Jika pencarian/filter berdasarkan nama mahasiswa
