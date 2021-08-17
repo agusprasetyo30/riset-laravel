@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Riset\Memfis\Package;
 use App\Http\Controllers\Controller;
 use App\Mahasiswa;
 use App\Mata_kuliah;
+use iio\libmergepdf\Merger;
 use Illuminate\Http\Request;
 
 class DompdfController extends Controller
@@ -62,22 +63,45 @@ class DompdfController extends Controller
         // Jika Pencarian/Filter berdasarkan Kelas
         if ($request->get('kelas')) {
             // $data_mahasiswa = Mahasiswa::with('mata_kuliah')->where("kelas", $request->get('kelas'))->get();
+            // "data_mahasiswa" => Mahasiswa::has('mata_kuliah')->where("kelas", $request->get('kelas'))->get(),
 
             $pdf = \PDF::loadView('mmf.riset.package.laravel-dompdf.print-dompdf-filter', [
-                // "data_mahasiswa" => Mahasiswa::has('mata_kuliah')->where("kelas", $request->get('kelas'))->get(),
                 "data_mahasiswa" => Mahasiswa::with('mata_kuliah')->where("kelas", $request->get('kelas'))->get(),
-            ]);
+            ])->setPaper('a4', 'potrait');
 
             return $pdf->stream('document.pdf');
         }
 
         // Jika pencarian/filter berdasarkan nama mahasiswa
         if ($request->get('mahasiswa')) {
-            $data_mahasiswa = Mahasiswa::with('mata_kuliah')->where("uuid", $request->get('mahasiswa'))->get();
+            // $data_mahasiswa = Mahasiswa::with('mata_kuliah')->where("uuid", $request->get('mahasiswa'))->first();
+
+            $pdf = \PDF::loadView('mmf.riset.package.laravel-dompdf.print-dompdf-filter', [
+                "data_mahasiswa" => Mahasiswa::with('mata_kuliah')->where("uuid", $request->get('mahasiswa'))->first(),
+            ])->setPaper('a4', 'potrait');
+
+            return $pdf->stream('document.pdf');
         }
+    }
 
-        return view('mmf.riset.package.laravel-dompdf.print-dompdf-filter', compact('data_mahasiswa'));
+    public function mergePdfPrint()
+    {
+        // echo asset('public/combined.pdf');
+        return response()->file(asset('combined.pdf'));
+        // $m = new Merger;
 
+        // $file1 = \PDF::loadView('mmf.riset.package.laravel-dompdf.page1-merge', [
+        //     "data_mahasiswa"            => Mahasiswa::all(),
+        // ])->setPaper('a5', 'potrait');
+        
+        // $file1->stream();
+
+        // $m->addRaw($file1->output());
+
+        // file_put_contents('combined.pdf', $m->merge());
+        // return $m->merge();
+        // return $file1->stream('document.pdf');
+        // $file1 = \PDF::loadView()
     }
 
     /**

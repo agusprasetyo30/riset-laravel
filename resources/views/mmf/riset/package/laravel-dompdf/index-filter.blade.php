@@ -7,7 +7,8 @@
    <div class="text-center mt-3">
       <h1>Laravel Dompdf & iio/libmergepdf (Dengan Filter)</h1>
       <small>Mengimplementasikan tampilan <b>PDF</b> dan <b>PRINT</b> PDF sesuai dengan tampilan/request dari perintah, 
-         selain itu juga mengimplementasikan library untuk <b>merge/mengabungkan file PDF</b> <br>(merge antara Tampilan <b>Potrait</b> & <b>Landscape</b>)</small>
+         selain itu juga mengimplementasikan library untuk <b>merge/mengabungkan file PDF</b> <br>(merge antara Tampilan <b>Potrait</b> & <b>Landscape</b>)
+      <a href="{{ route('test.dompdf.index') }}">[ Kembali ]</a></small>
       <br>
    </div>
 

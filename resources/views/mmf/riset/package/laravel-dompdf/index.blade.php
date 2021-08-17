@@ -56,8 +56,8 @@
          <div class="col-md-6">
             <p class="text-left font-weight-bold">Print Dompdf</p>
             <div class="row">
-               <div class="col-md-6">
-                  <a href="{{ route('test.dompdf.print') }}" class="text-center text-decoration-none" target="_blank">
+               <div class="col-md-12">
+                  <a href="{{ route('test.dompdf.merge-pdf') }}" class="text-center text-decoration-none">
                      <div class="card">
                         <div class="card-body btn-background-green">
                            Print Dompdf + MergePDF
