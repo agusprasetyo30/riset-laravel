@@ -64,6 +64,8 @@
                         </div>
                      </div>
                   </a>
+
+                  <a href="{{ asset('storage/combined.pdf') }}">Open the pdf!</a>
                </div>
             </div>
          </div>

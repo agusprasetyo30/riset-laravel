@@ -86,19 +86,25 @@ class DompdfController extends Controller
 
     public function mergePdfPrint()
     {
-        // echo asset('public/combined.pdf');
-        return response()->file(asset('combined.pdf'));
-        // $m = new Merger;
+        // echo asset('storage/combined.pdf');
+        $m = new Merger;
 
-        // $file1 = \PDF::loadView('mmf.riset.package.laravel-dompdf.page1-merge', [
-        //     "data_mahasiswa"            => Mahasiswa::all(),
-        // ])->setPaper('a5', 'potrait');
+        $file1 = \PDF::loadView('mmf.riset.package.laravel-dompdf.page1-merge', [
+            "data_mahasiswa"            => Mahasiswa::all(),
+        ])->setPaper('a5', 'potrait');
         
-        // $file1->stream();
+        $m->addRaw($file1->output());
 
-        // $m->addRaw($file1->output());
+        $file2 = \PDF::loadView('mmf.riset.package.laravel-dompdf.page1-merge', [
+            "data_mahasiswa"            => Mahasiswa::all(),
+        ])->setPaper('a4', 'landscape');
 
-        // file_put_contents('combined.pdf', $m->merge());
+        $m->addRaw($file2->output());
+
+        file_put_contents('storage/combined.pdf', $m->merge());
+
+        return response()->file('storage/combined.pdf');
+
         // return $m->merge();
         // return $file1->stream('document.pdf');
         // $file1 = \PDF::loadView()
