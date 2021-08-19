@@ -105,9 +105,43 @@ class DompdfController extends Controller
 
         return response()->file('storage/combined.pdf');
 
-        // return $m->merge();
-        // return $file1->stream('document.pdf');
-        // $file1 = \PDF::loadView()
+        // Ini untuk AWS, kasusnya kayak memfis
+        // $view1 = \View::make('frontend.form.dc_page1')->with([
+        //     'defectcard' => $defectcard,
+        //     'propose_corrections'=> $propose_corrections, 
+        //     'text'=> $text, 
+        //     'zones' => $zones, 
+        //     'actual_manhours' => $actual_manhours, 
+        //     'date_close' => $date_close, 
+        //     'released_by' => $released_by, 
+        //     'released_at' => $released_at,
+        //     'rii_by' => $rii_by, 
+        //     'rii_at' => $rii_at
+        //     ])->render();
+            
+        // $view2 = \View::make('frontend.form.dc_page2')->with('defectcard', $defectcard)->render();
+
+        // $pdf = App::make('dompdf.wrapper');
+        // $pdf->loadHTML($view1)->setPaper('a4', 'portrait');
+        // $m->addRaw($pdf->output());
+
+        // $pdf = App::make('dompdf.wrapper');
+        // $pdf->loadHTML($view2)->setPaper('a4', 'landscape');
+        // $m->addRaw($pdf->output());
+        // $code_reformatted = str_replace('/', '-', $defectcard->code); 
+        // $filename = $code_reformatted.'.pdf';
+        // $directory = 'storage/DefectCard/'.$code_reformatted.'.pdf';
+        // $awsS3 = Storage::disk('s3');
+
+        // $put = Storage::disk('s3')->put($directory, $m->merge());
+
+        // $client = Storage::disk('s3')->getDriver()->getAdapter()->getClient();
+        // $bucket = Config::get('filesystems.disks.s3.bucket');
+
+        // $command = $client->getCommand('GetObject', [
+        //     'Bucket' => $bucket,
+        //     'Key' => $directory
+        // ]);
     }
 
     /**

@@ -31,13 +31,16 @@
       
       <div class="row justify-content-center mt-3">
          <div class="col-md-6">
-            <p class="text-left font-weight-bold">Print Dompdf</p>
+            <p class="text-left font-weight-bold">Print Dompdf
+               <br>
+               <small>Untuk modul ini tidak perlu di download, akan tetapi di tampilkan PDF nya</small>
+            </p>
             <div class="row">
                <div class="col-md-6">
                   <a href="{{ route('test.dompdf.print') }}" class="text-center text-decoration-none" target="_blank">
                      <div class="card">
                         <div class="card-body btn-background-blue">
-                           Print Dompdf
+                           Dompdf (All)
                         </div>
                      </div>
                   </a>
@@ -46,7 +49,7 @@
                   <a href="{{ route('test.dompdf.dompdf-filter') }}" class="text-center text-decoration-none">
                      <div class="card">
                         <div class="card-body btn-background-blue">
-                           Print Dompdf dengan Filter
+                           Dompdf (Filter)
                         </div>
                      </div>
                   </a>
@@ -54,18 +57,31 @@
             </div>
          </div>
          <div class="col-md-6">
-            <p class="text-left font-weight-bold">Print Dompdf</p>
+            <p class="text-left font-weight-bold">Print Dompdf & MergePDF 
+               <br>
+               <small>Untuk modul ini file PDF ternyata harus di download dan di tampilkan manual</small>
+            </p>
             <div class="row">
-               <div class="col-md-12">
+               <div class="col-md-6">
                   <a href="{{ route('test.dompdf.merge-pdf') }}" class="text-center text-decoration-none">
                      <div class="card">
                         <div class="card-body btn-background-green">
-                           Print Dompdf + MergePDF
+                           Dompdf + MergePDF (All)
                         </div>
                      </div>
                   </a>
 
-                  <a href="{{ asset('storage/combined.pdf') }}">Open the pdf!</a>
+                  <a href="{{ asset('storage/combined.pdf') }}">Open the pdf! (test)</a>
+               </div>
+               <div class="col-md-6">
+                  <a href="#" class="text-center text-decoration-none">
+                     <div class="card">
+                        <div class="card-body btn-background-green">
+                           Dompdf + MergePDF (Filter)
+                        </div>
+                     </div>
+                  </a>
+
                </div>
             </div>
          </div>
