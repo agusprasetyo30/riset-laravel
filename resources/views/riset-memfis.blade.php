@@ -93,12 +93,12 @@
                   <div class="col-md-12">
                      <a class="btn links" href="{{ route('test.toko.dashboard') }}">nwidart/laravel-modules</a>
                      <a class="btn links" href="{{ route('test.auditing.index') }}">owen-it/laravel-auditing</a>
-                     <a class="btn links bg-dark" href="#">spatie/laravel-sortable</a>
+                     <a class="btn links bg-warning" href="#">spatie/laravel-sortable</a>
                      <a class="btn links bg-dark" href="#">spatie/laravel-activity-log</a>
                      <a class="btn links bg-dark" href="#">spatie/laravel-backup</a>
                      <a class="btn links" href="{{ route('test.query-builder.index') }}">spatie/laravel-query-builder</a>
-                     <a class="btn links bg-dark" href="#">spatie/laravel-slugable</a>
-                     <a class="btn links bg-dark" href="#">spatie/laravel-tags</a> 
+                     <a class="btn links bg-warning" href="#">spatie/laravel-slugable</a>
+                     <a class="btn links bg-warning" href="#">spatie/laravel-tags</a> 
                      <a class="btn links" href="{{ route('test.datatables.mahasiswa') }}">yajra/laravel-datatables-oracle</a>
                      <a class="btn links bg-dark" href="#">league/flysystem-aws-s3-v3</a>
                      <a class="btn links bg-dark" href="#">flynsarmy/csv-seeder</a>
