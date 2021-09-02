@@ -84,6 +84,11 @@ class DompdfController extends Controller
         }
     }
 
+    /**
+     * Undocumented function
+     *
+     * @return void
+     */
     public function mergePdfPrint()
     {
         // echo asset('storage/combined.pdf');
@@ -104,7 +109,24 @@ class DompdfController extends Controller
         file_put_contents('storage/combined.pdf', $m->merge());
 
         return response()->file('storage/combined.pdf');
+    }
 
+    /**
+     * Undocumented function
+     *
+     * @return void
+     */
+    public function mergePdfFilter()
+    {
+        return view("mmf.riset.package.laravel-dompdf.page2-merge-filter");
+        // $mahasiswa = Mahasiswa::all();
+
+        // dd($mahasiswa->first()->mata_kuliah);
+
+        // return view('mmf.riset.package.laravel-dompdf.merge-pdf-filter', compact('mahasiswa'));
+    }
+
+    // { INI UNTUK MEMFIS INPUT KE AWS
         // Ini untuk AWS, kasusnya kayak memfis
         // $view1 = \View::make('frontend.form.dc_page1')->with([
         //     'defectcard' => $defectcard,
@@ -142,71 +164,5 @@ class DompdfController extends Controller
         //     'Bucket' => $bucket,
         //     'Key' => $directory
         // ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+    //}
 }

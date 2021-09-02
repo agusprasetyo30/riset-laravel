@@ -74,7 +74,7 @@
                   <a href="{{ asset('storage/combined.pdf') }}">Open the pdf! (test)</a>
                </div>
                <div class="col-md-6">
-                  <a href="#" class="text-center text-decoration-none">
+                  <a href="{{ route('test.dompdf.merge-pdf-filter') }}" class="text-center text-decoration-none">
                      <div class="card">
                         <div class="card-body btn-background-green">
                            Dompdf + MergePDF (Filter)

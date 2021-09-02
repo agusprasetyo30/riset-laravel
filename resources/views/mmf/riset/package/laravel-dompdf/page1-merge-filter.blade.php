@@ -59,9 +59,49 @@
       .page-break {
          page-break-after: always;
       }
+
+      .judul {
+         width: 100%;
+         margin: 0;
+         padding: 25px;
+         text-align: center;
+         font-size: 30px;
+      }
+
+      .background-biru {
+         background: #3555e2;
+         color: white;
+         margin-bottom: 20px;
+      }
    </style>
 </head>
 <body>
-   
+   <div class="background-biru">
+      <h2 class="judul">Mahasiswa</h2>
+   </div>
+
+      <table align="center" width="70%" cellpadding="10">
+         {{-- <thead > --}}
+            <tr style="background: #3555e2; color: white">
+               <th align="center">No</th>
+               <th align="center">Nama</th>
+               <th align="center">Kelas</th>
+            </tr>
+            <tr>
+               <td>1. </td>
+               <td>Melkan</td>
+               <td>Mi-3A</td>
+            </tr>
+         {{-- </thead> --}}
+         {{-- <tbody> --}}
+            {{-- @foreach ($data_mahasiswa as $key => $mahasiswa)
+               <tr>
+                  <td align="center">{{ ++$key }}. </td>
+                  <td align="center">{{ $mahasiswa->nama }}</td>
+                  <td align="center">{{ $mahasiswa->kelas }}</td>
+               </tr>
+            @endforeach --}}
+         {{-- </tbody> --}}
+      </table>
 </body>
 </html>
