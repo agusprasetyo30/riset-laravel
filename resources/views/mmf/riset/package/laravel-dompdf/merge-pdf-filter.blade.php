@@ -16,7 +16,7 @@
       <div class="col-md-4">
          <div class="card">
             <div class="card-body bg-primary">
-               <form action="{{ route('test.dompdf.print-filter') }}" method="get">
+               <form action="{{ route('test.dompdf.merge-pdf-filter-print') }}" method="get">
                   <label for="kelas" class="text-white">Kelas</label>
                   <select name="kelas" id="kelas" class="form-control" style="cursor: pointer">
                      <option value="MI-3A">MI-3A</option>

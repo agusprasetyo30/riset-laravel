@@ -136,7 +136,7 @@ class DompdfController extends Controller
         $m = new Merger();
 
         $file1 = \PDF::loadView('mmf.riset.package.laravel-dompdf.page1-merge-filter', [
-            'mahasiswa' => Mahasiswa::with('mata_kuliah')->get()
+            'mahasiswa' => Mahasiswa::with('mata_kuliah')->where('kelas', $request->get('kelas'))->get()
         ])->setPaper("a5", 'potrait');
 
         $m->addRaw($file1->output());
