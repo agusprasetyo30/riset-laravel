@@ -80,28 +80,20 @@
       <h2 class="judul">Mahasiswa</h2>
    </div>
 
-      <table align="center" width="70%" cellpadding="10">
-         {{-- <thead > --}}
-            <tr style="background: #3555e2; color: white">
-               <th align="center">No</th>
-               <th align="center">Nama</th>
-               <th align="center">Kelas</th>
-            </tr>
+   <table align="center" width="70%" cellpadding="10">
+      {{-- <thead > --}}
+         <tr style="background: #3555e2; color: white">
+            <th align="center" width=10%>No</th>
+            <th align="center" width=70%>Nama</th>
+            <th align="center" width=20%>Kelas</th>
+         </tr>
+         @foreach ($mahasiswa as $i =>$item)
             <tr>
-               <td>1. </td>
-               <td>Melkan</td>
-               <td>Mi-3A</td>
+               <td>{{ ++$i }}. </td>
+               <td>{{ $item->nama }}</td>
+               <td>{{ $item->kelas }}</td>
             </tr>
-         {{-- </thead> --}}
-         {{-- <tbody> --}}
-            {{-- @foreach ($data_mahasiswa as $key => $mahasiswa)
-               <tr>
-                  <td align="center">{{ ++$key }}. </td>
-                  <td align="center">{{ $mahasiswa->nama }}</td>
-                  <td align="center">{{ $mahasiswa->kelas }}</td>
-               </tr>
-            @endforeach --}}
-         {{-- </tbody> --}}
-      </table>
+         @endforeach
+   </table>
 </body>
 </html>

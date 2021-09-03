@@ -118,12 +118,32 @@ class DompdfController extends Controller
      */
     public function mergePdfFilter()
     {
-        return view("mmf.riset.package.laravel-dompdf.page2-merge-filter");
-        // $mahasiswa = Mahasiswa::all();
+        // $mahasiswa = Mahasiswa::has('mata_kuliah')->get();
 
-        // dd($mahasiswa->first()->mata_kuliah);
+        $mahasiswa = Mahasiswa::select('nama')->get();
+        
+        return view('mmf.riset.package.laravel-dompdf.merge-pdf-filter', compact('mahasiswa'));
+    }
 
-        // return view('mmf.riset.package.laravel-dompdf.merge-pdf-filter', compact('mahasiswa'));
+    /**
+     * Undocumented function
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function printMergePdfFilter(Request $request)
+    {
+        $m = new Merger();
+
+        $file1 = \PDF::loadView('mmf.riset.package.laravel-dompdf.page1-merge-filter', [
+            'mahasiswa' => Mahasiswa::with('mata_kuliah')->get()
+        ])->setPaper("a5", 'potrait');
+
+        $m->addRaw($file1->output());
+
+        file_put_contents('storage/combined.pdf', $m->merge());
+
+        return response()->file('storage/combined.pdf');
     }
 
     // { INI UNTUK MEMFIS INPUT KE AWS

@@ -80,28 +80,54 @@
       <h2 class="judul">Mata Kuliah</h2>
    </div>
 
-      <table align="center" width="70%" cellpadding="10">
-         {{-- <thead > --}}
-            <tr style="background: #3555e2; color: white">
-               <th align="center">No</th>
-               <th align="center">Nama</th>
-               <th align="center">Kelas</th>
-            </tr>
+   <table align="center" width="70%" cellpadding="10">
+      <thead >
+         <tr style="background: #3555e2; color: white">
+            <th align="center" width=10%>No</th>
+            <th align="center" width=50%>Nama</th>
+            <th align="center" width=40%>Status</th>
+         </tr>
+      </thead>
+      <tbody>
+         @foreach ($mahasiswa as $key => $data)
             <tr>
-               <td>1. </td>
-               <td>Melkan</td>
-               <td>Mi-3A</td>
+               <td>{{ ++$key }}</td>
+               <td>{{ $data->nama }}</td>
+               <td>
+                  <ul>
+                     @foreach ($data->mata_kuliah as $mata_kuliah)
+                        <li>{{ $mata_kuliah->nama }}</li>
+                     @endforeach
+                  </ul>
+
+                  @if($data->mata_kuliah->isEmpty())
+                     <div style="text-align: center">
+                        -
+                     </div>
+                  @endif
+               </td>
             </tr>
-         {{-- </thead> --}}
-         {{-- <tbody> --}}
-            {{-- @foreach ($data_mahasiswa as $key => $mahasiswa)
-               <tr>
-                  <td align="center">{{ ++$key }}. </td>
-                  <td align="center">{{ $mahasiswa->nama }}</td>
-                  <td align="center">{{ $mahasiswa->kelas }}</td>
-               </tr>
-            @endforeach --}}
-         {{-- </tbody> --}}
-      </table>
+         @endforeach
+         {{-- @foreach ($data_mahasiswa as $key => $mahasiswa)
+            <tr>
+               <td>{{ ++$key }}.</td>
+               <td>{{ $mahasiswa->nama }}</td>
+               <td>
+                  <ul>
+                     @foreach ($mahasiswa->mata_kuliah as $mata_kuliah)
+                        <li>{{ $mata_kuliah->nama }}</li>
+                     @endforeach
+                  </ul>
+
+                  @if($mahasiswa->mata_kuliah->isEmpty())
+                     <div style="text-align: center">
+                        -
+                     </div>
+                  @endif
+               </td>
+            </tr>
+         @endforeach --}}
+      </tbody>
+   </table>
 </body>
 </html>
