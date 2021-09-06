@@ -120,7 +120,7 @@ class DompdfController extends Controller
     {
         // $mahasiswa = Mahasiswa::has('mata_kuliah')->get();
 
-        $mahasiswa = Mahasiswa::select('nama')->get();
+        $mahasiswa = Mahasiswa::select('nama', 'uuid')->get();
         
         return view('mmf.riset.package.laravel-dompdf.merge-pdf-filter', compact('mahasiswa'));
     }
@@ -135,15 +135,46 @@ class DompdfController extends Controller
     {
         $m = new Merger();
 
-        $file1 = \PDF::loadView('mmf.riset.package.laravel-dompdf.page1-merge-filter', [
-            'mahasiswa' => Mahasiswa::with('mata_kuliah')->where('kelas', $request->get('kelas'))->get()
-        ])->setPaper("a5", 'potrait');
+        // 
+        if ($request->get('kelas')) {
 
-        $m->addRaw($file1->output());
+            $file1 = \PDF::loadView('mmf.riset.package.laravel-dompdf.page1-merge-filter', [
+                'mahasiswa' => Mahasiswa::with('mata_kuliah')->where('kelas', $request->get('kelas'))->get(),
+            ])->setPaper("a5", 'potrait');
 
-        file_put_contents('storage/combined.pdf', $m->merge());
+            $m->addRaw($file1->output());
 
-        return response()->file('storage/combined.pdf');
+            $file2 = \PDF::loadView('mmf.riset.package.laravel-dompdf.page2-merge-filter', [
+                'mahasiswa' => Mahasiswa::with('mata_kuliah')->where('kelas', $request->get('kelas'))->get(),
+            ])->setPaper("a5", 'landscape');
+
+            $m->addRaw($file2->output());
+
+            file_put_contents('storage/combined.pdf', $m->merge());
+
+            return response()->file('storage/combined.pdf');
+        }
+
+
+        if ($request->get('mahasiswa')) {
+
+            $file1 = \PDF::loadView('mmf.riset.package.laravel-dompdf.page1-merge-filter', [
+                'mahasiswa' => Mahasiswa::with('mata_kuliah')->where('uuid', $request->get('mahasiswa'))->get(),
+            ])->setPaper('a5', 'potrait');
+
+            $m->addRaw($file1->output());
+
+            $file2 = \PDF::loadView('mmf.riset.package.laravel-dompdf.page2-merge-filter', [
+                'mahasiswa' => Mahasiswa::with('mata_kuliah')->where('uuid', $request->get('mahasiswa'))->get(),
+            ])->setPaper('a5', 'landscape');
+
+            $m->addRaw($file2->output());
+
+            file_put_contents('storage/combined.pdf', $m->merge());
+
+            return response()->file('storage/combined.pdf');
+        }
+        
     }
 
     // { INI UNTUK MEMFIS INPUT KE AWS

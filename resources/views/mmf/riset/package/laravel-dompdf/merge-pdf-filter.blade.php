@@ -36,7 +36,7 @@
       <div class="col-md-4">  
          <div class="card">
             <div class="card-body bg-primary">
-               <form action="{{ route('test.dompdf.print-filter') }}" method="get">
+               <form action="{{ route('test.dompdf.merge-pdf-filter-print') }}" method="get">
             
                   {{-- <p class="text-left font-weight-bold">Filter</p> --}}
                   <label for="mahasiswa" class="text-white">Mahasiswa</label>
