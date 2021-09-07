@@ -175,6 +175,7 @@ return [
         App\Providers\EventServiceProvider::class,
         OwenIt\Auditing\AuditingServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
 
         // Import
         Maatwebsite\Excel\ExcelServiceProvider::class,
@@ -243,6 +244,7 @@ return [
         'DNS2D' => Milon\Barcode\Facades\DNS2DFacade::class,
         'Captcha' => Mews\Captcha\Facades\Captcha::class,
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
 
 ];

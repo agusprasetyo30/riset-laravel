@@ -95,8 +95,10 @@
     - [https://laracasts.com/discuss/channels/laravel/audit-with-laravel-auditing](https://laracasts.com/discuss/channels/laravel/audit-with-laravel-auditing)
   - spatie/laravel-sortable 
     - ...
-  - spatie/laravel-activity-log
-    - ...
+  - spatie/laravel-activity-log(belum)
+    - [https://github.com/spatie/laravel-activitylog](https://github.com/spatie/laravel-activitylog)
+    - [https://spatie.be/docs/laravel-activitylog/v4/introduction](https://spatie.be/docs/laravel-activitylog/v4/introduction)
+    - [https://www.youtube.com/c/Bitfumes/search?query=activity%20log](https://www.youtube.com/c/Bitfumes/search?query=activity%20log)
   - spatie/laravel-backup
     - [https://dev.to/ellis22/how-to-backup-laravel-files-and-database-3ehb](https://dev.to/ellis22/how-to-backup-laravel-files-and-database-3ehb)
   - spatie/laravel-query-builder
