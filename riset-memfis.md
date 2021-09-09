@@ -93,8 +93,10 @@
     - [http://www.laravel-auditing.com/](http://www.laravel-auditing.com/)
     - [https://www.youtube.com/watch?v=kxBRJvxx05Q](https://www.youtube.com/watch?v=kxBRJvxx05Q)
     - [https://laracasts.com/discuss/channels/laravel/audit-with-laravel-auditing](https://laracasts.com/discuss/channels/laravel/audit-with-laravel-auditing)
-  - spatie/laravel-sortable 
-    - ...
+  - spatie/laravel-sortable (now)
+    - [https://github.com/spatie/eloquent-sortable](https://github.com/spatie/eloquent-sortable)
+    - [https://laracasts.com/discuss/channels/code-review/spatie-eloquent-sortable-please-help-to-integrate-spatie-code-help](https://laracasts.com/discuss/channels/code-review/spatie-eloquent-sortable-please-help-to-integrate-spatie-code-help)
+    - [https://madewithlaravel.com/eloquent-sortable](https://madewithlaravel.com/eloquent-sortable)
   - spatie/laravel-activity-log(belum)
     - [https://github.com/spatie/laravel-activitylog](https://github.com/spatie/laravel-activitylog)
     - [https://spatie.be/docs/laravel-activitylog/v4/introduction](https://spatie.be/docs/laravel-activitylog/v4/introduction)
