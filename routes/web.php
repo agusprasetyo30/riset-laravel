@@ -75,6 +75,7 @@ Route::group(['namespace' => 'Riset'], function() {
              * Data Mahasiswa
              */
             Route::resource('mahasiswa', "MahasiswaController");
+            
             Route::group(['prefix' => 'mahasiswa', 'as' => 'mahasiswa.'], function () {
                 Route::get('/{uuid}/ambil-matkul', 'MahasiswaController@ambilMataKuliah')->name('ambil-matkul');
                 Route::get('/{id}/ambil-matkul/{matkul}/process', 'MahasiswaController@prosesPenambahanMatkul')->name('ambil-matkul.process');
@@ -143,15 +144,17 @@ Route::group(['namespace' => 'Riset'], function() {
              */
             Route::group(['prefix' => 'package', 'namespace' => 'Package'], function() {
 
-                // Laravel Auditing
+                /** Laravel Auditing **/
                 Route::group(['prefix' => 'laravel-auditing', 'as' => 'auditing.' ], function() {
                     Route::get('/', 'AuditingController@index')->name('index');
                 });
 
+                /** laravel Query Builder **/
                 Route::group(['prefix' => 'laravel-query-builder', 'as' => 'query-builder.'], function() {
                     Route::get('/', 'QueryBuilderController@index')->name('index');
                 });
 
+                /** Laravel DomPDF **/
                 Route::group(['prefix' => 'laravel-dompdf', 'as' => 'dompdf.'], function() {
                     // Route::get('/', '')
                     Route::get('/', 'DompdfController@index')->name('index');
@@ -166,11 +169,16 @@ Route::group(['namespace' => 'Riset'], function() {
                         // $pdf = PDF::loadView('mmf.riset.package.laravel-dompdf.index');
                         // return $pdf->stream('document.pdf');
                         // return view('mmf.riset.package.laravel-dompdf.index');
-
-                        
-                
                     // });
                 });
+
+                /** Laravel Sortable **/
+                Route::group(['prefix' => 'laravel-sortable', 'as' => 'sortable.'], function() {
+                    Route::get('/', 'SortableController@index')->name('index');
+                    
+                });
+
+
             });
 
             /**

@@ -176,16 +176,15 @@ return [
         OwenIt\Auditing\AuditingServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
-
         // Import
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
-
         // Capcha
         Mews\Captcha\CaptchaServiceProvider::class,
-
         // Datatable
         Yajra\DataTables\DataTablesServiceProvider::class,
+        //Sortable
+        Spatie\EloquentSortable\EloquentSortableServiceProvider::class,
     ],
 
     /*

@@ -5,11 +5,15 @@ namespace App;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
+use Spatie\EloquentSortable\Sortable;
+use Spatie\EloquentSortable\SortableTrait;
 
 class Mahasiswa extends Model implements Auditable
+// , Sortable
 {
     use \OwenIt\Auditing\Auditable;
-    
+    // use SortableTrait;
+
     protected $table = 'mahasiswa';
 
     protected $fillable = [
@@ -32,6 +36,11 @@ class Mahasiswa extends Model implements Auditable
         "jk",
         "alamat"
     ];
+
+    // public $sortable = [
+    //     'order_column_name' => 'nama',
+    //     'sort_when_creating' => true,
+    // ];
 
     /**
      * Undocumented function

@@ -9,11 +9,10 @@ let Project = {
             // Get all data from input
             let data = new FormData();
             data.append("nama", $('input[name=nama]').val());
-            data.append("kelas", $('input[name=kelas]').val());
+            data.append("kelas", $('#kelas').val());
             data.append("jk", $('#jk').val());
             data.append("alamat", $('#alamat').val());
 
-            // console.log(...data);
             $.ajax({
                headers: {
                   'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
