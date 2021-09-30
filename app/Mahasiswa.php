@@ -12,7 +12,7 @@ class Mahasiswa extends Model implements Auditable
 // , Sortable
 {
     use \OwenIt\Auditing\Auditable;
-    // use SortableTrait;
+    use SortableTrait;
 
     protected $table = 'mahasiswa';
 
@@ -37,10 +37,10 @@ class Mahasiswa extends Model implements Auditable
         "alamat"
     ];
 
-    // public $sortable = [
-    //     'order_column_name' => 'nama',
-    //     'sort_when_creating' => true,
-    // ];
+    public $sortable = [
+        'order_column_name' => 'nama',
+        'sort_when_creating' => true,
+    ];
 
     /**
      * Undocumented function

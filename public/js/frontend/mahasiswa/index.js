@@ -95,6 +95,9 @@ let project = {
 
          // Untuk tombol simpan pada modal
          $('.modal-footer').on('click', '.add', (event) => {
+            event.preventDefault();
+            event.stopImmediatePropagation(); // agar tidak mengeksekusi ajax 2x
+
             let mahasiswaFormCreate = $('#mahasiswaForm');
             let formData = new FormData(mahasiswaFormCreate[0]);
 
@@ -122,10 +125,6 @@ let project = {
                      }
                   
                   } else {
-                     toast.fire({
-                        title: 'Tambah mahasiswa berhasil'
-                     });
-
                      console.log(data);
                      if (data.uuid) {
                         $('#mahasiswa_modal').modal('hide');
@@ -139,8 +138,16 @@ let project = {
                },
                error: function (data, textStatus, jqXhr) {
                   console.log(data);
-               }
-               
+               },
+               complete: function (data) {
+                  toast.fire({
+                     title: 'Tambah mahasiswa berhasil',
+                     timer: 3000,
+                  });
+                  // return false;
+
+               },
+               async:   false,
             });
          });
       });
@@ -184,7 +191,15 @@ let project = {
             },
             error: (jqXhr, json, errorThrown) => {
                
-            }
+            },
+            complete: function (data) {
+               toast.fire({
+                  title: 'Update mahasiswa berhasil',
+                  timer: 3000,
+               });
+
+            },
+            async:   false,
          });
 
          // Untuk tombol update pada modal
