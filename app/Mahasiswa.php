@@ -37,10 +37,10 @@ class Mahasiswa extends Model implements Auditable
         "alamat"
     ];
 
-    public $sortable = [
-        'order_column_name' => 'nama',
-        'sort_when_creating' => true,
-    ];
+    // public $sortable = [
+    //     'order_column_name' => 'nama',
+    //     'sort_when_creating' => true,
+    // ];
 
     /**
      * Undocumented function

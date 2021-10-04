@@ -174,11 +174,10 @@ Route::group(['namespace' => 'Riset'], function() {
 
                 /** Laravel Sortable **/
                 Route::group(['prefix' => 'laravel-sortable', 'as' => 'sortable.'], function() {
-                    Route::get('/', 'SortableController@index')->name('index');
-                    
+                    Route::get('/', function() {
+                        return view('mmf.riset.package.laravel-sortable.index');
+                    })->name('index');
                 });
-
-
             });
 
             /**

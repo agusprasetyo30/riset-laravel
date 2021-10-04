@@ -4,9 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
+use Spatie\EloquentSortable\Sortable;
+use Spatie\EloquentSortable\SortableTrait;
 
 class Mata_kuliah extends Model implements Auditable
+// , Sortable
 {
+    // use SortableTrait;
     use \OwenIt\Auditing\Auditable;
 
     protected $table = 'mata_kuliah';
@@ -17,6 +21,11 @@ class Mata_kuliah extends Model implements Auditable
         "status",
     ];
     
+    public $sortable = [
+        'order_column_name' => 'nama',
+        'sort_when_creating' => true,
+    ];
+
     // Menyambungkan many to many
     public function mahasiswa()
     {

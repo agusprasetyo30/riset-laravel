@@ -18,6 +18,10 @@ class MatakuliahController extends Controller
      */
     public function index()
     {
+        // $coba = Mata_kuliah::ordered()->get();
+        // $coba1 = Mata_kuliah::all();
+        // dd($coba, $coba1);
+        
         $mata_kuliah = Mata_kuliah::paginate(5);
 
         return view('mmf.mata-kuliah.index', compact('mata_kuliah'));

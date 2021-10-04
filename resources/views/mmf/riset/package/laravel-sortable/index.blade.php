@@ -1,35 +1,63 @@
-@extends('layouts.template')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>spatie/laravel-sortable</title>
 
-@section('title', 'Riset Laravel Sortable')
+   <style>
+      body {
+         font-family: Arial, Helvetica, sans-serif;
+      }
 
-@section('content')
-<table class="table table-bordered table-hover table-striped table-checkable mt-5" id="mahasiswa_table">
-   <thead class="text-center">
-      <tr>
-         <th width=60%>Nama</th>
-         <th width=20%>Kelas</th>
-         <th width=20%>Jenis Kelamin</th>
-      </tr>
-   </thead>
-   <tbody>
-      @foreach ($mahasiswas as $mahasiswa)
-         <tr>
-            <td>{{ $mahasiswa->nama }}</td>
-            <td>{{ $mahasiswa->kelas }}</td>
-            <td>{{ $mahasiswa->jk }}</td>
-         </tr>
-      @endforeach
-   </tbody>
-   <tfoot >
-      <tr>
-         <td colspan="3"> 
-            <div class="row text-center">
-               <div class="col-md-12 ">
-                  {{ $mahasiswas->appends(Request::all())->links() }}
-               </div>
-            </div>
-         </td>
-      </tr>
-   </tfoot>
-</table>
-@endsection
+      .container {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+      }
+
+   .child {
+      width: 500px;
+      height: 150px;
+      /* background-color: red; */
+
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: -75px 0 0 -250px; 
+   }
+
+   p.title {
+      text-align: justify;
+   }
+
+   .kembali {
+      text-decoration: none;
+      background: #d4e023;
+      color: black;
+      padding: 10px;
+      border-radius: 5px;
+   }
+
+   .kembali:hover {
+      transition: 0.2s all;
+      background: #acb43d;
+      color: black;
+   }
+   </style>
+</head>
+<body>
+   <div class="container">
+      <div class="child">
+         <p class="title">
+            Untuk <b>spatie/laravel-sortable</b> sebenarnya berhasil untuk diimplementasikan ke dalam Sistem/program akan tetapi terkendala pada saat menambahkan data baru. 
+            jika menambahkan data baru secara otomatis kolom/data yang diinisialisasi bernilai <b>1</b> sesuai dengan konfigurasi modelnya
+         </p>
+
+         <a class="kembali" href="{{ route('riset-memfis') }}">Kembali</a>
+
+      </div>
+   </div>
+</body>
+</html>
