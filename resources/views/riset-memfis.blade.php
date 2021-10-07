@@ -94,7 +94,7 @@
                      <a class="btn links" href="{{ route('test.toko.dashboard') }}">nwidart/laravel-modules</a>
                      <a class="btn links" href="{{ route('test.auditing.index') }}">owen-it/laravel-auditing</a>
                      <a class="btn links" href="{{ route('test.sortable.index') }}">spatie/laravel-sortable</a>
-                     <a class="btn links bg-warning" href="#">spatie/laravel-activity-log</a>
+                     <a class="btn links" href="{{ route('test.activity-log.index') }}">spatie/laravel-activity-log</a>
                      <a class="btn links bg-dark" href="#">spatie/laravel-backup</a>
                      <a class="btn links" href="{{ route('test.query-builder.index') }}">spatie/laravel-query-builder</a>
                      <a class="btn links bg-warning" href="#">spatie/laravel-slugable</a>

@@ -178,6 +178,13 @@ Route::group(['namespace' => 'Riset'], function() {
                         return view('mmf.riset.package.laravel-sortable.index');
                     })->name('index');
                 });
+
+                /** Laravel Activity Log **/
+                Route::group(['prefix' => 'laravel-activity-log', 'as' => 'activity-log.'], function() {
+                    Route::get('/', function() {
+                        return view('mmf.riset.package.laravel-activity-log.index');
+                    })->name('index');
+                });
             });
 
             /**
