@@ -2,6 +2,7 @@
 
 use App\Mahasiswa;
 use Illuminate\Support\Facades\Route;
+use Spatie\Activitylog\Models\Activity;
 use Spatie\QueryBuilder\QueryBuilder;
 
 /*
@@ -181,9 +182,9 @@ Route::group(['namespace' => 'Riset'], function() {
 
                 /** Laravel Activity Log **/
                 Route::group(['prefix' => 'laravel-activity-log', 'as' => 'activity-log.'], function() {
-                    Route::get('/', function() {
-                        return view('mmf.riset.package.laravel-activity-log.index');
-                    })->name('index');
+                    Route::get('/', 'ActivityLogController@index')->name('index');
+                    // return Activity::all();
+                    // return view('mmf.riset.package.laravel-activity-log.index');
                 });
             });
 

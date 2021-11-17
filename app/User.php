@@ -7,16 +7,18 @@ use Illuminate\Support\Str;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use OwenIt\Auditing\Contracts\Auditable;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class User extends Authenticatable implements Auditable
 {
-    use Notifiable;
-    use \OwenIt\Auditing\Auditable;
+    use Notifiable, LogsActivity, \OwenIt\Auditing\Auditable;
+
+    protected static $logAttributes = ['name', 'email'];
 
     /**
      * The attributes that are mass assignable.
      *
-     * @var array
+     * @var array 
      */
     protected $fillable = [
         'name', 'email', 'password',
