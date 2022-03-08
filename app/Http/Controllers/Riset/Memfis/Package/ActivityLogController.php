@@ -15,8 +15,8 @@ class ActivityLogController extends Controller
      */
     public function index()
     {
-        $activities = Activity::all()->last();
-        
+        $activities = Activity::all();
+        // dd($activities[5]->properties['old']['name']);
         return view('mmf.riset.package.laravel-activity-log.index', compact('activities'));
     }
 
@@ -27,7 +27,7 @@ class ActivityLogController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**

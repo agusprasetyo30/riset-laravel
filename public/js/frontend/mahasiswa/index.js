@@ -1,12 +1,12 @@
 let project = {
    init: function () {
-      $('#mahasiswa_table').DataTable({
+      let dataTabel = $('#mahasiswa_table').DataTable({
          'dom': '<"top"<"toolbar">f>rt<"bottom"pil><"clear">',
          // 'dom': '<lf<t>ip>',
          processing: true,
          serverSide: true,
          scrollX: true,
-         stateSave: true,
+         // stateSave: true,
          ordering: false,
          lengthMenu: [[5, 10, 15, 20], [5, 10, 15, 20]],
          pageLength: 5,
@@ -16,7 +16,7 @@ let project = {
          language: {
             search: "Search",
             searchPlaceholder: "Nama mahasiswa",
-            // processing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading bro...</span> ',
+            processing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading bro...</span> ',
          },
          ajax: '/datatables/mahasiswa',
          columns: [
@@ -25,7 +25,8 @@ let project = {
             { data: 'jk', name: 'jk', searchable: false },
             { data: 'alamat', name: 'alamat', searchable: false},
             { data: 'action', name: 'action', orderable: false, searchable: false}
-         ]
+         ],
+         destroy: true,
       });
 
       $('.dataTables_length').addClass('mr-2');
@@ -89,14 +90,16 @@ let project = {
       })
 
       // Keadaan ketika tombol tambah mahasiswa ditekan
-      $('#mahasiswa_table_wrapper').on('click', '.add-mahasiswa', function() {
+      $('#mahasiswa_table_wrapper').on('click', '.add-mahasiswa', function(event) {
          tambah();
          event.preventDefault();
+         // event.stopImmediatePropagation();
 
          // Untuk tombol simpan pada modal
          $('.modal-footer').on('click', '.add', (event) => {
             event.preventDefault();
             event.stopImmediatePropagation(); // agar tidak mengeksekusi ajax 2x
+            $.blockUI();
 
             let mahasiswaFormCreate = $('#mahasiswaForm');
             let formData = new FormData(mahasiswaFormCreate[0]);
@@ -113,6 +116,7 @@ let project = {
                contentType : false,
                processData : false,
                success: function (data, statusCode, jqXhr) {
+                  $.unblockUI();
                   if (data.errors) {
                      if (data.errors.nama) {
                         $('#nama-error').html(data.errors.nama[0]);
@@ -129,7 +133,12 @@ let project = {
                      if (data.uuid) {
                         $('#mahasiswa_modal').modal('hide');
 
-                        let table = $('#mahasiswa_table').DataTable();
+                        toast.fire({
+                           title: 'Tambah mahasiswa berhasil',
+                           timer: 3000,
+                        });
+
+                        let table = dataTabel;
 
                         table.originalDataSet = [];
                         table.ajax.reload(null, false);
@@ -140,10 +149,10 @@ let project = {
                   console.log(data);
                },
                complete: function (data) {
-                  toast.fire({
-                     title: 'Tambah mahasiswa berhasil',
-                     timer: 3000,
-                  });
+                  // toast.fire({
+                  //    title: 'Tambah mahasiswa berhasil',
+                  //    timer: 3000,
+                  // });
                   // return false;
 
                },
@@ -155,6 +164,7 @@ let project = {
       // Keadaan ketika tombol edit ditekan
       $('#mahasiswa_table_wrapper').on('click', '.edit-mahasiswa', function() {
          edit();
+         $.blockUI();
 
          let jkOptions = {
             'Laki-laki': 'L',
@@ -170,6 +180,8 @@ let project = {
             type  : 'GET',
             url   : '/datatables/mahasiswa/' + uuid + '/edit',
             success: (data) => {
+               $.unblockUI();
+
                document.getElementById('mahasiswa_uuid').value = data.uuid;
                document.getElementById('nama').value = data.nama;
                document.getElementById('kelas').value = data.kelas;
@@ -187,23 +199,18 @@ let project = {
                   }
                });
 
-               // console.log(data);
+               console.log(data);
             },
             error: (jqXhr, json, errorThrown) => {
-               
-            },
-            complete: function (data) {
-               toast.fire({
-                  title: 'Update mahasiswa berhasil',
-                  timer: 3000,
-               });
-
-            },
-            async:   false,
+               $.unblockUI();
+            }
          });
 
          // Untuk tombol update pada modal
          $('.modal-footer').on('click', '.update', (event) => {
+            // event.stopImmediatePropagation();
+            $.blockUI();
+
             let mahasiswaFormCreate = $('#mahasiswaForm');
             let formData = new FormData(mahasiswaFormCreate[0]);
             let uuid_mahasiswa = $('input[name=mahasiswa_uuid]').val();
@@ -224,6 +231,8 @@ let project = {
                contentType : false,
                processData : false,
                success: function (data) {
+                  $.unblockUI();
+
                   if (data.errors) {
                      if (data.errors.nama) {
                         $('#nama-error').html(data.errors.nama[0]);
@@ -241,17 +250,19 @@ let project = {
                      // location.reload();
                      $('#mahasiswa_modal').modal('hide');
 
-                     console.log(data);
+                     // console.log(data);
                      // console.log(mahasiswa_uuid);
-                     let table = $('#mahasiswa_table').DataTable();
+                     let table = dataTabel;
 
+                     table.clear()
                      table.originalDataSet = [];
                      table.ajax.reload(null, false)
                      // console.log(data);
                   }
                },
-               error: function (jqXhr, json, errorThrown) {
-                  
+               error: function (data, textStatus, jqXhr) {
+                  // displayErrors(data, textStatus, jqXhr);
+                  $.unblockUI();
                },
                complete: function (data) {
                   toast.fire({

@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Riset\Memfis\Datatables;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\MahasiswaRequest;
 use App\Mahasiswa;
 use App\Mata_kuliah;
 use DataTables;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 
 class MahasiswaController extends Controller
@@ -29,6 +31,13 @@ class MahasiswaController extends Controller
                 '</div>';
             })
             ->make(true);
+    }
+
+    public function create(MahasiswaRequest $request)
+    {
+        $mahasiswa = Mahasiswa::create($request->all());
+
+        return response()->json($mahasiswa, 200);
     }
 
     /**
@@ -55,6 +64,18 @@ class MahasiswaController extends Controller
     public function edit(Mahasiswa $mahasiswa)
     {
         return response()->json($mahasiswa);
+    }
+
+    public function update(MahasiswaRequest $request, Mahasiswa $mahasiswa) 
+    {
+        try {
+            $mahasiswa->update($request->all());
+
+            return response()->json($request, 200);
+            
+        } catch (ModelNotFoundException $m) {
+            abort(404);
+        }
     }
 
     /**

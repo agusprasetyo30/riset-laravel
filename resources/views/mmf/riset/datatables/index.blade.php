@@ -31,5 +31,6 @@
 
 
 @push('js')
+   <script src="{{ asset('vendors/jquery.blockUI.js') }}"></script>
    <script src="{{ asset('js/frontend/mahasiswa/index.js') }}"></script>
 @endpush

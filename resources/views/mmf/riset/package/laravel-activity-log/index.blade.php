@@ -9,6 +9,12 @@
       <small>Menerapkan metode <b>Activity Log</b> yang digunakan untuk mencatat log yang dilakukan oleh user dalam melakukan transaksi CRUD</small>
       <br>
    </div>
+
+   @foreach ($activities as $activity)
+      @if ($loop->last)
+         <p> {{ $activity->properties['old']['name'] }} </p>
+      @endif
+   @endforeach
 </div>
 
 @endsection
