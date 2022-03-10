@@ -1,8 +1,8 @@
 let project = {
    init: function () {
       let dataTabel = $('#mahasiswa_table').DataTable({
-         'dom': '<"top"<"toolbar">f>rt<"bottom"pil><"clear">',
-         // 'dom': '<lf<t>ip>',
+         dom: '<"top"<"toolbar">f>rt<"bottom"pil><"clear">',
+         // 'dom': '<lf<t>ip>', 
          processing: true,
          serverSide: true,
          scrollX: true,
@@ -16,7 +16,7 @@ let project = {
          language: {
             search: "Search",
             searchPlaceholder: "Nama mahasiswa",
-            processing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading bro...</span> ',
+            processing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading..n.</span>',
          },
          ajax: '/datatables/mahasiswa',
          columns: [
@@ -26,7 +26,6 @@ let project = {
             { data: 'alamat', name: 'alamat', searchable: false},
             { data: 'action', name: 'action', orderable: false, searchable: false}
          ],
-         destroy: true,
       });
 
       $('.dataTables_length').addClass('mr-2');
@@ -110,7 +109,7 @@ let project = {
                   'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
                },
                type        : 'POST',
-               url         : '/test/mahasiswa',
+               url         : '/datatables/mahasiswa',
                data        : formData,
                cache       : false,
                contentType : false,
@@ -130,6 +129,7 @@ let project = {
                   
                   } else {
                      console.log(data);
+
                      if (data.uuid) {
                         $('#mahasiswa_modal').modal('hide');
 
@@ -145,15 +145,15 @@ let project = {
                      }
                   }
                },
-               error: function (data, textStatus, jqXhr) {
-                  console.log(data);
+               error: function (data, textStatus) {
+                  $.unblockUI();
                },
                complete: function (data) {
-                  // toast.fire({
-                  //    title: 'Tambah mahasiswa berhasil',
-                  //    timer: 3000,
-                  // });
-                  // return false;
+                  toast.fire({
+                     title: 'Tambah mahasiswa berhasil',
+                     timer: 3000,
+                  });
+                  return false;
 
                },
                async:   false,
@@ -210,6 +210,7 @@ let project = {
          $('.modal-footer').on('click', '.update', (event) => {
             // event.stopImmediatePropagation();
             $.blockUI();
+            event.preventDefault();
 
             let mahasiswaFormCreate = $('#mahasiswaForm');
             let formData = new FormData(mahasiswaFormCreate[0]);
@@ -225,12 +226,12 @@ let project = {
                   'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                },
                type        : 'POST',
-               url         : '/test/mahasiswa/' + uuid_mahasiswa,
+               url         : '/datatables/mahasiswa/' + uuid_mahasiswa,
                data        : formData,
                cache       : false,
                contentType : false,
                processData : false,
-               success: function (data) {
+               success: function (data, json, errorThrown) {
                   $.unblockUI();
 
                   if (data.errors) {
@@ -250,6 +251,11 @@ let project = {
                      // location.reload();
                      $('#mahasiswa_modal').modal('hide');
 
+                     toast.fire({
+                        title: 'Update mahasiswa berhasil',
+                        timer: 3000,
+                     });
+                     
                      // console.log(data);
                      // console.log(mahasiswa_uuid);
                      let table = dataTabel;
@@ -257,20 +263,14 @@ let project = {
                      table.clear()
                      table.originalDataSet = [];
                      table.ajax.reload(null, false)
-                     // console.log(data);
                   }
                },
-               error: function (data, textStatus, jqXhr) {
+               error: function (data, json, errorThrown) {
                   // displayErrors(data, textStatus, jqXhr);
                   $.unblockUI();
+
+                  console.log(data)
                },
-               complete: function (data) {
-                  toast.fire({
-                     title: 'Update mahasiswa berhasil',
-                     timer: 3000,
-                  });
-               },
-               async:   false,
             });
          });
       });
@@ -294,7 +294,7 @@ let project = {
                   },
                   type: 'DELETE',
                   url: '/datatables/mahasiswa/' + mahasiswa_uuid,
-                  success: function (data, textStatus, jqXhr) {
+                  success: function (data, textStatus) {
                      toast.fire({
                         title: 'Data berhasil dihapus'
                      })

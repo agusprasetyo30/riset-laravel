@@ -9,6 +9,7 @@ use App\Mata_kuliah;
 use DataTables;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use Webpatser\Uuid\Uuid;
 
 class MahasiswaController extends Controller
 {
@@ -30,18 +31,35 @@ class MahasiswaController extends Controller
                     '<button type="button" class="btn btn-sm btn-danger delete" title="Hapus" data-uuid= '. $mahasiswa->uuid .'>Hapus</button>' .
                 '</div>';
             })
-            ->make(true);
+            ->escapeColumns([])
+            ->make();
     }
 
-    public function create(MahasiswaRequest $request)
+    /**
+     * Undocumented function
+     *
+     * @param MahasiswaRequest $request
+     * @return void
+     */
+    public function store(MahasiswaRequest $request)
     {
-        $mahasiswa = Mahasiswa::create($request->all());
+        // Generate UUID
+        $uuid = (string)Uuid::generate();
+
+        $mahasiswa = Mahasiswa::create([
+            'uuid'             => $uuid,
+            'nama'             => $request->get('nama'),
+            'kelas'            => $request->get('kelas'),
+            'jk'               => $request->get('jk'),
+            'alamat'           => $request->get('alamat'),
+            'origin_mahasiswa' => $request->get('origin_mahasiswa')
+        ]);
 
         return response()->json($mahasiswa, 200);
     }
 
     /**
-     * Untuk menampilkan tabel datatable
+     * Untuk menampilkan tabel datatable versi agus
      *
      * @return void
      */
@@ -56,6 +74,21 @@ class MahasiswaController extends Controller
     }
 
     /**
+     * Untuk menampilkan tabel datatable versi agus
+     *
+     * @return void
+     */
+    public function indexDatatableMemfis()
+    {
+        // $mahasiswa = Mata_kuliah::all();
+
+        // dd($mahasiswa);
+        // dd(json_decode($mahasiswa->origin_mahasiswa)->origin_mahasiswa);
+        
+        return view('mmf.riset.datatables.index-memfis');
+    }
+    
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -66,6 +99,13 @@ class MahasiswaController extends Controller
         return response()->json($mahasiswa);
     }
 
+    /**
+     * Undocumented function
+     *
+     * @param MahasiswaRequest $request
+     * @param Mahasiswa $mahasiswa
+     * @return void
+     */
     public function update(MahasiswaRequest $request, Mahasiswa $mahasiswa) 
     {
         try {

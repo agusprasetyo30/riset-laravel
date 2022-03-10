@@ -83,12 +83,21 @@ Route::group(['namespace' => 'Riset'], function() {
             });
 
             /**
-             * NOTE : Route untuk identifikasi riset datatable
+             * NOTE : Route untuk identifikasi riset datatable [ Versi Agus ]
              * 
              * Riset yajra/laravel-datatable
              */ 
             Route::group(['prefix' => 'laravel-datatables', 'as' => 'datatables.', 'namespace' => 'Datatables'], function() {
                 Route::get('mahasiswa', 'MahasiswaController@indexDatatable')->name('mahasiswa');
+            });
+            
+            /**
+             * NOTE : Route untuk identifikasi riset datatable [ Versi Memfis ]
+             * 
+             * Riset yajra/laravel-datatable
+             */ 
+            Route::group(['prefix' => 'laravel-datatables-memfis', 'as' => 'datatables.', 'namespace' => 'Datatables'], function() {
+                Route::get('mahasiswa', 'MahasiswaController@indexDatatableMemfis')->name('mahasiswa-memfis');
             });
 
             /**

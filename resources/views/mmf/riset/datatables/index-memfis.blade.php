@@ -18,11 +18,11 @@
    <div class="text-center mt-3">
       <h2>Mahasiswa</h2>
       <small>Menampilkan tabel <b>Mahasiswa</b> menggunakan <b>yajra/laravel-datatable</b></small>
-      <b>[ Versi Agus ]</b>
+      <b>[ Versi Memfis ]</b>
    </div>
    <div class="row justify-content-center">
       <div class="col-md-10">
-         <table class="table table-bordered table-hover table-striped table-checkable " id="mahasiswa_table" style="width: 100%;">
+         <table class="table table-bordered table-hover table-striped table-checkable mahasiswa_table" id="mahasiswa_table" style="width: 100%;">
             <thead class="text-center">
                <tr>
                   <th width=20%>Nama</th>
@@ -41,5 +41,5 @@
 
 @push('js')
    <script src="{{ asset('vendors/jquery.blockUI.js') }}"></script>
-   <script src="{{ asset('js/frontend/mahasiswa/index.js') }}"></script>
+   <script src="{{ asset('js/frontend/mahasiswa/index_memfis.js') }}"></script>
 @endpush
