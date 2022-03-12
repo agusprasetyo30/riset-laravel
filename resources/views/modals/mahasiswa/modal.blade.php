@@ -10,6 +10,7 @@
         </button>
       </div>
       <form id="mahasiswaForm">
+        @csrf
         <div class="modal-body">
           <div class="form-group">
             <label for="nama">

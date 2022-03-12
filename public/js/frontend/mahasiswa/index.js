@@ -299,6 +299,8 @@ let project = {
                         title: 'Data berhasil dihapus'
                      })
 
+                     
+
                      let table = $('#mahasiswa_table').DataTable();
 
                      table.originalDataSet = [];

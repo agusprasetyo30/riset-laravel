@@ -15,6 +15,7 @@
 @endpush
 
 @section('content')
+
    <div class="text-center mt-3">
       <h2>Mahasiswa</h2>
       <small>Menampilkan tabel <b>Mahasiswa</b> menggunakan <b>yajra/laravel-datatable</b></small>
